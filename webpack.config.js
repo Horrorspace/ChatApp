@@ -97,5 +97,13 @@ module.exports = {
             },
         ],
     },
+    devServer: {
+        index: 'index.html',
+        contentBase: path.join(__dirname, 'build'),
+        compress: true,
+        hot: true,
+        port: 3007,
+        writeToDisk: true,
+    },
     optimization: optimization()
 }
