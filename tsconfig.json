@@ -76,5 +76,5 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "exclude": ["tsconfig.json", "./build"],
-  "include": ["./src/**"]
+  "include": ["./src/client/**/*"]
 }
