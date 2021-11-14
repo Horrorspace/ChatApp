@@ -1,0 +1,69 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Fullstack application to messaging",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --runInBand",
+    "ts": "tsc --watch --resolveJsonModule",
+    "serve": "NODE_TLS_REJECT_UNAUTHORIZED='0' nodemon ./build/src/app.js",
+    "start": "node ./build/src/app.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "dev": "cross-env NODE_ENV=development webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Horrorspace/ChatApp.git"
+  },
+  "keywords": [
+    "ts",
+    "typescript",
+    "react"
+  ],
+  "author": {
+    "name": "eugenii",
+    "email": "utkineugeniy@gmail.com"
+  },
+  "private": true,
+  "license": "SEE LICENSE IN <LICENSE>",
+  "bugs": {
+    "url": "https://github.com/Horrorspace/ChatApp/issues"
+  },
+  "homepage": "https://github.com/Horrorspace/ChatApp#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/redux-thunk": "^2.1.0",
+    "antd": "^4.16.13",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "nodemon": "^2.0.12",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.7",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {}
+}
