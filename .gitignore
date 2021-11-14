@@ -2,5 +2,6 @@ node_modules
 build
 coverage
 tsconfig.tsbuildinfo
+package-lock.json
 *.css
 *.pem
