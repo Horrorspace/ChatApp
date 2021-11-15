@@ -45,12 +45,14 @@
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "baseUrl": "./src",                       /* Base directory to resolve non-absolute module names. */
     "paths": {
+      "@aliases/*": ["client/types/aliases/*"],
       "@api/*": ["client/api/*"],
       "@config/*": ["client/config/*"],
       "@core/*": ["client/core/*"],
+      "@interfaces/*": ["client/types/interfaces/*"],
+      "@lang/*": ["client/lang/*"],
       "@store/*": ["client/store/*"],
       "@styles/*": ["client/assets/styles/*"],
-      "@types/*": ["client/types/*"],
       "@ui/*": ["client/ui/*"],
       "@utils/*": ["client/utils/*"]
     },                            /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
