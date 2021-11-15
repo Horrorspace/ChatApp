@@ -1,20 +1,50 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import {Row, Col, Image} from 'antd';
+import {Сhat} from '@lang/en/Сhat';
+import {contactCardProps} from '@interfaces/IProps';
+import {userAvatar} from '@ui/element creators/userAvatar'
 
 
-interface contactCardProps {
-    username: string;
-    avatarSrc: string;
-    online: boolean;
-    lastMessagefromUser: boolean;
-    lastMessage: string;
-    timeOfLastMessage: Date;
-}
+const Component: React.FC<contactCardProps> = ({
+    username, 
+    avatarSrc, 
+    lastMessagefromUser, 
+    userAvatarSrc, 
+    timeOfLastMessage,
+    lastMessage
+}: contactCardProps) => {
+    const userAvatarElement: ReactElement = userAvatar({lastMessagefromUser, userAvatarSrc});
 
-
-const Component: React.FC<contactCardProps> = () => {
     return (
-        <>
-        </>
+        <Row>
+            <Col>
+                <Image 
+                    src={avatarSrc}
+                    alt={Сhat.avatarAlt}
+                    width={40}
+                    height={40}
+                    preview={false}
+                />
+            </Col>
+            <Col>
+                <Row
+                    align="middle"
+                    justify='space-between'
+                >
+                    {username}
+                </Row>
+                <Row
+                    align="middle"
+                    justify="center"
+                >
+                    {userAvatarElement}
+                    <Col>{lastMessage}</Col>
+                </Row>
+            </Col>
+            <Col>
+                {timeOfLastMessage.toLocaleTimeString()}
+            </Col>
+        </Row>
     )
 }
 
