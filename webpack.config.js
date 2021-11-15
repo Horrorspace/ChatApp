@@ -61,14 +61,16 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json', 'css', '.less', '.html'],
         alias: {
+            '@aliases': path.resolve(__dirname, './src/client/types/aliases'),
             '@api': path.resolve(__dirname, './src/client/api'),
             '@config': path.resolve(__dirname, './src/client/config'),
             '@core': path.resolve(__dirname, './src/client/core'),
+            '@interfaces': path.resolve(__dirname, './src/client/types/interfaces'),
+            '@lang': path.resolve(__dirname, './src/client/lang'),
             '@store': path.resolve(__dirname, './src/client/store'),
             '@styles': path.resolve(__dirname, './src/client/assets/styles'),
-            '@types': path.resolve(__dirname, './src/client/types'),
             '@ui': path.resolve(__dirname, './src/client/ui'),
-            '@utils': path.resolve(__dirname, './src/client/utils'),
+            '@utils': path.resolve(__dirname, './src/client/utils')
         }
     },
     module: {
