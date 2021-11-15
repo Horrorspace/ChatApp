@@ -1,5 +1,6 @@
 import React from 'react';
 import {ContactCard} from '@ui/components/contacts/ContactCard'
+import {SearchField} from '@ui/components/contacts/SearchField'
 
 
 
@@ -11,6 +12,7 @@ export const ContactsPage: React.FC = () => {
     
     return (
         <>
+            <SearchField />
             <ContactCard 
                 username="Just for lulz"
                 avatarSrc={avatarSrc}
