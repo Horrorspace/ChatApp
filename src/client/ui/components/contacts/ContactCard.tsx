@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import {Row, Col, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {contactCardProps} from '@interfaces/IProps';
-import {userAvatar} from '@ui/element creators/userAvatar'
+import {UserAvatar} from '@ui/components/contacts/UserAvatar'
 
 
 const Component: React.FC<contactCardProps> = ({
@@ -13,10 +13,11 @@ const Component: React.FC<contactCardProps> = ({
     timeOfLastMessage,
     lastMessage
 }: contactCardProps) => {
-    const userAvatarElement: ReactElement = userAvatar({lastMessagefromUser, userAvatarSrc});
-
     return (
-        <Row>
+        <Row
+            align="middle"
+            justify="center"
+        >
             <Col>
                 <Image 
                     src={avatarSrc}
@@ -37,7 +38,10 @@ const Component: React.FC<contactCardProps> = ({
                     align="middle"
                     justify="center"
                 >
-                    {userAvatarElement}
+                    <UserAvatar
+                        lastMessagefromUser={lastMessagefromUser}
+                        userAvatarSrc={userAvatarSrc}                 
+                    />
                     <Col>{lastMessage}</Col>
                 </Row>
             </Col>
