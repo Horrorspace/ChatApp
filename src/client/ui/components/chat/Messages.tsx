@@ -2,11 +2,7 @@ import React from 'react';
 import {Row} from 'antd';
 import {Message} from '@ui/components/chat/Message';
 import {message} from '@interfaces/IMessage';
-
-
-interface messagesProps {
-    messages: message[]
-}
+import {messagesProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<messagesProps> = ({messages}: messagesProps) => {  

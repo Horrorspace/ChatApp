@@ -1,16 +1,9 @@
 import React from 'react';
 import {Row, Col, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
-import {lastOnline} from '@aliases/Message'
+import {lastOnline} from '@aliases/Message';
+import {contactProps} from '@interfaces/IProps';
 
-
-
-interface contactProps {
-    username: string;
-    avatarSrc: string;
-    online: boolean;
-    lastOnline: lastOnline;
-}
 
 
 const Component: React.FC<contactProps> = ({

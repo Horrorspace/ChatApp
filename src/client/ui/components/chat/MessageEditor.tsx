@@ -3,6 +3,7 @@ import {Row, Col, Button, Input} from 'antd';
 import {SendOutlined} from '@ant-design/icons';
 import {Сhat} from '@lang/en/Сhat';
 
+
 const Component: React.FC = () => { 
     return (
         <Row
