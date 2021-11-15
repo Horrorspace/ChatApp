@@ -1,6 +1,8 @@
 import React from 'react';
 import {Layout} from 'antd';
-import {ChatPage} from '@ui/pages/ChatPage';
+// import {ChatPage} from '@ui/pages/ChatPage';
+import {ContactsPage} from '@ui/pages/ContactsPage';
+
 
 const {Header, Content, Footer} = Layout;
 
@@ -10,7 +12,7 @@ export const App: React.FC = () => {
         <Layout>
             <Header></Header>
             <Content>
-                <ChatPage />
+                <ContactsPage />
             </Content>
             <Footer></Footer>
         </Layout>
