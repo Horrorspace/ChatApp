@@ -6,7 +6,7 @@ import {message} from '@interfaces/IMessage';
 
 
 export const ChatPage: React.FC = () => {
-   const msgData: message[] = [
+   const messages: message[] = [
         {
             text: 'One',
             fromUser: true,
@@ -45,7 +45,7 @@ export const ChatPage: React.FC = () => {
                 lastOnline={null}
             />
             <Messages 
-                messages={msgData}
+                messages={messages}
             />
             <MessageEditor 
             />
