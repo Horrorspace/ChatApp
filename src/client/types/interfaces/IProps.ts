@@ -1,13 +1,13 @@
 import {lastOnline} from '@aliases/Message';
-import {message} from '@interfaces/IMessage';
+import {IMessage} from '@interfaces/IMessage';
 
 
-export interface messageProps {
+export interface IMessageProps {
     text: string;
     time: Date;
 }
 
-export interface messagesProps {
+export interface IMessagesProps {
     messages: message[]
 }
 
@@ -17,16 +17,16 @@ export interface abstractUser {
     online: boolean;
 }
 
-export interface contactProps extends abstractUser {
+export interface IContactProps extends abstractUser {
     lastOnline: lastOnline;
 }
 
-export interface userAvatarProps {
+export interface IUserAvatarProps {
     lastMessagefromUser: boolean;
     userAvatarSrc: string;
 }
 
-export interface contactCardProps extends userAvatarProps, abstractUser {
+export interface IContactCardProps extends IUserAvatarProps, abstractUser {
     lastMessage: string;
     timeOfLastMessage: Date;
 }
