@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Input} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
-import {Contacts} from '@lang/en/Contacts';
+import {Сhat} from '@lang/en/Сhat';
 
 
 const Component: React.FC = () => { 
@@ -15,7 +15,7 @@ const Component: React.FC = () => {
             </Col>
             <Col>
                 <Input 
-                    placeholder={Contacts.searchPlaceholder}
+                    placeholder={Сhat.searchPlaceholder}
                 />
             </Col>
         </Row>
