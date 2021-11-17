@@ -1,5 +1,6 @@
 import {lastOnline} from '@aliases/Message';
 import {IMessage} from '@interfaces/IMessage';
+import {InfoFields} from '@aliases/Profile'
 
 
 export interface IMessageProps {
@@ -29,4 +30,13 @@ export interface IUserAvatarProps {
 export interface IContactCardProps extends IUserAvatarProps, abstractUser {
     lastMessage: string;
     timeOfLastMessage: Date;
+}
+
+export interface IInfoFieldProps {
+    title: string;
+    value: string;
+}
+
+export interface IInfoListProps {
+    infoFields: InfoFields;
 }
