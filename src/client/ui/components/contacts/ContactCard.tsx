@@ -1,18 +1,18 @@
 import React from 'react';
 import {Row, Col, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
-import {contactCardProps} from '@interfaces/IProps';
+import {IContactCardProps} from '@interfaces/IProps';
 import {UserAvatar} from '@ui/components/contacts/UserAvatar'
 
 
-const Component: React.FC<contactCardProps> = ({
+const Component: React.FC<IContactCardProps> = ({
     username, 
     avatarSrc, 
     lastMessagefromUser, 
     userAvatarSrc, 
     timeOfLastMessage,
     lastMessage
-}: contactCardProps) => {
+}: IContactCardProps) => {
     return (
         <Row
             align="middle"

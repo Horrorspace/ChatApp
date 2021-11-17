@@ -1,12 +1,12 @@
 import React from 'react';
 import {Row} from 'antd';
 import {Message} from '@ui/components/chat/Message';
-import {message} from '@interfaces/IMessage';
-import {messagesProps} from '@interfaces/IProps';
+import {IMessage} from '@interfaces/IMessage';
+import {IMessagesProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<messagesProps> = ({messages}: messagesProps) => {  
-   const messageProd = ({text, fromUser, time}: message): React.ReactElement => {
+const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {  
+   const messageProd = ({text, fromUser, time}: IMessage): React.ReactElement => {
        return (
            <Row
             align="middle"

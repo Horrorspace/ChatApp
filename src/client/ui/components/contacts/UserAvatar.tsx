@@ -1,10 +1,10 @@
 import React from 'react';
 import {Col, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
-import {userAvatarProps} from '@interfaces/IProps';
+import {IUserAvatarProps} from '@interfaces/IProps';
 
 
-export const Component: React.FC<userAvatarProps> = ({lastMessagefromUser, userAvatarSrc}: userAvatarProps) => {
+export const Component: React.FC<IUserAvatarProps> = ({lastMessagefromUser, userAvatarSrc}: IUserAvatarProps) => {
     if(lastMessagefromUser) {
         return (
                 <Col>

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Card} from 'antd';
-import {messageProps} from '@interfaces/IProps';
+import {IMessageProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<messageProps> = ({text, time}: messageProps) => {
+const Component: React.FC<IMessageProps> = ({text, time}: IMessageProps) => {
     const timeStr: string = time.toLocaleTimeString();
 
     return (

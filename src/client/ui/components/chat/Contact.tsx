@@ -2,16 +2,16 @@ import React from 'react';
 import {Row, Col, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {lastOnline} from '@aliases/Message';
-import {contactProps} from '@interfaces/IProps';
+import {IContactProps} from '@interfaces/IProps';
 
 
 
-const Component: React.FC<contactProps> = ({
+const Component: React.FC<IContactProps> = ({
     username,
     avatarSrc,
     online,
     lastOnline
-}: contactProps) => {
+}: IContactProps) => {
     const getOnlineStr = (online: boolean, lastOnline: lastOnline): string => {
         if(online){
             return Сhat.online
