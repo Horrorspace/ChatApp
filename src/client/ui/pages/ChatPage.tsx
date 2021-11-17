@@ -2,11 +2,11 @@ import React from 'react';
 import {Messages} from '@ui/components/chat/Messages';
 import {Contact} from '@ui/components/chat/Contact';
 import {MessageEditor} from '@ui/components/chat/MessageEditor';
-import {message} from '@interfaces/IMessage';
+import {IMessage} from '@interfaces/IMessage';
 
 
 export const ChatPage: React.FC = () => {
-   const messages: message[] = [
+   const messages: IMessage[] = [
         {
             text: 'One',
             fromUser: true,

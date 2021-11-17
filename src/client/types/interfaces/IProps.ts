@@ -8,7 +8,7 @@ export interface IMessageProps {
 }
 
 export interface IMessagesProps {
-    messages: message[]
+    messages: IMessage[]
 }
 
 export interface abstractUser {
