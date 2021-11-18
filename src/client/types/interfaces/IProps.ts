@@ -45,3 +45,11 @@ export interface IInputFieldProps {
     title: string;
     placeholder: string;
 }
+
+export interface IPassFieldProps extends IInputFieldProps {
+    forgotPassTitle: string;
+}
+
+export interface IAvatarProps {
+    src: string;
+}
