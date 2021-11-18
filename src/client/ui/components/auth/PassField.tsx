@@ -1,9 +1,10 @@
 import React from 'react';
-import {Row, Col, Input} from 'antd';
+import {Row, Col, Input, Typography} from 'antd';
 import {IPassFieldProps} from '@interfaces/IProps'
 
 
 const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTitle}: IPassFieldProps) => {
+    const {Title, Paragraph} = Typography;
     const forgotPass: React.ReactElement = forgotPassTitle ? <Col>{forgotPassTitle}</Col> : <></>
 
     return (
@@ -13,9 +14,11 @@ const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTit
                 justify="center"
             >
                 <Col>
-                    {title}
+                    <Title level={4}>{title}</Title>
                 </Col>
-                {forgotPass}
+                <Col>
+                    <Paragraph>{forgotPass}</Paragraph>
+                </Col>
             </Row>
             <Row
                 align="middle"

@@ -1,9 +1,10 @@
 import React from 'react';
-import {Row, Col, Input} from 'antd';
+import {Row, Col, Input, Typography} from 'antd';
 import {IInputFieldProps} from '@interfaces/IProps'
 
 
 const Component: React.FC<IInputFieldProps> = ({title, placeholder}: IInputFieldProps) => {
+    const {Title} = Typography;
 
     return (
         <>
@@ -12,7 +13,7 @@ const Component: React.FC<IInputFieldProps> = ({title, placeholder}: IInputField
                 justify="center"
             >
                 <Col>
-                    {title}
+                    <Title level={4}>{title}</Title>
                 </Col>
             </Row>
             <Row
