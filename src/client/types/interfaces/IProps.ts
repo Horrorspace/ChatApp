@@ -40,3 +40,8 @@ export interface IInfoFieldProps {
 export interface IInfoListProps {
     infoFields: InfoFields;
 }
+
+export interface IInputFieldProps {
+    title: string;
+    placeholder: string;
+}
