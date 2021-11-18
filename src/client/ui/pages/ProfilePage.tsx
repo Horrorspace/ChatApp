@@ -1,7 +1,7 @@
 import React from 'react';
-import {Row, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {InfoList} from '@ui/components/profile/InfoList'
+import {Avatart} from '@ui/components/profile/Avatart'
 import {IInfoFieldProps} from '@interfaces/IProps';
 import {InfoFields} from '@aliases/Profile';
 
@@ -24,18 +24,9 @@ export const ProfilePage: React.FC = () => {
     
     return (
         <>
-            <Row
-                align="middle"
-                justify="center"
-            >
-                <Image 
-                    src={avatarSrc}
-                    alt={Сhat.avatarAlt}
-                    width={200}
-                    height={200}
-                    preview={false}
-                />
-            </Row>
+            <Avatart 
+                src={avatarSrc}
+            />
             <InfoList 
                 infoFields={infoFields}
             />
