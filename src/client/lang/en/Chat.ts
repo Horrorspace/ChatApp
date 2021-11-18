@@ -1,4 +1,5 @@
 export enum Chat {
+    alreadyAMember = "Already a memeber",
     avatarAlt = "User avatar",
     createAccount = "Create account",
     email = "Email",
