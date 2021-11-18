@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Image} from 'antd';
+import {Row, Col, Image, Typography} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {IContactCardProps} from '@interfaces/IProps';
 import {UserAvatar} from '@ui/components/contacts/UserAvatar'
@@ -13,6 +13,8 @@ const Component: React.FC<IContactCardProps> = ({
     timeOfLastMessage,
     lastMessage
 }: IContactCardProps) => {
+    const {Title, Paragraph} = Typography;
+    
     return (
         <Row
             align="middle"
@@ -32,7 +34,9 @@ const Component: React.FC<IContactCardProps> = ({
                     align="middle"
                     justify='space-between'
                 >
-                    {username}
+                    <Col>
+                        <Title level={4}>{username}</Title>
+                    </Col>  
                 </Row>
                 <Row
                     align="middle"
@@ -42,11 +46,13 @@ const Component: React.FC<IContactCardProps> = ({
                         lastMessagefromUser={lastMessagefromUser}
                         userAvatarSrc={userAvatarSrc}                 
                     />
-                    <Col>{lastMessage}</Col>
+                    <Col>
+                        <Paragraph>{lastMessage}</Paragraph>
+                    </Col>
                 </Row>
             </Col>
             <Col>
-                {timeOfLastMessage.toLocaleTimeString()}
+                <Paragraph>{timeOfLastMessage.toLocaleTimeString()}</Paragraph>
             </Col>
         </Row>
     )
