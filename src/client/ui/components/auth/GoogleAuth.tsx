@@ -8,7 +8,7 @@ const Component: React.FC<IGoogleAuthProps> = ({aMember}: IGoogleAuthProps) => {
     const {Title} = Typography;
 
     const signInTitle: string = `${Chat.signIn} ${Chat.withGoogle}:`;
-    const signUpTitle: string = `${Chat.signIn} ${Chat.withGoogle}:`;
+    const signUpTitle: string = `${Chat.signUp} ${Chat.withGoogle}:`;
     const title: string = aMember ? signInTitle : signUpTitle;
 
     const signInButton: string = Chat.googleAuth;
