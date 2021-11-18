@@ -1,5 +1,6 @@
 export enum Сhat {
     avatarAlt = "User avatar",
+    createAccount = "Create account",
     email = "Email",
     forgot = "Forgot",
     googleAuth = "Google Auth",
