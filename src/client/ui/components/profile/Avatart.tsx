@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Image} from 'antd';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 import {IAvatarProps} from '@interfaces/IProps';
 
 
@@ -14,7 +14,7 @@ const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {
             <Col>
                 <Image 
                     src={src}
-                    alt={Сhat.avatarAlt}
+                    alt={Chat.avatarAlt}
                     width={200}
                     height={200}
                     preview={false}
