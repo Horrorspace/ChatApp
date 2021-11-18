@@ -12,11 +12,11 @@ export const ProfilePage: React.FC = () => {
     const username: string ="Just for lulz";
     const email: string = "justforlulz@google.com";
     const usernameField: IInfoFieldProps = {
-        title: Сhat.username,
+        title: `${Сhat.username}:`,
         value: username
     }
     const emailField: IInfoFieldProps = {
-        title: Сhat.email,
+        title: `${Сhat.email}:`,
         value: email
     }
     const infoFields: InfoFields = [usernameField, emailField];
