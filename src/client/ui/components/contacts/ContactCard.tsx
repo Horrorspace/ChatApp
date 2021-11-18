@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Image, Typography} from 'antd';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 import {IContactCardProps} from '@interfaces/IProps';
 import {UserAvatar} from '@ui/components/contacts/UserAvatar'
 
@@ -23,7 +23,7 @@ const Component: React.FC<IContactCardProps> = ({
             <Col>
                 <Image 
                     src={avatarSrc}
-                    alt={Сhat.avatarAlt}
+                    alt={Chat.avatarAlt}
                     width={40}
                     height={40}
                     preview={false}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Image} from 'antd';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 import {IUserAvatarProps} from '@interfaces/IProps';
 
 
@@ -10,7 +10,7 @@ export const Component: React.FC<IUserAvatarProps> = ({lastMessagefromUser, user
                 <Col>
                     <Image 
                         src={userAvatarSrc}
-                        alt={Сhat.avatarAlt}
+                        alt={Chat.avatarAlt}
                         width={40}
                         height={40}
                         preview={false}

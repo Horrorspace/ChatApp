@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Button, Input} from 'antd';
 import {SendOutlined} from '@ant-design/icons';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 
 
 const Component: React.FC = () => { 
@@ -12,14 +12,14 @@ const Component: React.FC = () => {
         >
             <Col>
                 <Input 
-                    placeholder={Сhat.messagePlaceholder}
+                    placeholder={Chat.messagePlaceholder}
                 />
             </Col>
             <Col>
                 <Button 
                     type="primary"
                 >
-                    {Сhat.send}
+                    {Chat.send}
                     <SendOutlined />
                 </Button>
             </Col>

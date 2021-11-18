@@ -1,5 +1,5 @@
 import React from 'react';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 import {InfoList} from '@ui/components/profile/InfoList'
 import {Avatart} from '@ui/components/profile/Avatart'
 import {IInfoFieldProps} from '@interfaces/IProps';
@@ -12,11 +12,11 @@ export const ProfilePage: React.FC = () => {
     const username: string ="Just for lulz";
     const email: string = "justforlulz@google.com";
     const usernameField: IInfoFieldProps = {
-        title: `${Сhat.username}:`,
+        title: `${Chat.username}:`,
         value: username
     }
     const emailField: IInfoFieldProps = {
-        title: `${Сhat.email}:`,
+        title: `${Chat.email}:`,
         value: email
     }
     const infoFields: InfoFields = [usernameField, emailField];

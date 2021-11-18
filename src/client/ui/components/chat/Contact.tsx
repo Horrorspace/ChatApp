@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Image, Typography} from 'antd';
-import {Сhat} from '@lang/en/Сhat';
+import {Chat} from '@lang/en/Chat';
 import {lastOnline} from '@aliases/Message';
 import {IContactProps} from '@interfaces/IProps';
 
@@ -14,13 +14,13 @@ const Component: React.FC<IContactProps> = ({
 }: IContactProps) => {
     const getOnlineStr = (online: boolean, lastOnline: lastOnline): string => {
         if(online){
-            return Сhat.online
+            return Chat.online
         }
         else if(lastOnline) {
-            return `${Сhat.lastSeen} ${lastOnline.toString()}`
+            return `${Chat.lastSeen} ${lastOnline.toString()}`
         }
         else {
-            return Сhat.offline
+            return Chat.offline
         }
     }
     const onlineStr = getOnlineStr(online, lastOnline);
@@ -34,7 +34,7 @@ const Component: React.FC<IContactProps> = ({
             <Col>
                 <Image 
                     src={avatarSrc}
-                    alt={Сhat.avatarAlt}
+                    alt={Chat.avatarAlt}
                     width={40}
                     height={40}
                     preview={false}

@@ -1,4 +1,4 @@
-export enum Сhat {
+export enum Chat {
     avatarAlt = "User avatar",
     createAccount = "Create account",
     email = "Email",
