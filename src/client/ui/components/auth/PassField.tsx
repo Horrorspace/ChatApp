@@ -24,7 +24,7 @@ const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTit
                 align="middle"
                 justify="center"    
             >
-                <Input 
+                <Input.Password
                     placeholder={placeholder}
                 />
             </Row>
