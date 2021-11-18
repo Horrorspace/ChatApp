@@ -2,7 +2,9 @@ import React from 'react';
 import {Row, Image} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {InfoList} from '@ui/components/profile/InfoList'
-import {IInfoListProps, IInfoFieldProps} from '@interfaces/IProps';
+import {IInfoFieldProps} from '@interfaces/IProps';
+import {InfoFields} from '@aliases/Profile';
+
 
 
 export const ProfilePage: React.FC = () => {
@@ -17,11 +19,9 @@ export const ProfilePage: React.FC = () => {
         title: Сhat.email,
         value: email
     }
-    const infoList: IInfoListProps = {
-        infoFields: [usernameField, emailField]
-    }
+    const infoFields: InfoFields = [usernameField, emailField];
 
-
+    
     return (
         <>
             <Row
@@ -37,7 +37,7 @@ export const ProfilePage: React.FC = () => {
                 />
             </Row>
             <InfoList 
-                infoFields={infoList}
+                infoFields={infoFields}
             />
         </>
     )
