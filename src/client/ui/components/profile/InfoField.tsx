@@ -1,9 +1,10 @@
 import React from 'react';
-import {Row} from 'antd';
+import {Row, Col, Typography} from 'antd';
 import {IInfoFieldProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<IInfoFieldProps> = ({title, value}: IInfoFieldProps) => {
+    const {Title, Paragraph} = Typography;
 
     return (
         <>
@@ -11,13 +12,17 @@ const Component: React.FC<IInfoFieldProps> = ({title, value}: IInfoFieldProps) =
                 align="middle"
                 justify="center"
             >
-                {title}
+                <Col>
+                    <Title level={3}>{title}</Title>
+                </Col>
             </Row>
             <Row
                 align="middle"
                 justify="center"
             >
-                {value}
+                <Col>
+                    <Paragraph>{value}</Paragraph>
+                </Col>
             </Row>
         </>
     )

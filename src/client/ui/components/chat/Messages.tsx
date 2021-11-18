@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row} from 'antd';
+import {Row, Col} from 'antd';
 import {Message} from '@ui/components/chat/Message';
 import {IMessage} from '@interfaces/IMessage';
 import {IMessagesProps} from '@interfaces/IProps';
@@ -12,14 +12,16 @@ const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {
             align="middle"
             justify={fromUser ? 'end' : 'start'}
            >
-               <Message
-                text={text}
-                time={time}
-               />
+                <Col>
+                    <Message
+                        text={text}
+                        time={time}
+                    />
+                </Col>
            </Row>
        )
    }
-   
+   0
    const renderedMessages: React.ReactElement[] = messages.map(messageProd)
 
 

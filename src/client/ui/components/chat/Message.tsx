@@ -1,15 +1,16 @@
 import React from 'react';
-import {Card} from 'antd';
+import {Card, Typography} from 'antd';
 import {IMessageProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<IMessageProps> = ({text, time}: IMessageProps) => {
     const timeStr: string = time.toLocaleTimeString();
+    const {Paragraph} = Typography;
 
     return (
         <Card>
-            <p>{text}</p>
-            <p>{timeStr}</p>
+            <Paragraph>{text}</Paragraph>
+            <Paragraph>{timeStr}</Paragraph>
         </Card>
     )
 }

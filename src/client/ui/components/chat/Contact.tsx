@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Image} from 'antd';
+import {Row, Col, Image, Typography} from 'antd';
 import {Сhat} from '@lang/en/Сhat';
 import {lastOnline} from '@aliases/Message';
 import {IContactProps} from '@interfaces/IProps';
@@ -24,6 +24,7 @@ const Component: React.FC<IContactProps> = ({
         }
     }
     const onlineStr = getOnlineStr(online, lastOnline);
+    const {Title, Paragraph} = Typography;
 
     return (
         <Row
@@ -41,10 +42,14 @@ const Component: React.FC<IContactProps> = ({
             </Col>
             <Col>
                 <Row>
-                    {username}
+                    <Col>
+                        <Title level={4}>{username}</Title>
+                    </Col>
                 </Row>
                 <Row>
-                    {onlineStr}
+                    <Col>
+                        <Paragraph>{onlineStr}</Paragraph>
+                    </Col>
                 </Row>
             </Col>
         </Row>
