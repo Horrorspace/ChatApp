@@ -25,7 +25,10 @@ const Component: React.FC = () => {
                 placeholder={passPlaceholder}
                 forgotPassTitle={forgotPassTitle}
             />
-            <Row>
+            <Row
+                align="middle"
+                justify="center"    
+            >
                 <Col>
                     <Button>
                         {Chat.signIn}
