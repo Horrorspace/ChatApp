@@ -47,9 +47,17 @@ export interface IInputFieldProps {
 }
 
 export interface IPassFieldProps extends IInputFieldProps {
-    forgotPassTitle: string;
+    forgotPassTitle?: string;
 }
 
 export interface IAvatarProps {
     src: string;
+}
+
+export interface IGoogleAuthProps {
+    aMember: boolean;
+}
+
+export interface IAMemberProps {
+    aMember: boolean;
 }
