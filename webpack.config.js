@@ -76,11 +76,34 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true
+                            }
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.css$/,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader
-                },
-                'css-loader']
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    }
+                ]
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
