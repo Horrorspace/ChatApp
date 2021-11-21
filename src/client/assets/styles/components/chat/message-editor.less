@@ -1,8 +1,52 @@
-.message-editor-wrap {
+.message-editor__wrap {
     width: 100%;
+
+    .flex-row(center, center);
     
-    background-color: #FFFFFF;
+    background-color: @main-color;
 
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.message-editor {
+    width: 100%;
+}
+
+.message-send-btn__wrap {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.message-send-btn {
+    width: 50px;
+}
+
+.message-input__wrap {
+    width: calc(100% - 100px);
+
+    margin-left: auto;
+}
+
+.message-input {
+    width: 100%;
+}
+
+
+@media screen and (min-width: @sm-device) {
+    .message-editor {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .message-editor {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .message-editor {
+        width: @lg-width;
+    }
 }
