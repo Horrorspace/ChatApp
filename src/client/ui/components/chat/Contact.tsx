@@ -1,5 +1,6 @@
 import React from 'react';
-import {Row, Col, Image, Typography} from 'antd';
+import {Row, Col, Image, Typography, Button} from 'antd';
+import {MoreOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
 import {lastOnline} from '@aliases/Message';
 import {IContactProps} from '@interfaces/IProps';
@@ -17,7 +18,7 @@ const Component: React.FC<IContactProps> = ({
             return Chat.online
         }
         else if(lastOnline) {
-            return `${Chat.lastSeen} ${lastOnline.toString()}`
+            return `${Chat.lastSeen} ${lastOnline.getDate()}.${lastOnline.getMonth()}.${lastOnline.getFullYear()} at ${lastOnline.getHours()}:${lastOnline.getMinutes()}`
         }
         else {
             return Chat.offline
@@ -28,33 +29,80 @@ const Component: React.FC<IContactProps> = ({
 
     return (
         <section
-            className="contact-wrap"
+            className="contact__wrap"
         >
             <Row
-            align="middle"
-            justify="center"
-            className=""
+                align="middle"
+                justify="center"
+                className="contact"
             >
-                <Col>
+                <Col
+                    className="contact-back__wrap"
+                >
+                    <Button
+                        className="contact-setting__btn"
+                    >
+                        <ArrowLeftOutlined 
+                            className="contact-setting__ico"
+                        />
+                    </Button>
+                </Col>
+                <Col
+                    className="contact-avatar__wrap"
+                >
                     <Image 
                         src={avatarSrc}
                         alt={Chat.avatarAlt}
-                        width={40}
-                        height={40}
+
                         preview={false}
+                        className="contact-avatar"
                     />
                 </Col>
-                <Col>
-                    <Row>
-                        <Col>
-                            <Title level={4}>{username}</Title>
+                <Col
+                    className="contact-data"
+                >
+                    <Row
+                        align="middle"
+                        justify="start"
+                        className="contact-username__main-wrap"    
+                    >
+                        <Col
+                            className="contact-username__wrap"
+                        >
+                            <Title 
+                                level={4}
+                                className="contact-username"
+                            >
+                                {username}
+                            </Title>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-                            <Paragraph>{onlineStr}</Paragraph>
+                    <Row
+                        align="middle"
+                        justify="start"
+                        className="contact-online__main-wrap"
+                    >
+                        <Col
+                            className="contact-online__wrap"
+                        >
+                            <Paragraph
+                                className="contact-online"
+                            >
+                                {onlineStr}
+                            </Paragraph>
                         </Col>
                     </Row>
+                </Col>
+                <Col
+                    className="contact-settings__wrap"
+                >
+                    <Button
+                        className="contact-setting__btn"
+                    >
+                        <MoreOutlined 
+                            className="contact-setting__ico"
+                        />
+                    </Button>
                 </Col>
             </Row>
         </section>
