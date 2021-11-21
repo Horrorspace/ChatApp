@@ -5,7 +5,7 @@ export enum Chat {
     email = "Email",
     forgot = "Forgot",
     googleAuth = "Google Auth",
-    lastSeen = "Last seen online",
+    lastSeen = "Last seen",
     messagePlaceholder = "Message",
     notAMember = "Not a member",
     now = "Now",
