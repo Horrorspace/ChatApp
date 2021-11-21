@@ -3,6 +3,7 @@ import {Row, Col} from 'antd';
 import {Message} from '@ui/components/chat/Message';
 import {IMessage} from '@interfaces/IMessage';
 import {IMessagesProps} from '@interfaces/IProps';
+import {DateMessage} from '@ui/components/chat/DateMessage'
 
 
 const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {  
@@ -38,6 +39,9 @@ const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {
                 <div
                     className="message-list"
                 >
+                    <DateMessage 
+                        date={new Date('November 14, 2021 19:28:00')}
+                    />
                     {renderedMessages}
                 </div>
             </section>
