@@ -1,5 +1,112 @@
-.contact-wrap {
+.contact__wrap {
+    width: 100%;
+    
+    .flex-row(center, center);
+
+    background-color: @main-color;
+}
+
+.contact {
     width: 100%;
 
-    background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.contact-avatar__wrap {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+.contact-avatar {
+    height: 30px;
+    max-width: 100px;
+}
+
+.contact-data {
+    width: 200px;
+
+    .flex-column(space-between, flex-start);
+
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.contact-username__main-wrap {
+    margin-top: auto;
+}
+
+.contact-username__wrap {
+    height: 25px;
+
+    .flex-row();
+}
+
+.contact-username {
+    margin: 0 !important;
+
+    .font(@primary-font-color, @username-font-size, bold) !important;
+    line-height: normal !important;
+}
+
+.contact-online__main-wrap {
+    margin-bottom: auto;
+}
+
+.contact-online__wrap {
+    height: 17px;
+
+    .flex-row();
+}
+
+.contact-online {
+    margin: 0 !important;
+
+    .font(@secondary-font-color, @primary-font-size, normal) !important;
+    line-height: normal !important;
+}
+
+.contact-setting__btn {
+    border: 0;
+    background-color: transparent;
+
+    &:hover, &:focus {
+        background-color: transparent; 
+    }
+}
+
+.contact-setting__ico {
+    border: 0;
+
+    .font(@secondary-font-color, 24px, bold)
+}
+
+.contact-back__wrap {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.contact-settings__wrap {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+@media screen and (min-width: @sm-device) {
+    .contact {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .contact {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .contact {
+        width: @lg-width;
+    }
 }
