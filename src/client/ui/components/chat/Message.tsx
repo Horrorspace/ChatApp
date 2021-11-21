@@ -4,13 +4,24 @@ import {IMessageProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<IMessageProps> = ({text, time}: IMessageProps) => {
-    const timeStr: string = time.toLocaleTimeString();
+    const timeStr: string = `${time.getHours()}:${time.getMinutes()}`;
     const {Paragraph} = Typography;
 
     return (
-        <Card>
-            <Paragraph>{text}</Paragraph>
-            <Paragraph>{timeStr}</Paragraph>
+        <Card
+            className="message-element"
+            hoverable={true}
+        >
+            <Paragraph
+                className="message"
+            >
+                {text}
+            </Paragraph>
+            <Paragraph
+                className="message-time"
+            >
+                {timeStr}
+            </Paragraph>
         </Card>
     )
 }

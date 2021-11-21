@@ -27,32 +27,37 @@ const Component: React.FC<IContactProps> = ({
     const {Title, Paragraph} = Typography;
 
     return (
-        <Row
-        align="middle"
-        justify="center"
+        <section
+            className="contact-wrap"
         >
-            <Col>
-                <Image 
-                    src={avatarSrc}
-                    alt={Chat.avatarAlt}
-                    width={40}
-                    height={40}
-                    preview={false}
-                />
-            </Col>
-            <Col>
-                <Row>
-                    <Col>
-                        <Title level={4}>{username}</Title>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Paragraph>{onlineStr}</Paragraph>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+            <Row
+            align="middle"
+            justify="center"
+            className=""
+            >
+                <Col>
+                    <Image 
+                        src={avatarSrc}
+                        alt={Chat.avatarAlt}
+                        width={40}
+                        height={40}
+                        preview={false}
+                    />
+                </Col>
+                <Col>
+                    <Row>
+                        <Col>
+                            <Title level={4}>{username}</Title>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Paragraph>{onlineStr}</Paragraph>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </section>
     )
 }
 

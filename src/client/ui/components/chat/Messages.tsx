@@ -11,8 +11,11 @@ const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {
            <Row
             align="middle"
             justify={fromUser ? 'end' : 'start'}
+            className="message-element-row"
            >
-                <Col>
+                <Col
+                    className="message-element-column"
+                >
                     <Message
                         text={text}
                         time={time}
@@ -27,7 +30,15 @@ const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {
 
     return (
         <>
-            {renderedMessages}
+            <section
+                className="message-list-wrap"
+            >
+                <div
+                    className="message-list"
+                >
+                    {renderedMessages}
+                </div>
+            </section>
         </>
     )
 }

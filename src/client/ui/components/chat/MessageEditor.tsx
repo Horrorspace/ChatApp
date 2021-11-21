@@ -6,24 +6,29 @@ import {Chat} from '@lang/en/Chat';
 
 const Component: React.FC = () => { 
     return (
-        <Row
-        align="middle"
-        justify="center"
+        <section
+            className="message-editor-wrap"
         >
-            <Col>
-                <Input 
-                    placeholder={Chat.messagePlaceholder}
-                />
-            </Col>
-            <Col>
-                <Button 
-                    type="primary"
-                >
-                    {Chat.send}
-                    <SendOutlined />
-                </Button>
-            </Col>
-        </Row>
+            <Row
+            align="middle"
+            justify="center"
+            className=""
+            >
+                <Col>
+                    <Input 
+                        placeholder={Chat.messagePlaceholder}
+                    />
+                </Col>
+                <Col>
+                    <Button 
+                        type="primary"
+                    >
+                        <SendOutlined />
+                    </Button>
+                </Col>
+            </Row>
+        </section>
+
     )
 }
 
