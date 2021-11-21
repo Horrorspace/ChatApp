@@ -7,21 +7,27 @@ import {Chat} from '@lang/en/Chat';
 const Component: React.FC = () => { 
     return (
         <section
-            className="message-editor-wrap"
+            className="message-editor__wrap"
         >
             <Row
             align="middle"
             justify="center"
-            className=""
+            className="message-editor"
             >
-                <Col>
+                <Col
+                    className="message-input__wrap"
+                >
                     <Input 
                         placeholder={Chat.messagePlaceholder}
+                        className="message-input"
                     />
                 </Col>
-                <Col>
+                <Col
+                    className="message-send-btn__wrap"
+                >
                     <Button 
                         type="primary"
+                        className="message-send-btn"
                     >
                         <SendOutlined />
                     </Button>
