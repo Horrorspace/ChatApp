@@ -6,7 +6,7 @@ import {IMessagesProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {  
-   const messageProd = ({text, fromUser, time}: IMessage): React.ReactElement => {
+   const messageProd = ({text, fromUser, time, read}: IMessage): React.ReactElement => {
        return (
            <Row
             align="middle"
@@ -19,6 +19,8 @@ const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {
                     <Message
                         text={text}
                         time={time}
+                        fromUser={fromUser}
+                        read={read}
                     />
                 </Col>
            </Row>
