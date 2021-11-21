@@ -10,42 +10,50 @@ export const ChatPage: React.FC = () => {
         {
             text: 'One',
             fromUser: true,
-            time: new Date('November 14, 2021 03:20:00')
+            time: new Date('November 14, 2021 03:20:00'),
+            read: true
         },
         {
             text: 'Two',
             fromUser: true,
-            time: new Date('November 14, 2021 09:41:00')
+            time: new Date('November 14, 2021 09:41:00'),
+            read: true
         },
         {
             text: 'Three',
             fromUser: false,
-            time: new Date('November 14, 2021 12:18:00')
+            time: new Date('November 14, 2021 12:18:00'),
+            read: true
         },
         {
             text: 'Four',
             fromUser: true,
-            time: new Date('November 14, 2021 16:54:00')
+            time: new Date('November 14, 2021 16:54:00'),
+            read: true
         },
         {
             text: 'Five',
             fromUser: false,
-            time: new Date('November 14, 2021 19:28:00')
+            time: new Date('November 14, 2021 19:28:00'),
+            read: true
         },
         {
             text: 'Six',
             fromUser: true,
-            time: new Date('November 14, 2021 19:28:00')
+            time: new Date('November 14, 2021 19:28:00'),
+            read: true
         },
         {
             text: 'Seven \n Seven',
             fromUser: false,
-            time: new Date('November 14, 2021 19:28:00')
+            time: new Date('November 14, 2021 19:28:00'),
+            read: true
         },
         {
-            text: 'Eight \n Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight',
+            text: 'Eight \n Eight Eight \n Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight',
             fromUser: true,
-            time: new Date('November 14, 2021 19:28:00')
+            time: new Date('November 14, 2021 19:28:00'),
+            read: true
         },
     ]
 
@@ -56,8 +64,8 @@ export const ChatPage: React.FC = () => {
             <Contact 
                 username="Just for lulz"
                 avatarSrc={avatarSrc}
-                online={true}
-                lastOnline={null}
+                online={false}
+                lastOnline={new Date('November 14, 2021 19:28:00')}
             />
             <Messages 
                 messages={messages}
