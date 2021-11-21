@@ -3,7 +3,12 @@ import {IMessage} from '@interfaces/IMessage';
 import {InfoFields} from '@aliases/Profile'
 
 
-export interface IMessageProps {
+export interface IStatusProps {
+    fromUser: boolean;
+    read: boolean;
+}
+
+export interface IMessageProps extends IStatusProps {
     text: string;
     time: Date;
 }
