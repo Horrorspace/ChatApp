@@ -1,0 +1,65 @@
+.message-list-wrap {
+    width: 100%;
+
+    .flex-column();
+
+    margin-top: auto;
+
+    overflow: auto;
+    overflow-block: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #55555559;
+    }
+}
+
+.message-list {
+    width: 100%;
+
+    padding: 10px;
+}
+
+.message-element-row {
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: @sm-device) {
+    .message-list {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .message-list {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .message-list {
+        width: @lg-width;
+    }
+}
+
+// @media screen and (min-width: @xl-device) {
+//     .message-list {
+//         width: @xl-width;
+//     }
+// }
+
+// @media screen and (min-width: @xxl-device) {
+//     .message-list {
+//         width: @xxl-width;
+//     }
+// }
