@@ -19,6 +19,7 @@ const Component: React.FC<IContactCardProps> = ({
         <Row
             align="middle"
             justify="center"
+            className="contact-card"
         >
             <Col>
                 <Image 
