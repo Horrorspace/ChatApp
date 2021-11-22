@@ -6,19 +6,31 @@ import {Chat} from '@lang/en/Chat';
 
 const Component: React.FC = () => { 
     return (
-        <Row
-        align="middle"
-        justify="center"
+        <section
+            className="search-field__wrap"
         >
-            <Col>
-                <SearchOutlined />
-            </Col>
-            <Col>
-                <Input 
-                    placeholder={Chat.searchPlaceholder}
-                />
-            </Col>
-        </Row>
+            <Row
+                align="middle"
+                justify="center"
+                className="search-field"
+            >
+                <Col
+                    className="search-ico__wrap"
+                >
+                    <SearchOutlined 
+                        className="search-ico"
+                    />
+                </Col>
+                <Col
+                    className="search__wrap"
+                >
+                    <Input 
+                        placeholder={Chat.searchPlaceholder}
+                        className="search"
+                    />
+                </Col>
+            </Row>
+        </section>
     )
 }
 
