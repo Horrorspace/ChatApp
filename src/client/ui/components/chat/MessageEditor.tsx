@@ -7,7 +7,7 @@ import {Chat} from '@lang/en/Chat';
 const Component: React.FC = () => { 
     return (
         <section
-            className="message-editor__wrap"
+            className="message-editor__wrap_dark"
         >
             <Row
             align="middle"
@@ -19,7 +19,7 @@ const Component: React.FC = () => {
                 >
                     <Input 
                         placeholder={Chat.messagePlaceholder}
-                        className="message-input"
+                        className="message-input_dark"
                     />
                 </Col>
                 <Col
@@ -27,7 +27,7 @@ const Component: React.FC = () => {
                 >
                     <Button 
                         type="primary"
-                        className="message-send-btn"
+                        className="message-send-btn_dark"
                     >
                         <SendOutlined />
                     </Button>

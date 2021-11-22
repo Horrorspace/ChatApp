@@ -29,7 +29,7 @@ const Component: React.FC<IContactProps> = ({
 
     return (
         <section
-            className="contact__wrap"
+            className="contact__wrap_dark"
         >
             <Row
                 align="middle"
@@ -43,7 +43,7 @@ const Component: React.FC<IContactProps> = ({
                         className="contact-setting__btn"
                     >
                         <ArrowLeftOutlined 
-                            className="contact-setting__ico"
+                            className="contact-setting__ico_dark"
                         />
                     </Button>
                 </Col>
@@ -71,7 +71,7 @@ const Component: React.FC<IContactProps> = ({
                         >
                             <Title 
                                 level={4}
-                                className="contact-username"
+                                className="contact-username_dark"
                             >
                                 {username}
                             </Title>
@@ -86,7 +86,7 @@ const Component: React.FC<IContactProps> = ({
                             className="contact-online__wrap"
                         >
                             <Paragraph
-                                className="contact-online"
+                                className="contact-online_dark"
                             >
                                 {onlineStr}
                             </Paragraph>
@@ -100,7 +100,7 @@ const Component: React.FC<IContactProps> = ({
                         className="contact-setting__btn"
                     >
                         <MoreOutlined 
-                            className="contact-setting__ico"
+                            className="contact-setting__ico_dark"
                         />
                     </Button>
                 </Col>

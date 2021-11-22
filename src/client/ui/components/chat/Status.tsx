@@ -5,7 +5,7 @@ import {IStatusProps} from '@interfaces/IProps';
 
 const Component: React.FC<IStatusProps> = ({fromUser, read}: IStatusProps) => {
     if(fromUser) {
-        const className: string = read ? "message-status_complete" : "message-status";
+        const className: string = read ? "message-status_complete_dark" : "message-status_dark";
         
         return (
             <CheckOutlined 
