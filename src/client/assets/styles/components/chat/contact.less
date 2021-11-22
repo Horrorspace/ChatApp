@@ -6,6 +6,12 @@
     background-color: @main-color;
 }
 
+.contact__wrap_dark {
+    .contact__wrap();
+
+    background-color: @main-color_dark;
+}
+
 .contact {
     width: 100%;
 
@@ -50,6 +56,11 @@
     line-height: normal !important;
 }
 
+.contact-username_dark {
+    .contact-username();
+    color: @primary-font-color_dark !important;
+}
+
 .contact-online__main-wrap {
     margin-bottom: auto;
 }
@@ -67,6 +78,12 @@
     line-height: normal !important;
 }
 
+.contact-online_dark {
+    .contact-online();
+    color: @secondary-font-color_dark !important;
+}
+
+
 .contact-setting__btn {
     border: 0;
     background-color: transparent;
@@ -76,10 +93,24 @@
     }
 }
 
+.contact-setting__btn_dark {
+    .contact-setting__btn();
+
+    &:active {
+        outline-color: @secondary-font-color_dark;
+    }
+}
+
 .contact-setting__ico {
     border: 0;
 
     .font(@secondary-font-color, 24px, bold)
+}
+
+
+.contact-setting__ico_dark {
+    .contact-setting__ico();
+    color: @secondary-font-color_dark;
 }
 
 .contact-back__wrap {

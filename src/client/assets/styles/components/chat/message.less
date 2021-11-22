@@ -21,9 +21,19 @@
         background-color: transparent;
     }
 
-    &:hover {
-        background-color: @main-hover-color;
-    }
+    // &:hover, &:focus {
+    //     background-color: @main-hover-color;
+    // }
+}
+
+.message-element_dark {
+    .message-element();
+    background-color: @main-color_dark;
+    border-color: @main-color_dark;
+
+    // &:hover, &:focus {
+    //     background-color: @main-hover-color_dark;
+    // }
 }
 
 .message-element_from-user {
@@ -33,9 +43,19 @@
     
     background-color: @message-color;
 
-    &:hover {
-        background-color: @message-hover-color;
-    }
+    // &:hover, &:focus {
+    //     background-color: @message-hover-color;
+    // }
+}
+
+.message-element_from-user_dark {
+    .message-element_from-user();
+    border-color: @message-color_dark;
+    background-color: @message-color_dark;
+
+    // &:hover, &:focus {
+    //     background-color: @message-hover-color_dark;
+    // }
 }
 
 .message {
@@ -58,6 +78,11 @@
     white-space: pre-line;
 }
 
+.message_dark {
+    .message();
+    color: @primary-font-color_dark;
+}
+
 .message-time {
     width: 35px;
 
@@ -75,6 +100,15 @@
     text-align: center;
 }
 
+.message-time_dark {
+    .message-time();
+    color: @secondary-font-color_dark;
+}
+
+.message-element_from-user_dark .message-time_dark {
+    color: @secondary-font-color_dark2;
+}
+
 .message-status {
     width: 20px;
 
@@ -87,7 +121,17 @@
     .font(@secondary-font-color, @secondary-font-size, normal);
 }
 
+.message-status_dark {
+    .message-status();
+    color: @secondary-font-color_dark3;
+}
+
 .message-status_complete {
     .message-status();
     color: @btn-color;
+}
+
+.message-status_complete_dark {
+    .message-status();
+    color: @primary-font-color_dark;
 }
