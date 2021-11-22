@@ -1,0 +1,37 @@
+.contact-cards__wrap {
+    width: 100%;
+
+    .flex-column();
+
+    margin-bottom: auto;
+
+    .overflow();
+}
+
+.contact-cards {
+    width: 100%;
+
+    margin: 20px;
+    padding: 10px;
+
+    background-color: @main-color;
+}
+
+
+@media screen and (min-width: @sm-device) {
+    .contact-cards {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .contact-cards {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .contact-cards {
+        width: @lg-width;
+    }
+}
