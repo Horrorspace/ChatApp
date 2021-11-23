@@ -15,4 +15,4 @@ ChatApp is a fullstack application with database on PostgreSQL, backend on Nest.
 
 This projects uses the following technologies:
 
-- [React.JS] - UI framework;
+- [[React.js](https://reactjs.org/ "React.js")] - UI framework;
