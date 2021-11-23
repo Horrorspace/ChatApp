@@ -3,7 +3,7 @@
 
 ChatApp is a fullstack application on Typescript with database on PostgreSQL, backend on Nest.js and frontend on React.js
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" height="50" /> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" height="50" /> <img src="https://everyday.codes/wp-content/uploads/2020/01/0-U2DmhXYumRyXH6X1.png" height="50" /> <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" height="50" /> <img src="https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png" height="50" /> <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" height="50" /> <img src="https://docs.nestjs.com/assets/logo-small.svg" height="50" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" height="50" /> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" height="50" /> <img src="https://everyday.codes/wp-content/uploads/2020/01/0-U2DmhXYumRyXH6X1.png" height="50" />  <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" height="50" /> <img src="https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png" height="50" /> <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" height="50" /> <img src="https://docs.nestjs.com/assets/logo-small.svg" height="50" />
 
 ## Features
 
