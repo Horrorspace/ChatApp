@@ -31,6 +31,7 @@ This projects uses the following technologies:
       * html
       * img
       * styles
+        * components
     * config
     * core
       * classes
