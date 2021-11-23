@@ -6,7 +6,7 @@ ChatApp is a fullstack application with database on PostgreSQL, backend on Nest.
 
 ## Features
 
-- Authorization on sessions or JWT
+- Authorization with sessions or JWT
 - Basic REST API
 - Graphql API for messages
 - Socket API for messages
