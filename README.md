@@ -1,7 +1,7 @@
 # ChatApp
 ## _Fullstack application to messaging_
 
-
+<p>12</p>
 ChatApp is a fullstack application on Typescript with database on PostgreSQL, backend on Nest.js and frontend on React.js
 
 ## Features
