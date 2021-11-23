@@ -23,14 +23,14 @@ This projects uses the following technologies:
 
 ## Folders structure
 
-1. src
+* src
   * client
-    + assets
-    1.1.2. lang
-  1.2 server
-3. test
-4. shell
-5. sql
+    * assets
+    * lang
+  * server
+* test
+* shell
+* sql
 
 ## License
 
