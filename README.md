@@ -25,9 +25,34 @@ This projects uses the following technologies:
 
 * src
   * client
+    * api
     * assets
+      * fonts
       * html
+      * img
+      * styles
+    * config
+    * core
+      * classes
+      * const
     * lang
+      * en
+      * ru
+    * store
+      * actions
+      * reducers
+      * saga
+      * types
+    * types
+      * aliases
+      * interfaces
+    * ui
+      * components
+      * HOCs
+      * hooks
+      * handlers
+      * pages
+    * utils
   * server
 * test
 * shell
