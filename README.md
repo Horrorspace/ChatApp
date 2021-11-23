@@ -18,6 +18,7 @@ This projects uses the following technologies:
 - [React.js](https://reactjs.org/ "React.js") - UI framework.
 - [Antd](https://ant.design/ "Ant design") - UI design library.
 - [Less](https://lesscss.org/ "Less") - CSS preprocessor.
+- [Webpack](https://webpack.js.org/ "Webpack") - Module bundler.
 
 
 ## License
