@@ -24,8 +24,8 @@ This projects uses the following technologies:
 ## Folders structure
 
 1. src
-  1.1. client
-    1.1.1. assets
+  * client
+    + assets
     1.1.2. lang
   1.2 server
 3. test
