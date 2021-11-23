@@ -21,6 +21,16 @@ This projects uses the following technologies:
 - [Less](https://lesscss.org/ "Less") - CSS preprocessor.
 - [Webpack](https://webpack.js.org/ "Webpack") - Module bundler.
 
+## Folders structure
+
+1. src
+  1.1. client
+    1.1.1. assets
+    1.1.2. lang
+  1.2 server
+3. test
+4. shell
+5. sql
 
 ## License
 
