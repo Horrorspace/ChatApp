@@ -10,6 +10,7 @@ ChatApp is a fullstack application on Typescript with database on PostgreSQL, ba
 - Basic REST API
 - Graphql API for messages
 - Socket API for messages
+- Two themes to choose: light and dark
 
 ## Tech
 
