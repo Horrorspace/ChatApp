@@ -7,13 +7,14 @@ import {IUserAvatarProps} from '@interfaces/IProps';
 export const Component: React.FC<IUserAvatarProps> = ({lastMessagefromUser, userAvatarSrc}: IUserAvatarProps) => {
     if(lastMessagefromUser) {
         return (
-                <Col>
+                <Col
+                    className="contact-card-user-avatar__wrap"
+                >
                     <Image 
                         src={userAvatarSrc}
                         alt={Chat.avatarAlt}
-                        width={40}
-                        height={40}
                         preview={false}
+                        className="contact-card-user-avatar"
                     />
                 </Col>
         )

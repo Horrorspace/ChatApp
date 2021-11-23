@@ -21,39 +21,63 @@ const Component: React.FC<IContactCardProps> = ({
             justify="center"
             className="contact-card"
         >
-            <Col>
+            <Col
+                className="contact-card-avatar__wrap"
+            >
                 <Image 
                     src={avatarSrc}
                     alt={Chat.avatarAlt}
-                    width={40}
-                    height={40}
                     preview={false}
+                    className="contact-card-avatar"
                 />
             </Col>
-            <Col>
+            <Col
+                className="contact-card-main-data"
+            >
                 <Row
                     align="middle"
-                    justify='space-between'
+                    justify="start"
+                    className="contact-card-username__main-wrap"
                 >
-                    <Col>
-                        <Title level={4}>{username}</Title>
+                    <Col
+                        className="contact-card-username__wrap"
+                    >
+                        <Title 
+                            level={4}
+                            className="contact-card-username"
+                        >
+                            {username}
+                        </Title>
                     </Col>  
                 </Row>
                 <Row
                     align="middle"
-                    justify="center"
+                    justify="start"
+                    className="contact-card-last-message__main-wrap"
                 >
                     <UserAvatar
                         lastMessagefromUser={lastMessagefromUser}
                         userAvatarSrc={userAvatarSrc}                 
                     />
-                    <Col>
-                        <Paragraph>{lastMessage}</Paragraph>
+                    <Col
+                        className="contact-card-last-message__wrap"
+                    >
+                        <Paragraph
+                            className="contact-card-last-message"
+                        >
+                            {lastMessage}
+                        </Paragraph>
                     </Col>
                 </Row>
             </Col>
-            <Col>
-                <Paragraph>{timeOfLastMessage.toLocaleTimeString()}</Paragraph>
+            <Col
+                className="contact-card-date__wrap"
+            >
+                <Paragraph
+                    className="contact-card-date"
+                >
+                    {timeOfLastMessage.toLocaleTimeString()}
+                </Paragraph>
             </Col>
         </Row>
     )
