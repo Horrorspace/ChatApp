@@ -16,7 +16,7 @@ ChatApp is a fullstack application on Typescript with database on PostgreSQL, ba
 This projects uses the following technologies:
 
 - [TypeScript](https://www.typescriptlang.org/ "TypeScript") - Strongly typed programming language that builds on JavaScript.
-- [React.js](https://reactjs.org/ "React.js") - UI framework.
+- [React](https://reactjs.org/ "React.js") - UI framework.
 - [Antd](https://ant.design/ "Ant design") - UI design library.
 - [Less](https://lesscss.org/ "Less") - CSS preprocessor.
 - [Webpack](https://webpack.js.org/ "Webpack") - Module bundler.
