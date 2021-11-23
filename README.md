@@ -2,7 +2,7 @@
 ## _Fullstack application to messaging_
 
 
-ChatApp is a fullstack application with database on PostgreSQL, backend on Nest.js and frontend on React.js
+ChatApp is a fullstack application on Typescript with database on PostgreSQL, backend on Nest.js and frontend on React.js
 
 ## Features
 
