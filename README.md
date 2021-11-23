@@ -26,7 +26,7 @@ This projects uses the following technologies:
 * src
   * client
     * assets
-      *html
+      * html
     * lang
   * server
 * test
