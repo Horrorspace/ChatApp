@@ -1,6 +1,9 @@
 export enum Chat {
+    addUserPlaceholder = "Enter username or email",
+    addUserTitle = "Add new user in contact list",
     alreadyAMember = "Already a memeber",
     avatarAlt = "User avatar",
+    cancel = "Cancel",
     createAccount = "Create account",
     email = "Email",
     forgot = "Forgot",
@@ -10,6 +13,7 @@ export enum Chat {
     notAMember = "Not a member",
     now = "Now",
     searchPlaceholder = "Search",
+    ok = "Ok",
     online = "Online",
     offline = "Offline",
     password = "Password",
