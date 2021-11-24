@@ -2,6 +2,8 @@
     min-width: 100px;
     max-width: 100%;
 
+    padding: 0;
+
     background-color: @main-color;
 }
 
@@ -13,7 +15,6 @@
 
 
 .contact-menu-item__wrap {
-    height: 25px;
     width: 100%;
 
     .flex-row();
@@ -44,6 +45,7 @@
 
 
 .contact-menu-item {
+    width: 100%;
     margin: 0 !important;
 
     .font(@primary-font-color, @username-font-size, bold) !important;
@@ -60,16 +62,34 @@
     .contact-menu-list {
         width: calc(@sm-width - 200px);
     }
-}
 
-@media screen and (min-width: @md-device) {
-    .contact-menu-list {
-        width: calc(@sm-width - 200px);
+    .contact-menu-list_dark {
+        .contact-menu-list();
+    
+        background-color: @main-color_dark;
     }
 }
 
-@media screen and (min-width: @lg-device) {
-    .contact-menu-list {
-        width: calc(@sm-width - 200px);
-    }
-}
+// @media screen and (min-width: @md-device) {
+//     .contact-menu-list {
+//         width: calc(@md-width - 200px);
+//     }
+
+//     .contact-menu-list_dark {
+//         .contact-menu-list();
+    
+//         background-color: @main-color_dark;
+//     }
+// }
+
+// @media screen and (min-width: @lg-device) {
+//     .contact-menu-list {
+//         width: calc(@lg-width - 200px);
+//     }
+
+//     .contact-menu-list_dark {
+//         .contact-menu-list();
+    
+//         background-color: @main-color_dark;
+//     }
+// }
