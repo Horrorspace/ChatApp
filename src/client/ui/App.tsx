@@ -1,7 +1,7 @@
 import React from 'react';
 import {Layout} from 'antd';
-import {ChatPage} from '@ui/pages/ChatPage';
-//import {ContactsPage} from '@ui/pages/ContactsPage';
+// import {ChatPage} from '@ui/pages/ChatPage';
+import {ContactsPage} from '@ui/pages/ContactsPage';
 // import {ProfilePage} from '@ui/pages/ProfilePage';
 // import {AuthPage} from '@ui/pages/AuthPage';
 // import {RegisterPage} from '@ui/pages/RegisterPage';
@@ -16,9 +16,9 @@ export const App: React.FC = () => {
             className="app"
         >
             <Content
-                className="main_dark"
+                className="main"
             >
-                <ChatPage />
+                <ContactsPage />
             </Content>
         </Layout>
     )
