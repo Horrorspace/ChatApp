@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Image, Typography, Button} from 'antd';
+import {Row, Col, Image, Typography, Button, Dropdown, Menu} from 'antd';
 import {MoreOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
 import {lastOnline} from '@aliases/Message';
@@ -26,6 +26,40 @@ const Component: React.FC<IContactProps> = ({
     }
     const onlineStr = getOnlineStr(online, lastOnline);
     const {Title, Paragraph} = Typography;
+    
+    const menu: React.ReactElement = (
+        <Menu
+            className="contact-menu-list"
+        >
+            <Menu.Item
+               className="contact-menu-item__wrap" 
+            >
+                <Paragraph
+                    className="contact-menu-item"
+                >
+                    {"test"}
+                </Paragraph>
+            </Menu.Item>
+            <Menu.Item
+               className="contact-menu-item__wrap" 
+            >
+                <Paragraph
+                    className="contact-menu-item"
+                >
+                    {"test"}
+                </Paragraph>
+            </Menu.Item>
+            <Menu.Item
+               className="contact-menu-item__wrap" 
+            >
+                <Paragraph
+                    className="contact-menu-item"
+                >
+                    {"test"}
+                </Paragraph>
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
         <section
@@ -96,13 +130,14 @@ const Component: React.FC<IContactProps> = ({
                 <Col
                     className="contact-settings__wrap"
                 >
-                    <Button
+                    <Dropdown
+                        overlay={menu}
                         className="contact-setting__btn"
                     >
                         <MoreOutlined 
                             className="contact-setting__ico_dark"
                         />
-                    </Button>
+                    </Dropdown>
                 </Col>
             </Row>
         </section>
