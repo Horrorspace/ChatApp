@@ -6,7 +6,7 @@ const Component: React.FC = () => {
 
     const avatarSrc: string = "https://sun9-76.userapi.com/impg/iIWIxmXrMksl12Z47tqfYqZl_0XLIGFyf4Shng/5anoVOOFRkY.jpg?size=1192x871&quality=96&sign=9437dcf14a264d0f1eb4efa06544eb8e&type=album";
     const userAvatarSrc: string = "https://sun9-20.userapi.com/impg/t062bKv86xwGI1wrgDBjs2_XePZhfAF74SrULw/UcIyPrvXlVo.jpg?size=1079x1079&quality=96&sign=f4a8be9f66adc2c3e8c538548e28f8a4&type=album";
-    const messageTest: string = 'Five \n Five Five Five Five Five Five Five Five Five Five Five Five Five Five';
+    const messageTest: string = 'Five Five Five Five...';
 
     return (
         <section
