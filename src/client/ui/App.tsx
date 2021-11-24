@@ -16,7 +16,7 @@ export const App: React.FC = () => {
             className="app"
         >
             <Content
-                className="main"
+                className="main_dark"
             >
                 <ChatPage />
             </Content>
