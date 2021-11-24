@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Row, Col, Image, Typography, Button, Dropdown, Menu} from 'antd';
 import {MoreOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
@@ -26,34 +26,36 @@ const Component: React.FC<IContactProps> = ({
     }
     const onlineStr = getOnlineStr(online, lastOnline);
     const {Title, Paragraph} = Typography;
+
+    const [state, setState] = useState(false);
     
     const menu: React.ReactElement = (
         <Menu
-            className="contact-menu-list"
+            className="contact-menu-list_dark"
         >
             <Menu.Item
-               className="contact-menu-item__wrap" 
+               className="contact-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="contact-menu-item"
+                    className="contact-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="contact-menu-item__wrap" 
+               className="contact-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="contact-menu-item"
+                    className="contact-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="contact-menu-item__wrap" 
+               className="contact-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="contact-menu-item"
+                    className="contact-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
@@ -130,14 +132,20 @@ const Component: React.FC<IContactProps> = ({
                 <Col
                     className="contact-settings__wrap"
                 >
-                    <Dropdown
-                        overlay={menu}
+                    <Button
                         className="contact-setting__btn"
+                        onClick={() => {setState(p => !p)}}
                     >
-                        <MoreOutlined 
-                            className="contact-setting__ico_dark"
-                        />
-                    </Dropdown>
+                        <Dropdown
+                            overlay={menu}
+                            className="contact-setting__btn"
+                            visible={state}
+                        >
+                            <MoreOutlined 
+                                className="contact-setting__ico_dark"
+                            />
+                        </Dropdown>
+                    </Button>
                 </Col>
             </Row>
         </section>
