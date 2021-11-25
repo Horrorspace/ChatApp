@@ -19,6 +19,7 @@
 }
 
 
+
 @media screen and (min-width: @sm-device) {
     .contact-cards {
         width: @sm-width;
@@ -35,4 +36,10 @@
     .contact-cards {
         width: @lg-width;
     }
+}
+
+.contact-cards_dark {
+    .contact-cards();
+
+    background-color: @main-color_dark;
 }
