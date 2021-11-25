@@ -1,3 +1,134 @@
+.add-modal__main-wrap {
+    width: 100%;
+}
+
+
+.add-modal {
+    .ant-modal-content {
+        .ant-modal-body {
+            background-color: @main-color;
+        }
+
+        .ant-modal-header {
+            background-color: @main-color;
+            border-bottom: 1px solid @main-hover-color;
+        }
+
+        .ant-modal-footer {
+            background-color: @main-color;
+            border-top: 1px solid @main-hover-color;
+        }
+    }
+}
+
+.add-modal_dark {
+    .ant-modal-content {
+        .ant-modal-body {
+            background-color: @main-color_dark;
+        }
+
+        .ant-modal-header {
+            background-color: @main-color_dark;
+            border-bottom: 1px solid @main-hover-color_dark2;
+        }
+
+        .ant-modal-footer {
+            background-color: @main-color_dark;
+            border-top: 1px solid @main-hover-color_dark2;
+        }
+    }
+}
+
+
+
+.add-modal-input {
+    .font(@primary-font-color, @primary-font-size, normal);
+}
+
+.add-modal-input_dark {
+    .add-modal-input();
+    color: @primary-font-color_dark;
+    
+    border: @bacground-color_dark;
+    background-color: @bacground-color_dark;
+
+    &:active, &:focus, &:hover {
+        background-color: @bacground-color_dark;
+        box-shadow: 0px 0px 1px 1px @btn-hover-color_dark;
+    }
+}
+
+.add-modal-menu {
+    padding-right: 10px;
+}
+
+.add-modal-btn__wrap {
+    margin-left: 10px;
+}
+
+.add-modal-btn {
+    .font(@primary-font-color, @primary-font-size, normal) !important;
+}
+
+.add-modal-btn_cancel {
+    .add-modal-btn();
+}
+
+.add-modal-btn_ok {
+    .add-modal-btn();
+    color: @main-color !important;
+}
+
+.add-modal-btn_ok-dark {
+    .add-modal-btn_ok();
+
+    border-color: @btn-color_dark;
+    background-color: @btn-color_dark;
+
+    &:active, &:focus, &:hover {
+        border-color: @btn-hover-color_dark;
+        background-color: @btn-hover-color_dark;
+    }
+}
+
+
 .add-modal__close-ico {
     padding-top: 15px;
+}
+
+.add-modal__close-ico_dark {
+    .add-modal__close-ico();
+    color: @primary-font-color_dark;
+}
+
+
+.add-modal-title {
+    margin: 0 !important;
+
+    .font(@primary-font-color, @title-font-size, bold) !important;
+    line-height: normal !important;
+}
+
+.add-modal-title_dark {
+    .add-modal-title();
+    color: @primary-font-color_dark !important;
+}
+
+
+@media screen and (min-width: @sm-device) {
+    .add-modal__main-wrap {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .add-modal__main-wrap {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .add-modal__main-wrap {
+        width: @lg-width;
+    }
 }
