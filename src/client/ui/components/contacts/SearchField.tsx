@@ -5,28 +5,37 @@ import {Chat} from '@lang/en/Chat';
 
 
 const Component: React.FC = () => { 
-    const {Paragraph} = Typography;
+    const {Title, Paragraph} = Typography;
     const [settings, setSettings] = useState(false);
     const [add, setAdd] = useState(false);
 
     const closeIco: React.ReactElement = (
         <CloseOutlined 
-            className="add-modal__close-ico"
+            className="add-modal__close-ico_dark"
         />
     );
 
     const modalFooter: React.ReactElement = (
-        <Row>
-            <Col>
+        <Row
+            justify="end"
+            className="add-modal-menu"
+        >
+            <Col
+                className="add-modal-btn__wrap"
+            >
                 <Button
                     type="primary"
+                    className="add-modal-btn_ok-dark"
                 >
                     {Chat.ok}
                 </Button>
             </Col>
-            <Col>
+            <Col
+                className="add-modal-btn__wrap"
+            >
                 <Button
                     type="default"
+                    className="add-modal-btn_cancel"
                     onClick={() => {setAdd(false)}}
                 >
                     {Chat.cancel}
@@ -34,51 +43,64 @@ const Component: React.FC = () => {
             </Col>
         </Row>
     );
+
+    const modalTitle: React.ReactElement = (
+        <div
+            className="add-modal-title__wrap"
+        >
+            <Title
+                className="add-modal-title_dark"
+            >
+                {Chat.addUserTitle}
+            </Title>
+        </div>
+    );
     
     const addModal: React.ReactElement = (
         <Modal
-            title={Chat.addUserTitle}
+            title={modalTitle}
             visible={add}
             onCancel={() => {setAdd(false)}}
             closeIcon={closeIco}
             footer={modalFooter}
-            className=""
-            wrapClassName=""
+            className="add-modal_dark"
+            wrapClassName="add-modal__wrap"
+            getContainer={".add-modal__main-wrap"}
         >
             <Input 
                 placeholder={Chat.addUserPlaceholder}
-                className=""
+                className="add-modal-input_dark"
             />
         </Modal>
     )
     
     const menu: React.ReactElement = (
         <Menu
-            className="settings-menu-list"
+            className="settings-menu-list_dark"
         >
             <Menu.Item
-               className="settings-menu-item__wrap" 
+               className="settings-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="settings-menu-item"
+                    className="settings-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="settings-menu-item__wrap" 
+               className="settings-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="settings-menu-item"
+                    className="settings-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="settings-menu-item__wrap" 
+               className="settings-menu-item__wrap_dark" 
             >
                 <Paragraph
-                    className="settings-menu-item"
+                    className="settings-menu-item_dark"
                 >
                     {"test"}
                 </Paragraph>
@@ -87,63 +109,68 @@ const Component: React.FC = () => {
     );
     
     return (
-        <section
-            className="search-field__wrap"
-        >
-            <Row
-                align="middle"
-                justify="center"
-                className="search-field"
+        <>
+            <section
+                className="search-field__wrap_dark"
             >
-                <Col
-                    className="setting-ico__wrap"
+                <Row
+                    align="middle"
+                    justify="center"
+                    className="search-field"
                 >
-                    <Button
-                        className="setting-btn"
-                        onClick={() => {setSettings(p => !p)}}
+                    <Col
+                        className="setting-ico__wrap"
                     >
-                        <Dropdown
-                            overlay={menu}
-                            className="setting-btn"
-                            visible={settings}
+                        <Button
+                            className="setting-btn_dark"
+                            onClick={() => {setSettings(p => !p)}}
                         >
-                            <SettingOutlined 
-                                className="setting-ico"
-                            />
-                        </Dropdown>
-                    </Button>
-                </Col>
-                <Col
-                    className="search-ico__wrap"
-                >
-                    <SearchOutlined 
-                        className="search-ico"
-                    />
-                </Col>
-                <Col
-                    className="search__wrap"
-                >
-                    <Input 
-                        placeholder={Chat.searchPlaceholder}
-                        className="search"
-                    />
-                </Col>
-                <Col
-                    className="add-ico__wrap"
-                >
-                    <Button
-                        className="add-btn"
-                        onClick={() => {setAdd(p => !p)}}
+                            <Dropdown
+                                overlay={menu}
+                                className=""
+                                visible={settings}
+                            >
+                                <SettingOutlined 
+                                    className="setting-ico_dark"
+                                />
+                            </Dropdown>
+                        </Button>
+                    </Col>
+                    <Col
+                        className="search-ico__wrap"
                     >
-                        <UserAddOutlined 
-                            className="add-ico"
+                        <SearchOutlined 
+                            className="search-ico_dark"
                         />
-                    </Button>
-                </Col>
-            </Row>
+                    </Col>
+                    <Col
+                        className="search__wrap"
+                    >
+                        <Input 
+                            placeholder={Chat.searchPlaceholder}
+                            className="search_dark"
+                        />
+                    </Col>
+                    <Col
+                        className="add-ico__wrap"
+                    >
+                        <Button
+                            className="add-btn_dark"
+                            onClick={() => {setAdd(p => !p)}}
+                        >
+                            <UserAddOutlined 
+                                className="add-ico_dark"
+                            />
+                        </Button>
+                    </Col>
+                </Row>
 
-            {addModal}
-        </section>
+                {addModal}
+            </section>
+            <section 
+                className="add-modal__main-wrap"
+            />
+        </>
     )
 }
 

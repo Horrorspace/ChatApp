@@ -18,28 +18,30 @@
     background-color: @main-color;
 }
 
-
-
-@media screen and (min-width: @sm-device) {
-    .contact-cards {
-        width: @sm-width;
-    }
-}
-
-@media screen and (min-width: @md-device) {
-    .contact-cards {
-        width: @md-width;
-    }
-}
-
-@media screen and (min-width: @lg-device) {
-    .contact-cards {
-        width: @lg-width;
-    }
-}
-
 .contact-cards_dark {
     .contact-cards();
 
     background-color: @main-color_dark;
 }
+
+
+
+@media screen and (min-width: @sm-device) {
+    .contact-cards, .contact-cards_dark {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .contact-cards, .contact-cards_dark {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .contact-cards, .contact-cards_dark {
+        width: @lg-width;
+    }
+}
+
+

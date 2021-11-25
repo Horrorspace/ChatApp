@@ -2,8 +2,8 @@
     width: 100%;
 
     border-bottom: 1px solid @bacground-hover-color;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     &:last-child {
         border: unset;
@@ -14,6 +14,16 @@
         cursor: pointer;
     }
 }
+
+.contact-card_dark {
+    .contact-card();
+    border-bottom: 1px solid @bacground-hover-color_dark; 
+    &:hover, &:focus, &:active {
+       background-color:@main-hover-color_dark2;
+    }
+}
+
+
 
 .contact-card-avatar__wrap {
     margin-left: 20px;
@@ -37,6 +47,12 @@
     line-height: normal !important;
 }
 
+.contact-card-username_dark {
+    .contact-card-username();
+    color: @primary-font-color_dark !important;
+}
+
+
 
 .contact-card-user-avatar__wrap {
     margin-left: 0;
@@ -59,12 +75,22 @@
     white-space: nowrap;
 }
 
+.contact-card-last-message_dark {
+    .contact-card-last-message();
+    color: @primary-font-color_dark !important;
+}
 
 
 .contact-card-date__wrap {
     margin-right: 20px;
     margin-left: auto;
 }
+
+.contact-card-date_dark {
+    .contact-card-date();
+    color: @secondary-font-color_dark !important;
+}
+
 
 .contact-card-date {
     margin: 0 !important;
@@ -118,25 +144,4 @@
 }
 
 
-.contact-card_dark {
-    .contact-card();
-    border-bottom: 1px solid @bacground-hover-color_dark; 
-    &:hover, &:focus, &:active {
-       background-color: @main-hover-color;
-    }
-}
 
-.contact-card-username_dark {
-    .contact-card-username();
-    font-color: @primary-font-color_dark !important;
-}
-
-.contact-card-last-message_dark {
-    .contact-card-last-message();
-    font-color: @primary-font-color;
-}
-
-.contact-card-date_dark {
-    .contact-card-date();
-    font-color: @secondary-font-color_dark !important;
-}

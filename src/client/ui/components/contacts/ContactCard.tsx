@@ -19,7 +19,7 @@ const Component: React.FC<IContactCardProps> = ({
         <Row
             align="middle"
             justify="center"
-            className="contact-card"
+            className="contact-card_dark"
         >
             <Col
                 className="contact-card-avatar__wrap"
@@ -44,7 +44,7 @@ const Component: React.FC<IContactCardProps> = ({
                     >
                         <Title 
                             level={4}
-                            className="contact-card-username"
+                            className="contact-card-username_dark"
                         >
                             {username}
                         </Title>
@@ -63,7 +63,7 @@ const Component: React.FC<IContactCardProps> = ({
                         className="contact-card-last-message__wrap"
                     >
                         <Paragraph
-                            className="contact-card-last-message"
+                            className="contact-card-last-message_dark"
                         >
                             {lastMessage}
                         </Paragraph>
@@ -74,7 +74,7 @@ const Component: React.FC<IContactCardProps> = ({
                 className="contact-card-date__wrap"
             >
                 <Paragraph
-                    className="contact-card-date"
+                    className="contact-card-date_dark"
                 >
                     {timeOfLastMessage.toLocaleTimeString()}
                 </Paragraph>
