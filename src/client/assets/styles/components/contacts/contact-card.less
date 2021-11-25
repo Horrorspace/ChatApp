@@ -15,7 +15,6 @@
     }
 }
 
-
 .contact-card-avatar__wrap {
     margin-left: 20px;
     margin-right: 12px;
@@ -38,6 +37,7 @@
     line-height: normal !important;
 }
 
+
 .contact-card-user-avatar__wrap {
     margin-left: 0;
     margin-right: 8px;
@@ -58,6 +58,8 @@
     word-break: keep-all;
     white-space: nowrap;
 }
+
+
 
 .contact-card-date__wrap {
     margin-right: 20px;
@@ -113,4 +115,28 @@
     .contact-card-last-message__wrap {
         max-width: calc(@lg-width - 100px);
     }
+}
+
+
+.contact-card_dark {
+    .contact-card();
+    border-bottom: 1px solid @bacground-hover-color_dark; 
+    &:hover, &:focus, &:active {
+       background-color: @main-hover-color;
+    }
+}
+
+.contact-card-username_dark {
+    .contact-card-username();
+    font-color: @primary-font-color_dark !important;
+}
+
+.contact-card-last-message_dark {
+    .contact-card-last-message();
+    font-color: @primary-font-color;
+}
+
+.contact-card-date_dark {
+    .contact-card-date();
+    font-color: @secondary-font-color_dark !important;
 }
