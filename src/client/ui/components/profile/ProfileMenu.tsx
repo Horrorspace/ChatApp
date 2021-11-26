@@ -1,31 +1,32 @@
 import React from 'react';
-import {Row, Col, Typography} from 'antd';
-import {IInfoFieldProps} from '@interfaces/IProps';
+import {Row, Col, Button} from 'antd';
+import {ArrowLeftOutlined} from '@ant-design/icons';
 
 
 const Component: React.FC<IInfoFieldProps> = ({title, value}: IInfoFieldProps) => {
-    const {Title, Paragraph} = Typography;
-
     return (
-        <>
+        <section
+            className="profile-menu__wrap"
+        >
             <Row
                 align="middle"
                 justify="center"
+                className="profile-menu"
             >
-                <Col>
-                    <Title level={3}>{title}</Title>
+                <Col
+                    className="profile-menu-btn_back__wrap"
+                >
+                    <Button
+                        className="profile-menu-btn_back"
+                    >
+                        <ArrowLeftOutlined 
+                            className="profile-menu-back-ico"
+                        />
+                    </Button>
                 </Col>
             </Row>
-            <Row
-                align="middle"
-                justify="center"
-            >
-                <Col>
-                    <Paragraph>{value}</Paragraph>
-                </Col>
-            </Row>
-        </>
+        </section>
     )
 }
 
-export const InfoField = React.memo(Component);
+export const ProfileMenu = React.memo(Component);
