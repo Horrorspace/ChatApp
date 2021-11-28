@@ -3,14 +3,14 @@ import {Row, Col, Button} from 'antd';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 
 
-const Component: React.FC<IInfoFieldProps> = ({title, value}: IInfoFieldProps) => {
+const Component: React.FC = () => {
     return (
         <section
             className="profile-menu__wrap"
         >
             <Row
                 align="middle"
-                justify="center"
+                justify="start"
                 className="profile-menu"
             >
                 <Col
