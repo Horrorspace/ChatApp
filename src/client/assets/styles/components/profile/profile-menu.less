@@ -1,0 +1,65 @@
+
+
+.profile-menu__wrap {
+    width: 100%;
+    
+    .flex-row(center, center);
+
+    background-color: @main-color;
+}
+
+
+.profile-menu {
+    width: 100%;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.profile-menu-btn_back__wrap {
+    margin-left: 0;
+}
+
+
+.profile-menu-btn_back {
+    border: 0;
+    background-color: transparent;
+
+    &:hover, &:focus {
+        background-color: transparent; 
+    }
+}
+
+
+.profile-menu-back-ico {
+    border: 0;
+
+    .font(@secondary-font-color, 24px, bold);
+}
+
+
+
+@media screen and (min-width: @sm-device) {
+    .profile-menu {
+        width: @sm-width;
+    }
+}
+
+@media screen and (min-width: @md-device) {
+    .profile-menu {
+        width: @md-width;
+    }
+}
+
+@media screen and (min-width: @lg-device) {
+    .profile-menu {
+        width: @lg-width;
+    }
+}
+
+@media screen and (max-width: @xs-device) {
+    .profile-menu {
+        .flex-column();
+    }
+}
