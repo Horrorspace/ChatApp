@@ -1,5 +1,6 @@
 CREATE ROLE chat_admin WITH LOGIN PASSWORD 'KQoEgwBi';
 CREATE DATABASE chat OWNER chat_admin;
+CREATE DATABASE chat_sessions OWNER chat_admin;
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
