@@ -1,1 +1,2 @@
-
+CREATE ROLE chat_admin WITH LOGIN PASSWORD 'KQoEgwBi';
+CREATE DATABASE chat OWNER chat_admin;
