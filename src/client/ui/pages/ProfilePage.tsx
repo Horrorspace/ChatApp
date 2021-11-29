@@ -1,7 +1,6 @@
 import React from 'react';
 import {Chat} from '@lang/en/Chat';
-import {InfoList} from '@ui/components/profile/InfoList';
-import {Avatart} from '@ui/components/profile/Avatart';
+import {Profile} from '@ui/components/profile/Profile';
 import {ProfileMenu} from '@ui/components/profile/ProfileMenu';
 import {IInfoFieldProps} from '@interfaces/IProps';
 import {InfoFields} from '@aliases/Profile';
@@ -26,10 +25,8 @@ export const ProfilePage: React.FC = () => {
     return (
         <>
             <ProfileMenu />
-            <Avatart 
+            <Profile 
                 src={avatarSrc}
-            />
-            <InfoList 
                 infoFields={infoFields}
             />
         </>
