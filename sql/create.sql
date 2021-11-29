@@ -16,5 +16,9 @@ CREATE TABLE messages(
   FOREIGN KEY (user_id) REFERENCES users (id),
   date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
   text TEXT,
-  readed BOOLEAN DEFAULT false
+  readed BOOLEAN DEFAULT false,
+  from_user_id SERIAL,
+  FOREIGN KEY (from_user_id) REFERENCES users (id),
+  to_user_id SERIAL,
+  FOREIGN KEY (to_user_id) REFERENCES users (id),
 );
