@@ -16,9 +16,11 @@ const Component: React.FC<IInfoListProps> = ({infoFields}: IInfoListProps) => {
     const InfoFields: React.ReactElement[] = infoFields.map(getFieldElement);
 
     return (
-        <>
+        <div
+            className="profile-info-fields"
+        >
             {InfoFields}
-        </>
+        </div>
     )
 }
 
