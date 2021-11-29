@@ -63,6 +63,8 @@ export interface IAvatarProps {
     src: string;
 }
 
+export interface IProfileProps extends IAvatarProps, IInfoListProps {}
+
 export interface IGoogleAuthProps {
     aMember: boolean;
 }
@@ -70,3 +72,4 @@ export interface IGoogleAuthProps {
 export interface IAMemberProps {
     aMember: boolean;
 }
+
