@@ -9,15 +9,19 @@ const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {
     return (
         <Row
             align="middle"
-            justify="center"    
+            justify="center"
+            className="profile-avatar__main-wrap" 
         >
-            <Col>
+            <Col
+                className="profile-avatar__wrap"    
+            >
                 <Image 
                     src={src}
                     alt={Chat.avatarAlt}
                     width={200}
                     height={200}
                     preview={false}
+                    className="profile-avatar"
                 />
             </Col>
         </Row>
