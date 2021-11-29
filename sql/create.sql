@@ -14,15 +14,6 @@ CREATE TABLE messages(
   id SERIAL PRIMARY KEY,
   user_id SERIAL,
   FOREIGN KEY (user_id) REFERENCES users (id),
-  created TIMESTAMP WITH TIME ZONE,
-  date_to_do TIMESTAMP WITH TIME ZONE,
-  date_complete TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
-  date_cancel  TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
-  date_delete  TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
-  title VARCHAR(255),
-  task TEXT,
-  is_priority BOOLEAN DEFAULT false,
-  is_complete BOOLEAN DEFAULT false,
-  is_cancel BOOLEAN DEFAULT false,
-  is_delete BOOLEAN DEFAULT false
+  date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
+  text TEXT,
 );
