@@ -7,7 +7,8 @@ CREATE TABLE users(
   email VARCHAR(255) UNIQUE,
   password VARCHAR(255),
   online BOOLEAN DEFAULT false,
-  avatar_src VARCHAR(255) DEFAULT ''
+  avatar_src VARCHAR(255) DEFAULT '',
+  confirmed BOOLEAN DEFAULT false
 );
 
 CREATE TABLE messages(
