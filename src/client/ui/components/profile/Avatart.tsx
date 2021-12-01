@@ -18,8 +18,6 @@ const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {
                 <Image 
                     src={src}
                     alt={Chat.avatarAlt}
-                    width={200}
-                    height={200}
                     preview={false}
                     className="profile-avatar"
                 />
