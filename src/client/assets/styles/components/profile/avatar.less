@@ -1,6 +1,17 @@
 .profile-avatar__main-wrap {
     width 100%;
     .flex-column();
+    
+    margin-top: 20px;
+    margin-bottom: 0px;
+
+    background-color: @main-color;
+}
+
+.profile-avatar__main-wrap_dark {
+    .profile-avatar__main-wrap();
+
+    background-color: @main-color_dark;
 }
 
 .profile-avatar__wrap {
@@ -25,6 +36,10 @@
         width: 300px;
         max-height: 900px;
     }
+    
+    .profile-avatar__main-wrap, profile-avatar__main-wrap_dark {
+        width: @sm-width;
+    }
 }
 
 @media screen and (min-width: @md-device) {
@@ -32,11 +47,19 @@
         width: 300px;
         max-height: 900px;
     }
+    
+    .profile-avatar__main-wrap, profile-avatar__main-wrap_dark {
+        width: @md-width;
+    }
 }
 
 @media screen and (min-width: @lg-device) {
     .profile-avatar {
         width: 300px;
         max-height: 900px;
+    }
+    
+    .profile-avatar__main-wrap, profile-avatar__main-wrap_dark {
+        width: @lg-width;
     }
 }
