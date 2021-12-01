@@ -10,7 +10,7 @@ const Component: React.FC<IProfileProps> = ({src, infoFields}: IProfileProps) =>
             className="profile__wrap"  
         >
             <Avatart 
-                src={avatarSrc}
+                src={src}
             />
             <InfoList 
                 infoFields={infoFields}
