@@ -22,5 +22,5 @@ CREATE TABLE messages(
   from_user_id SERIAL,
   FOREIGN KEY (from_user_id) REFERENCES users (id),
   to_user_id SERIAL,
-  FOREIGN KEY (to_user_id) REFERENCES users (id),
+  FOREIGN KEY (to_user_id) REFERENCES users (id)
 );
