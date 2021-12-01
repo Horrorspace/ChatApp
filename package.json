@@ -10,8 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "dev-start": "cross-env NODE_ENV=development webpack serve --mode development --open",
-    "db-create": "cd sql sh create.sh",
-    "db-delete": "cd sql sh delete.sh"
+    "db-create": "cd sql psql -U postgres -W -f delete.sql",
+    "db-delete": "cd sql psql -U postgres -W -f delete.sql"
   },
   "repository": {
     "type": "git",
