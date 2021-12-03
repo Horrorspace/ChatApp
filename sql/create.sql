@@ -2,7 +2,7 @@ CREATE ROLE chat_admin WITH LOGIN PASSWORD 'KQoEgwBi';
 CREATE DATABASE chat OWNER chat_admin;
 CREATE DATABASE chat_sessions OWNER chat_admin;
 
-CREATE TABLE Users(
+CREATE TABLE User(
   id SERIAL PRIMARY KEY,
   username VARCHAR(255), 
   email VARCHAR(255) UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE Users(
   confirmed BOOLEAN DEFAULT false
 );
 
-CREATE TABLE Messages(
+CREATE TABLE Message(
   id SERIAL PRIMARY KEY,
   user_id SERIAL,
   FOREIGN KEY (user_id) REFERENCES users (id),
