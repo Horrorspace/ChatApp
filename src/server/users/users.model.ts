@@ -28,12 +28,12 @@ export class User extends Model<UserAttrs, UserCreationAttrs> {
     @Column({type: DataType.STRING, allowNull: false})
     password!: string;
 
-    @Column({type: DataType.BOOLEAN, defaultValue: true})
+    @Column({type: DataType.BOOLEAN, defaultValue: false})
     online?: boolean;
 
     @Column({type: DataType.STRING, defaultValue: ''})
     avatar_src?: string;
 
-    @Column({type: DataType.BOOLEAN, defaultValue: true})
+    @Column({type: DataType.BOOLEAN, defaultValue: false})
     confirmed?: boolean;
 }
