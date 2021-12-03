@@ -14,8 +14,6 @@ CREATE TABLE User(
 
 CREATE TABLE Message(
   id SERIAL PRIMARY KEY,
-  user_id SERIAL,
-  FOREIGN KEY (user_id) REFERENCES users (id),
   date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
   text TEXT,
   readed BOOLEAN DEFAULT false,
