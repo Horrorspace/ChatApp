@@ -1,39 +1,34 @@
-import {Model, Table, Column, DataType} from 'sequelize-typescript';
-
-interface UserCreationAttrs {
-    username: string;
-    email: string;
-    password: string;
-}
-
-interface UserAttrs extends UserCreationAttrs {
-    id: number;
-    online: boolean;
-    avatar_src: string;
-    confirmed: boolean;
-}
+import {Model, Table, Column, DataType, PrimaryKey, Unique, Default, AutoIncrement} from 'sequelize-typescript';
+import {UserAttrs, UserCreationAttrs} from './users.types';
 
 
 @Table
 export class User extends Model<UserAttrs, UserCreationAttrs> {
-    @Column({type: DataType.INTEGER, allowNull: false, unique: true, primaryKey: true, autoIncrement: true})
-    id!: number;
+    @PrimaryKey
+    @Unique
+    @AutoIncrement
+    @Column({type: DataType.INTEGER, allowNull: false})
+    id?: number;
 
     @Column({type: DataType.STRING, allowNull: false})
     username!: string;
 
-    @Column({type: DataType.STRING, allowNull: false, unique: true})
+    @Unique
+    @Column({type: DataType.STRING, allowNull: false})
     email!: string;
 
     @Column({type: DataType.STRING, allowNull: false})
     password!: string;
 
-    @Column({type: DataType.BOOLEAN, defaultValue: false})
+    @Default(false)
+    @Column({type: DataType.BOOLEAN})
     online?: boolean;
 
-    @Column({type: DataType.STRING, defaultValue: ''})
-    avatar_src?: string;
+    @Default('')
+    @Column({type: DataType.STRING})
+    avatarSrc?: string;
 
-    @Column({type: DataType.BOOLEAN, defaultValue: false})
+    @Default(false)
+    @Column({type: DataType.BOOLEAN})
     confirmed?: boolean;
 }
