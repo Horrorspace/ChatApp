@@ -1,5 +1,6 @@
-import {Model, Table, Column, DataType} from 'sequelize-typescript';
+import {Model, Table, Column, DataType, PrimaryKey, Unique, BelongsTo, ForeignKey, Default, AutoIncrement} from 'sequelize-typescript';
 import Sequelize from 'sequelize';
+import {User} from '../users/users.model'
 
 interface MessageCreationAttrs {
     text: string;
@@ -16,21 +17,32 @@ interface MessageAttrs extends MessageCreationAttrs {
 
 @Table
 export class Message extends Model<MessageAttrs, MessageCreationAttrs> {
-    @Column({type: DataType.INTEGER, allowNull: false, unique: true, primaryKey: true, autoIncrement: true})
+    @PrimaryKey
+    @Unique
+    @AutoIncrement
+    @Column({type: DataType.INTEGER, allowNull: false})
     id!: number;
     
-    @Column({type: DataType.DATE, defaultValue: Sequelize.NOW})
+    @Default(Sequelize.NOW)
+    @Column({type: DataType.DATE})
     date?: Date;
     
-    @Column({type: DataType.STRING}, defaultValue: '')
+    @Default('')
+    @Column({type: DataType.STRING})
     text!: string;
     
-    @Column({type: DataType.BOOLEAN, defaultValue: false})
+    @Default(false)
+    @Column({type: DataType.BOOLEAN})
     readed?: boolean;
     
-    @BelongsTo(() => User, () => id)
-    fromUserId!: string;
+    @ForeignKey(() => User)
+    @Column({type: DataType.INTEGER, allowNull: false})
+    fromUserId!: number;
 
-    @BelongsTo(() => User, () => id)
-    toUserId!: string;
+    @ForeignKey(() => User)
+    @Column({type: DataType.INTEGER, allowNull: false})
+    toUserId!: number;
+
+    @BelongsTo(() => User)
+    user!: User;
 }
