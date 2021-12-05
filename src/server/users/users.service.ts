@@ -1,5 +1,6 @@
 import {Injectable} from '@nestjs/common';
 import {InjectModel} from '@nestjs/sequelize';
+import bcrypt from 'bcrypt';
 import {User} from './users.model';
 import {
     UserCreationAttrs, 
@@ -13,10 +14,15 @@ import {
 
 @Injectable()
 export class UsersService {  
-    constructor(@InjectModel(User) private userRepository: typeof User) {}
+    constructor(@InjectModel(User) private readonly userRepository: typeof User) {}
 
     public async createUser(creationAttrs: UserCreationAttrs): Promise<User> {
-        const user = await this.userRepository.create(creationAttrs);
+        const hashedPassword: string = await bcrypt.hash(creationAttrs.password, 15);
+        const userAttrs: UserCreationAttrs = {
+            ...creationAttrs,
+            password: hashedPassword
+        }
+        const user = await this.userRepository.create(userAttrs);
         return user;
     }
 
