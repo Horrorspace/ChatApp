@@ -5,6 +5,7 @@ import {User} from './users/users.model';
 import {Message} from './messages/messages.model';
 import {UsersModule} from './users/users.module';
 import {MessagesModule} from './messages/messages.module';
+import {AuthModule} from './auth/auth.module';
 
 
 @Module({
@@ -25,7 +26,8 @@ import {MessagesModule} from './messages/messages.module';
             autoLoadModels: true
         }),
         UsersModule,
-        MessagesModule
+        MessagesModule,
+        AuthModule
     ],
 })
 export class AppModule {}
