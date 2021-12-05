@@ -33,3 +33,12 @@ export interface editUserOnlineOpt extends UserId {
 export interface editUserAvatarOpt extends UserId {
     avatarSrc: string;
 }
+
+export interface UserResponse {
+    id: number;
+    online: boolean;
+    avatarSrc: string;
+    confirmed: boolean;
+    username: string;
+    email: string;
+}
