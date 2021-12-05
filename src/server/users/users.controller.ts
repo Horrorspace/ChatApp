@@ -7,13 +7,15 @@ import {
     editUserEmailOpt, 
     editUserPasswordOpt, 
     editUserOnlineOpt, 
-    editUserAvatarOpt
+    editUserAvatarOpt,
+    UserResponse
 } from './users.types';
+import {UsersUtils} from './utils/users.utils'
 
 
 @Controller('api/users')
 export class UsersController {
-    constructor(@Inject(UsersService) private usersService: UsersService) {}
+    constructor(@Inject(UsersService) private readonly usersService: UsersService) {}
 
     @Post()
     public async createUser(@Body() creationAttrs: UserCreationAttrs): Promise<User> {
@@ -22,21 +24,33 @@ export class UsersController {
     }
 
     @Get()
-    public async getAllUsers(): Promise<User[]> {
+    public async getAllUsers(): Promise<UserResponse[]> {
         const users = await this.usersService.getAllUsers();
-        return users;
+        return users.map(user => {
+            return UsersUtils.getUserResponse(user)
+        });
     }
 
     @Get('byId')
-    public async getUserById(@Body('id') id: number): Promise<User | null> {
+    public async getUserById(@Body('id') id: number): Promise<UserResponse | null> {
         const user = await this.usersService.getUserById(id);
-        return user;
+        if(user) {
+            return UsersUtils.getUserResponse(user);
+        }
+        else {
+            return null;
+        }
     }
 
     @Get('byEmail')
-    public async getUserByEmail(@Body('email') email: string): Promise<User | null> {
+    public async getUserByEmail(@Body('email') email: string): Promise<UserResponse | null> {
         const user = await this.usersService.getUserByEmail(email);
-        return user;
+        if(user) {
+            return UsersUtils.getUserResponse(user);
+        }
+        else {
+            return null;
+        }
     }
 
     @Get('checkId')
