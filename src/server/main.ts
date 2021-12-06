@@ -1,7 +1,9 @@
 import { NestFactory } from "@nestjs/core";
-import session from 'express-session';
-import {Sequelize} from 'sequelize';
-import connectSequelize from 'connect-session-sequelize';
+// import session from 'express-session';
+// import {Sequelize} from 'sequelize';
+// import connectSequelize from 'connect-session-sequelize';
+// import cookieParser from 'cookie-parser';
+// import passport from 'passport'
 import {AppModule} from './app.module';
 
 
@@ -11,35 +13,38 @@ export async function start() {
   const PORT: number = Number(process.env.PORT) || 3007;
   const app = await NestFactory.create(AppModule);
   
-  const SequelizeStore = connectSequelize(session.Store);
-  const sequelize = new Sequelize({
-      dialect: 'postgres',
-      host: 'localhost',
-      database: 'chat_sessions',
-      username: 'chat_admin',
-      password: 'KQoEgwBi',
-      logging: false
-  });
-  const sessionStore = new SequelizeStore({
-      db: sequelize,
-      checkExpirationInterval: 60*60*1000,
-      expiration: 24*60*60*1000
-  });
-  app.use(session({
-      secret: "cats and dogs",
-      store: sessionStore,
-      resave: false,
-      proxy: false,
-      saveUninitialized: false,
-      cookie: {
-          maxAge: 24*60*60*1000,
-          secure: false,
-          httpOnly: false,
-          sameSite: true,
-      }
+//   const SequelizeStore = connectSequelize(session.Store);
+//   const sequelize = new Sequelize({
+//       dialect: 'postgres',
+//       host: 'localhost',
+//       database: 'chat_sessions',
+//       username: 'chat_admin',
+//       password: 'KQoEgwBi',
+//       logging: false
+//   });
+//   const sessionStore = new SequelizeStore({
+//       db: sequelize,
+//       checkExpirationInterval: 60*60*1000,
+//       expiration: 24*60*60*1000
+//   });
+//   app.use(session({
+//       secret: "cats and dogs",
+//       store: sessionStore,
+//       resave: false,
+//       proxy: false,
+//       saveUninitialized: false,
+//       cookie: {
+//           maxAge: 24*60*60*1000,
+//           secure: false,
+//           httpOnly: false,
+//           sameSite: true,
+//       }
 
-  }));
-  sessionStore.sync();
+//   }));
+//   sessionStore.sync();
+//   app.use(cookieParser());
+//   app.use(passport.initialize());
+//   app.use(passport.session());
   
 
   await app.listen(PORT);
