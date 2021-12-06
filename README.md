@@ -22,6 +22,7 @@ This projects uses the following technologies:
 - [Antd](https://ant.design/ "Ant design") - UI design library.
 - [Less](https://lesscss.org/ "Less") - CSS preprocessor.
 - [Webpack](https://webpack.js.org/ "Webpack") - Module bundler.
+- [PostgreSQL](https://www.postgresql.org/ "PostgreSQL") - Object-relational database system.
 
 ## Folders structure
 
