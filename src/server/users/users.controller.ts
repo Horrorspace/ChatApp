@@ -1,5 +1,4 @@
-import {Controller, Post, Body, Get, Put, Delete, Inject, UseInterceptors} from '@nestjs/common';
-import {ClassSerializerInterceptor} from 'class-transformer';
+import {Controller, Post, Body, Get, Put, Delete, Inject, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
 import {UsersService} from './users.service';
 import {User} from './users.model';
 import {
