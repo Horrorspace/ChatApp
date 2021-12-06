@@ -4,11 +4,16 @@ import {AuthService} from './auth.service';
 import {UsersModule} from '../users/users.module';
 import {AuthController} from './auth.controller';
 import {LocalStrategy} from './strategy/local.strategy';
+import {LocalAuthGuard} from './guard/local-auth.guard';
 
 
 @Module({
     controllers: [AuthController],
-    providers: [AuthService, LocalStrategy],
+    providers: [
+        AuthService, 
+        LocalStrategy,
+        LocalAuthGuard,
+    ],
     imports: [
         UsersModule, 
         PassportModule.register({
