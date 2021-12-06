@@ -1,6 +1,9 @@
-import {Controller, Post, Request, UseGuards} from '@nestjs/common';
+import {Controller, Post, Request, UseGuards, ClassSerializerInterceptor, UseInterceptors} from '@nestjs/common';
+
 import {Request as Req} from 'express';
-import {LocalAuthGuard} from './guard/local-auth.guard'
+import {LocalAuthGuard} from './guard/local-auth.guard';
+import {UserEntity} from '../users/user.entity';
+import { UserAttrs } from 'server/users/users.types';
 
 
 @Controller('auth')
@@ -8,7 +11,10 @@ export class AuthController {
 
     @Post('login')
     @UseGuards(LocalAuthGuard)
-    public async login(@Request() req: Req) {
-        return req.user;
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async login(
+        @Request() req: Req,
+    ) {
+        return new UserEntity(req.user as UserAttrs);
     }
 }
