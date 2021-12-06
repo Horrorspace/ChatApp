@@ -1,4 +1,5 @@
-import {Controller, Post, Body, Get, Put, Delete, Inject} from '@nestjs/common';
+import {Controller, Post, Body, Get, Put, Delete, Inject, UseInterceptors} from '@nestjs/common';
+import {ClassSerializerInterceptor} from 'class-transformer';
 import {UsersService} from './users.service';
 import {User} from './users.model';
 import {
@@ -10,7 +11,8 @@ import {
     editUserAvatarOpt,
     UserResponse
 } from './users.types';
-import {UsersUtils} from './utils/users.utils'
+import {UserEntity} from './user.entity';
+import {UsersUtils} from './utils/users.utils';
 
 
 @Controller('api/users')
@@ -23,12 +25,16 @@ export class UsersController {
         return user;
     }
 
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get()
-    public async getAllUsers(): Promise<UserResponse[]> {
+    public async getAllUsers(): Promise<UserEntity[]> {
         const users = await this.usersService.getAllUsers();
         return users.map(user => {
+            return new UserEntity(user.get());
+        })
+        /*return users.map(user => {
             return UsersUtils.getUserResponse(user)
-        });
+        });*/
     }
 
     @Get('byId')
