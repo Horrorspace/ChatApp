@@ -9,7 +9,13 @@ import {LocalStrategy} from './strategy/local.strategy';
 @Module({
     controllers: [AuthController],
     providers: [AuthService, LocalStrategy],
-    imports: [UsersModule, PassportModule],
+    imports: [
+        UsersModule, 
+        PassportModule.register({
+            session: true,
+            defaultStrategy: 'local'
+        })
+    ],
     exports: [AuthService, LocalStrategy]
 })
 export class AuthModule {}
