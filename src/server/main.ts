@@ -15,7 +15,7 @@ export async function start() {
   const sequelize = new Sequelize({
       dialect: 'postgres',
       host: 'localhost',
-      database: 'sessions',
+      database: 'chat_sessions',
       username: 'chat_admin',
       password: 'KQoEgwBi',
       logging: false
