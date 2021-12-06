@@ -29,6 +29,7 @@ This projects uses the following technologies:
 - [Nest](https://nestjs.com/ "Nest") - Framework for building Node.js server-side applications, based on Express.
 - [Express](http://expressjs.com/ "Express") - Minimal and flexible Node.js web application framework.
 - [Passport.js](http://www.passportjs.org/ "Passport.js") - Authentication middleware for Node.js.
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js "Bcrypt") - Password-hashing library.
 
 ## Folders structure
 
