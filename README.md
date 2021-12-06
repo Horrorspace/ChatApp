@@ -22,7 +22,12 @@ This projects uses the following technologies:
 - [Antd](https://ant.design/ "Ant design") - UI design library.
 - [Less](https://lesscss.org/ "Less") - CSS preprocessor.
 - [Webpack](https://webpack.js.org/ "Webpack") - Module bundler.
+- [Node.js](https://nodejs.org/ "Node.js") - JavaScript runtime built.
+- [NPM](https://www.npmjs.com/ "NPM") - Package manager for the Node.js.
 - [PostgreSQL](https://www.postgresql.org/ "PostgreSQL") - Object-relational database system.
+- [Sequelize](https://sequelize.org/ "Sequelize") - Promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
+- [Nest](https://nestjs.com/ "Nest") - Framework for building Node.js server-side applications, based on Express.
+- [Express](http://expressjs.com/ "Express") - Minimal and flexible Node.js web application framework.
 
 ## Folders structure
 
