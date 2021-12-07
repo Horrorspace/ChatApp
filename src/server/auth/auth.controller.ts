@@ -1,7 +1,7 @@
 import {Controller, Post, Request, UseGuards, ClassSerializerInterceptor, UseInterceptors} from '@nestjs/common';
 
 import {Request as Req} from 'express';
-import {LocalAuthGuard} from './guard/local-auth.guard';
+import {LocalAuthGuard} from './guard/local.guard';
 import {UserEntity} from '../users/user.entity';
 import { UserAttrs } from 'server/users/users.types';
 

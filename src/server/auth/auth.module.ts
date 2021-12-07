@@ -1,10 +1,10 @@
 import {Module} from '@nestjs/common';
 import {PassportModule} from '@nestjs/passport';
-import {AuthService} from './auth.service';
+import {AuthService} from './provider/auth.service';
 import {UsersModule} from '../users/users.module';
 import {AuthController} from './auth.controller';
 import {LocalStrategy} from './strategy/local.strategy';
-import {LocalAuthGuard} from './guard/local-auth.guard';
+import {LocalAuthGuard} from './guard/local.guard';
 import {LocalSerializer} from './auth.serialize';
 
 

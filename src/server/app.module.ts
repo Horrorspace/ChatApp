@@ -1,7 +1,6 @@
 import {Module, MiddlewareConsumer, NestModule} from '@nestjs/common';
 import {SequelizeModule} from '@nestjs/sequelize';
 import session from 'express-session';
-import {NextFunction, Request, Response} from 'express';
 // import {Sequelize} from 'sequelize';
 // import {AuthService} from './auth/auth.service';
 // import {Strategy as LocalStrategy} from 'passport-local'
@@ -99,17 +98,6 @@ export class AppModule implements NestModule {
                 }), 
                 passport.initialize(),
                 passport.session(),
-                (req: Request, res: Response, next: NextFunction) => {
-                    passport.authenticate(
-                        'local', {
-                            successFlash: true,
-                            successMessage: 'You have been logined',
-                            failureFlash: true,
-                            session: true
-                        });
-                    console.log(`Request...`);
-                    next();
-                }
             )
             .forRoutes('*');
     }

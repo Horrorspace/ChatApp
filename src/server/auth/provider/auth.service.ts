@@ -1,8 +1,8 @@
 import {Injectable, Inject} from '@nestjs/common';
 import bcrypt from 'bcrypt';
 import {UserAttrs} from 'server/users/users.types';
-import {UsersService} from '../users/users.service';
-import {LoginAttrs} from './auth.types';
+import {UsersService} from '/media/user/Локальный диск1/Web/ChatApp/ChatApp/src/server/users/users.service';
+import {LoginAttrs} from '../auth.types';
 
 
 @Injectable()
