@@ -1,8 +1,9 @@
 import {Injectable, Inject} from '@nestjs/common';
 import bcrypt from 'bcrypt';
-import {UserAttrs} from 'server/users/users.types';
-import {UsersService} from '/media/user/Локальный диск1/Web/ChatApp/ChatApp/src/server/users/users.service';
+import {UserAttrs, UserCreationAttrs} from '../../users/users.types';
+import {UsersService} from '../../users/users.service';
 import {LoginAttrs} from '../auth.types';
+import {User} from '@server/users/users.model';
 
 
 @Injectable()
@@ -24,5 +25,10 @@ export class AuthService {
         else {
             return null
         }
+    }
+
+    public async registerUser(creationAttrs: UserCreationAttrs): Promise<User | null> {
+        const user = await this.usersService.createUser(creationAttrs);
+        return user;
     }
 }
