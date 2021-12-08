@@ -16,14 +16,25 @@ import {
 export class UsersService {  
     constructor(@InjectModel(User) private readonly userRepository: typeof User) {}
 
-    public async createUser(creationAttrs: UserCreationAttrs): Promise<User> {
-        const hashedPassword: string = await bcrypt.hash(creationAttrs.password, 15);
-        const userAttrs: UserCreationAttrs = {
-            ...creationAttrs,
-            password: hashedPassword
+    public async createUser({username, email, password}: UserCreationAttrs): Promise<User | null> {
+        const exist: boolean = await this.checkUserEmail(email);
+
+        if(!exist) {
+            const hashedPassword: string = await bcrypt.hash(password, 15);
+            const userAttrs: UserCreationAttrs = {
+                username,
+                email,
+                password: hashedPassword
+            }
+            const user = await this.userRepository.create(userAttrs);
+    
+            console.log(process.env.NODE_PATH)
+    
+            return user;
         }
-        const user = await this.userRepository.create(userAttrs);
-        return user;
+        else {
+            return null
+        }
     }
 
     public async getAllUsers(): Promise<User[]> {
