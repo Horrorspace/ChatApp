@@ -1,5 +1,5 @@
 type User {
-    id: Int!
+    id: ID!
     username: String!
     email: String!
     online: Boolean
@@ -7,7 +7,52 @@ type User {
     confirmed: Boolean
 }
 
+input UserInput {
+    username: String!
+    email: String!
+    password: String!
+}
+
+input EditUserName {
+    id: ID!
+    username: String!
+}
+
+input EditUserEmail {
+    id: ID!
+    email: String!
+}
+
+input EditUserPassword {
+    id: ID!
+    password: String!
+}
+
+input EditUserOnline {
+    id: ID!
+    online: Boolean
+}
+
+input EditUserAvatar {
+    id: ID!
+    avatarSrc: String
+}
+
+input EditUserConfirm {
+    id: ID!
+}
+
 type Query {
     users: [User]
-    user(id: Int!): User
+    user(id: ID!): User
+}
+
+type Mutation {
+    createUser(user: UserInput): User
+    editUserName(options: EditUserName): User
+    editUserEmail(options: EditUserEmail): User
+    editUserPassword(options: EditUserPassword): User
+    editUserOnline(options: EditUserOnline): User
+    editUserAvatar(options: EditUserAvatar): User
+    editUserConfirm(options: EditUserConfirm): User
 }
