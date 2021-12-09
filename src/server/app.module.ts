@@ -33,10 +33,10 @@ import {GraphQLModule} from '@nestjs/graphql';
           playground: true,
           include: [UsersModule],
         }),
+        SessionsModule,
         UsersModule,
-        MessagesModule,
         AuthModule,
-        SessionsModule
+        MessagesModule,
     ],
     exports: []
 })
