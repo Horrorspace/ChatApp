@@ -7,6 +7,7 @@ import {UsersModule} from './users/users.module';
 import {MessagesModule} from './messages/messages.module';
 import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
+import {GraphQLModule} from '@nestjs/graphql';
 
 
 @Module({
@@ -26,6 +27,11 @@ import {SessionsModule} from './sessions/sessions.module';
             models: [User, Message],
             autoLoadModels: true,
             logging: false
+        }),
+        GraphQLModule.forRoot({
+          debug: false,
+          playground: true,
+          include: [UsersModule],
         }),
         UsersModule,
         MessagesModule,
