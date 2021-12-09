@@ -29,9 +29,10 @@ import {GraphQLModule} from '@nestjs/graphql';
             logging: false
         }),
         GraphQLModule.forRoot({
-          debug: false,
-          playground: true,
-          include: [UsersModule],
+            debug: false,
+            playground: true,
+            include: [UsersModule],
+            typePaths: ['./graphql/schema.graphql'],
         }),
         SessionsModule,
         UsersModule,
