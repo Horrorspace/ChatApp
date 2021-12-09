@@ -33,6 +33,9 @@ import {GraphQLModule} from '@nestjs/graphql';
             playground: true,
             include: [UsersModule],
             typePaths: ['./graphql/schema.graphql'],
+            definitions: {
+                path: join(process.cwd(), 'src/server/graphql/graphql.type.ts')
+            },
         }),
         SessionsModule,
         UsersModule,
