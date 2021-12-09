@@ -38,10 +38,6 @@ input EditUserAvatar {
     avatarSrc: String
 }
 
-input EditUserConfirm {
-    id: ID!
-}
-
 type Query {
     users: [User]
     user(id: ID!): User
@@ -54,5 +50,6 @@ type Mutation {
     editUserPassword(options: EditUserPassword): User
     editUserOnline(options: EditUserOnline): User
     editUserAvatar(options: EditUserAvatar): User
-    editUserConfirm(options: EditUserConfirm): User
+    editUserConfirm(id: ID!): User
+    deleteUser(id: ID!): User
 }
