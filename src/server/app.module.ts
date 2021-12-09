@@ -8,6 +8,7 @@ import {MessagesModule} from './messages/messages.module';
 import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
+import {join} from 'path';
 
 
 @Module({
@@ -29,12 +30,12 @@ import {GraphQLModule} from '@nestjs/graphql';
             logging: false
         }),
         GraphQLModule.forRoot({
-            debug: false,
+            debug: true,
             playground: true,
-            include: [UsersModule],
-            typePaths: ['./graphql/schema.graphql'],
+            typePaths: ['./**/*.graphql'],
             definitions: {
-                path: join(process.cwd(), 'src/server/graphql/graphql.type.ts')
+                path: join('./src/server/graphql/graphql.type.ts'),
+                outputAs: 'interface'
             },
         }),
         SessionsModule,
