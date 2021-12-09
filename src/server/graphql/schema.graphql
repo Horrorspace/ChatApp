@@ -1,2 +1,8 @@
-type User {}
-type Message {}
+type User {
+    id: Int!
+    username: String!
+    email: String!
+    online: Boolean
+    avatarSrc: String
+    confirmed: Boolean
+}
