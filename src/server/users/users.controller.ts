@@ -84,7 +84,7 @@ export class UsersController {
     }
 
     @Put('editUserEmail')
-    @UseGuards(LoggedInGuard)
+    @UseGuards(LocalAuthGuard)
     @UseGuards(CheckIdGuard)
     public async editUserEmail(@Body() options: editUserEmailOpt): Promise<void> {
         await this.usersService.editUserEmail(options)
