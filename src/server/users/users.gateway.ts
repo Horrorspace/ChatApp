@@ -4,21 +4,31 @@ import {
     WebSocketGateway,
     WebSocketServer,
 } from '@nestjs/websockets';
-import { Server } from 'socket.io';
+import {Server} from 'socket.io';
 
 
 enum socketEvents {
-    setOnline = 'set_online'
+    setOnline = 'set_online',
+    test = 'test'
+}
+
+interface test {
+    test: boolean
 }
 
 
 @WebSocketGateway()
 export class UsersGateway {
     @WebSocketServer()
-    private readonly server: Server;
+    private readonly server!: Server;
   
-    @SubscribeMessage(socketEvents.setOnline)
-    public handleSetOnline(@MessageBody() online: boolean) {
-        console.log(online);
+    @SubscribeMessage(socketEvents.test)
+    public handleSetOnline(@MessageBody() {test}: test) {
+        console.log(test);
+        this.test();
+    }
+
+    public test() {
+        this.server.emit('test', 'hello buddy')
     }
 }
