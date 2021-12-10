@@ -5,6 +5,11 @@ import {LoggedInGuard} from '../auth/guard/logged-in.guard';
 import {CheckIdGuard} from './guard/check-id.guard';
 import {
     editUserNameOpt, 
+    editUserEmailOpt, 
+    editUserPasswordOpt, 
+    editUserOnlineOpt, 
+    editUserAvatarOpt,
+    UserResponse
 } from './users.types';
 
 
@@ -29,5 +34,19 @@ export class UsersResolver {
     @UseGuards(CheckIdGuard)
     public async editUserName(@Args({options: EditUserName}) options: editUserNameOpt) {
         await this.usersService.editUserName(options);
+    }
+    
+    @Mutation()
+    @UseGuards(LoggedInGuard)
+    @UseGuards(CheckIdGuard)
+    public async editUserEmail(@Args({options: EditUserEmail}) options: editUserEmailOpt) {
+        await this.usersService.editUserEmail(options);
+    }
+    
+    @Mutation()
+    @UseGuards(LoggedInGuard)
+    @UseGuards(CheckIdGuard)
+    public async editUserPassword(@Args({options: EditUserPassword}) options: editUserPasswordOpt) {
+        await this.usersService.editUserPassword(options);
     }
 }
