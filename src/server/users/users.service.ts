@@ -62,31 +62,38 @@ export class UsersService {
         return Boolean(user);
     }
 
-    public async editUserName({id, username}: editUserNameOpt): Promise<void> {
+    public async editUserName({id, username}: editUserNameOpt): Promise<User | null> {
         await this.userRepository.update({username}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async editUserEmail({id, email}: editUserEmailOpt): Promise<void> {
+    public async editUserEmail({id, email}: editUserEmailOpt): Promise<User | null> {
         await this.userRepository.update({email}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async editUserPassword({id, password}: editUserPasswordOpt): Promise<void> {
+    public async editUserPassword({id, password}: editUserPasswordOpt): Promise<User | null> {
         await this.userRepository.update({password}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async editUserOnline({id, online}: editUserOnlineOpt): Promise<void> {
+    public async editUserOnline({id, online}: editUserOnlineOpt): Promise<User | null> {
         await this.userRepository.update({online}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async editUserAvatar({id, avatarSrc}: editUserAvatarOpt): Promise<void> {
+    public async editUserAvatar({id, avatarSrc}: editUserAvatarOpt): Promise<User | null> {
         await this.userRepository.update({avatarSrc}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async confirmUser(id: number): Promise<void> {
+    public async confirmUser(id: number): Promise<User | null> {
         await this.userRepository.update({confirmed: true}, {where: {id}});
+        return await this.getUserById(id);
     }
 
-    public async deleteUser(id: number): Promise<void> {
+    public async deleteUser(id: number): Promise<null> {
         await this.userRepository.destroy({where: {id}});
+        return null
     }
 }
