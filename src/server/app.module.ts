@@ -8,7 +8,7 @@ import {MessagesModule} from './messages/messages.module';
 import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
-import {join} from 'path';
+// import {join} from 'path';
 
 
 @Module({
@@ -33,10 +33,6 @@ import {join} from 'path';
             debug: true,
             playground: true,
             typePaths: ['./**/*.graphql'],
-            definitions: {
-                path: join('./src/server/graphql/graphql.type.ts'),
-                outputAs: 'interface'
-            },
         }),
         SessionsModule,
         UsersModule,
