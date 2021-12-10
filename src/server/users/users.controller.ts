@@ -20,6 +20,7 @@ import {
 } from './users.types';
 import {UserEntity} from './user.entity';
 import {LoggedInGuard} from '../auth/guard/logged-in.guard';
+import {LocalAuthGuard} from '../auth/guard/local.guard';
 import {CheckIdGuard} from './guard/check-id.guard';
 
 
@@ -90,7 +91,7 @@ export class UsersController {
     }
 
     @Put('editUserPassword')
-    @UseGuards(LoggedInGuard)
+    @UseGuards(LocalAuthGuard)
     @UseGuards(CheckIdGuard)
     public async editUserPassword(@Body() options: editUserPasswordOpt): Promise<void> {
         await this.usersService.editUserPassword(options)
