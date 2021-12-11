@@ -23,6 +23,7 @@ import {UserEntity} from './user.entity';
 import {LoggedInGuard} from '../auth/guard/logged-in.guard';
 import {LocalAuthGuard} from '../auth/guard/local.guard';
 import {CheckIdGuard} from './guard/check-id.guard';
+import {ApiOperation, ApiResponse} from '@nestjs/swagger';
 
 
 @Controller('api/users')
@@ -34,7 +35,9 @@ export class UsersController {
         error: 'User not found'
     }, HttpStatus.NOT_FOUND);
 
-   
+    @ApiOperation({summary: 'Получение всех пользователей'})
+    @ApiResponse({status: 200, description: 'Список пользователей получен'})
+    @ApiResponse({status: 403, description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @Get()
     @UseGuards(LoggedInGuard)
     @UseInterceptors(ClassSerializerInterceptor)
