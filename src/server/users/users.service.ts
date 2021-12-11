@@ -60,37 +60,86 @@ export class UsersService {
     }
 
     public async editUserName({id, username}: editUserNameOpt): Promise<User | null> {
-        await this.userRepository.update({username}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({username}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
     public async editUserEmail({id, email}: editUserEmailOpt): Promise<User | null> {
-        await this.userRepository.update({email}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({email}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
     public async editUserPassword({id, password}: editUserPasswordOpt): Promise<User | null> {
-        await this.userRepository.update({password}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({password}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
     public async editUserOnline({id, online}: editUserOnlineOpt): Promise<User | null> {
-        await this.userRepository.update({online}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({online}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
     public async editUserAvatar({id, avatarSrc}: editUserAvatarOpt): Promise<User | null> {
-        await this.userRepository.update({avatarSrc}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({avatarSrc}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
     public async confirmUser(id: number): Promise<User | null> {
-        await this.userRepository.update({confirmed: true}, {where: {id}});
-        return await this.getUserById(id);
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.update({confirmed: true}, {where: {id}});
+            return await this.getUserById(id);
+        }
+        else {
+            return null;
+        }
     }
 
-    public async deleteUser(id: number): Promise<null> {
-        await this.userRepository.destroy({where: {id}});
-        return null
+    public async deleteUser(id: number): Promise<boolean> {
+        const isIdExist: boolean = await this.checkUserId(id);
+
+        if(isIdExist) {
+            await this.userRepository.destroy({where: {id}});
+            return true
+        }
+        else {
+            return false
+        }
     }
 }
