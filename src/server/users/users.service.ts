@@ -27,9 +27,6 @@ export class UsersService {
                 password: hashedPassword
             }
             const user = await this.userRepository.create(userAttrs);
-    
-            console.log(process.env.NODE_PATH)
-    
             return user;
         }
         else {
