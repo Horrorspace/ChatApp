@@ -1,18 +1,7 @@
 import {Model, Table, Column, DataType, PrimaryKey, Unique, BelongsTo, ForeignKey, Default, AutoIncrement} from 'sequelize-typescript';
 import Sequelize from 'sequelize';
-import {User} from '../users/users.model'
-
-interface MessageCreationAttrs {
-    text: string;
-    fromUserId: string;
-    toUserId: string;
-}
-
-interface MessageAttrs extends MessageCreationAttrs {
-    id: number;
-    date: Date;
-    readed: boolean;
-}
+import {User} from '../users/users.model';
+import {MessageCreationAttrs, MessageAttrs} from './messages.types';
 
 
 @Table
