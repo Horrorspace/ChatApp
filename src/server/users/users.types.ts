@@ -1,5 +1,12 @@
+import {LoginAttrs} from '../auth/auth.types';
+
+
 export interface UserId {
     id: number;
+}
+
+export interface UserEmail {
+    email: string;
 }
 
 export interface UserCreationAttrs {
@@ -19,12 +26,15 @@ export interface editUserNameOpt extends UserId {
 }
 
 export interface editUserEmailOpt extends UserId {
-    email: string;
+    newEmail: string;
 }
 
 export interface editUserPasswordOpt extends UserId {
-    password: string;
+    newPassword: string;
 }
+
+export interface editUserEmailAllAttrs extends LoginAttrs, editUserEmailOpt  {}
+export interface editUserPasswordAllAttrs extends LoginAttrs, editUserPasswordOpt  {}
 
 export interface editUserOnlineOpt extends UserId {
     online: boolean;
