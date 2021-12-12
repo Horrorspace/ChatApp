@@ -71,11 +71,11 @@ export class UsersService {
         }
     }
 
-    public async editUserEmail({id, email}: editUserEmailOpt): Promise<User | null> {
+    public async editUserEmail({id, newEmail}: editUserEmailOpt): Promise<User | null> {
         const isIdExist: boolean = await this.checkUserId(id);
 
         if(isIdExist) {
-            await this.userRepository.update({email}, {where: {id}});
+            await this.userRepository.update({email: newEmail}, {where: {id}});
             return await this.getUserById(id);
         }
         else {
@@ -83,11 +83,11 @@ export class UsersService {
         }
     }
 
-    public async editUserPassword({id, password}: editUserPasswordOpt): Promise<User | null> {
+    public async editUserPassword({id, newPassword}: editUserPasswordOpt): Promise<User | null> {
         const isIdExist: boolean = await this.checkUserId(id);
 
         if(isIdExist) {
-            await this.userRepository.update({password}, {where: {id}});
+            await this.userRepository.update({password: newPassword}, {where: {id}});
             return await this.getUserById(id);
         }
         else {
