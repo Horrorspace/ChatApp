@@ -13,7 +13,7 @@ export async function start() {
         .setTitle('ChatApp')
         .setDescription('ChatApp REST API description')
         .setVersion('1.0.0')
-        .addTag('Horrorspace')
+        .addBasicAuth()
         .build();
     const document = SwaggerModule.createDocument(app, swaggerConfig);
     SwaggerModule.setup('api/docs', app, document);
