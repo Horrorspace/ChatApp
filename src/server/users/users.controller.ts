@@ -127,7 +127,7 @@ export class UsersController {
     @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @Get('checkEmail')
     @UseGuards(LoggedInGuard)
-    public async checkUserEmail(@Body('email') {email}: UserEmailDto): Promise<boolean> {
+    public async checkUserEmail(@Body() {email}: UserEmailDto): Promise<boolean> {
         return await this.usersService.checkUserEmail(email);
     }
 
@@ -284,7 +284,7 @@ export class UsersController {
     })
     @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @ApiNotFoundResponse({description: 'Пользователь не найден'})
-    @Delete()
+    @Delete('byId')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
     public async deleteUser(@Body() {id}: UserIdDto): Promise<null> {
