@@ -3,22 +3,22 @@ import {ApiProperty} from '@nestjs/swagger';
 
 
 export class UserEntity {
-    @ApiProperty()
+    @ApiProperty({description: 'Уникальный идентификатор пользователя'})
     id!: number;
 
-    @ApiProperty()
+    @ApiProperty({description: 'Статус активности пользователя (онлайн / оффлайн)'})
     online!: boolean;
 
-    @ApiProperty()
+    @ApiProperty({description: 'Ссылка на аватар пользователя'})
     avatarSrc!: string;
 
-    @ApiProperty()
+    @ApiProperty({description: 'Статус учетной записи пользователя (подтверждена / не подтверждена)'})
     confirmed!: boolean;
 
-    @ApiProperty()
+    @ApiProperty({description: 'Имя пользователя'})
     username!: string;
 
-    @ApiProperty()
+    @ApiProperty({description: 'Email идентификатор пользователя'})
     email!: string;
 
   
