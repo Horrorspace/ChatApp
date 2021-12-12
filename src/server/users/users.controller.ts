@@ -12,20 +12,30 @@ import {
     HttpStatus
 } from '@nestjs/common';
 import {UsersService} from './users.service';
-import {
-    editUserNameOpt, 
-    editUserEmailOpt, 
-    editUserPasswordOpt, 
-    editUserOnlineOpt, 
-    editUserAvatarOpt,
-} from './users.types';
+import {UserIdDto} from './dto/user-id.dto';
+import {UserEmailDto} from './dto/user-email.dto';
+import {EditUserNameDto} from './dto/edit-user-name.dto';
+import {EditUserEmailDto} from './dto/edit-user-email.dto';
+import {EditUserEmailAuthDto} from './dto/edit-user-email-auth.dto';
+import {EditUserPasswordDto} from './dto/edit-user-password.dto';
+import {EditUserPasswordAuthDto} from './dto/edit-user-password-auth.dto';
+import {EditUserOnlineDto} from './dto/edit-user-online.dto';
+import {EditUserAvatarDto} from './dto/edit-user-avatar.dto';
 import {UserEntity} from './user.entity';
 import {LoggedInGuard} from '../auth/guard/logged-in.guard';
 import {LocalAuthGuard} from '../auth/guard/local.guard';
 import {CheckIdGuard} from './guard/check-id.guard';
-import {ApiOperation, ApiResponse} from '@nestjs/swagger';
+import {
+    ApiOperation, 
+    ApiOkResponse,
+    ApiForbiddenResponse, 
+    ApiTags,
+    ApiBody,
+    ApiBasicAuth,
+    ApiNotFoundResponse
+} from '@nestjs/swagger';
 
-
+@ApiBasicAuth()
 @Controller('api/users')
 export class UsersController {
     constructor(@Inject(UsersService) private readonly usersService: UsersService) {}
@@ -35,9 +45,14 @@ export class UsersController {
         error: 'User not found'
     }, HttpStatus.NOT_FOUND);
 
+
+    @ApiTags('Users')
     @ApiOperation({summary: 'Получение всех пользователей'})
-    @ApiResponse({status: 200, description: 'Список пользователей получен'})
-    @ApiResponse({status: 403, description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiOkResponse({
+        description: 'Список пользователей получен',
+        type: [UserEntity]
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @Get()
     @UseGuards(LoggedInGuard)
     @UseInterceptors(ClassSerializerInterceptor)
@@ -48,10 +63,18 @@ export class UsersController {
         })
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Получение пользователя по id'})
+    @ApiOkResponse({
+        description: 'Пользователь получен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Get('byId')
     @UseGuards(LoggedInGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async getUserById(@Body('id') id: number): Promise<UserEntity> {
+    public async getUserById(@Body() {id}: UserIdDto): Promise<UserEntity> {
         const user = await this.usersService.getUserById(id);
         if(user) {
             return new UserEntity(user.get());
@@ -61,10 +84,18 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Получение пользователя по email'})
+    @ApiOkResponse({
+        description: 'Пользователь получен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Get('byEmail')
     @UseGuards(LoggedInGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async getUserByEmail(@Body('email') email: string): Promise<UserEntity> {
+    public async getUserByEmail(@Body() {email}: UserEmailDto): Promise<UserEntity> {
         const user = await this.usersService.getUserByEmail(email);
         if(user) {
             return new UserEntity(user.get());
@@ -74,24 +105,46 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Проверка существования пользователя по id'})
+    @ApiOkResponse({
+        description: 'Ответ получен',
+        type: Boolean
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @Get('checkId')
     @UseGuards(LoggedInGuard)
-    public async checkUserId(@Body('id') id: number): Promise<boolean> {
+    public async checkUserId(@Body() {id}: UserIdDto): Promise<boolean> {
         return await this.usersService.checkUserId(id);
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Проверка существования пользователя по email'})
+    @ApiOkResponse({
+        description: 'Ответ получен',
+        type: Boolean
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
     @Get('checkEmail')
     @UseGuards(LoggedInGuard)
-    public async checkUserEmail(@Body('email') email: string): Promise<boolean> {
+    public async checkUserEmail(@Body('email') {email}: UserEmailDto): Promise<boolean> {
         return await this.usersService.checkUserEmail(email);
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Изменение имени пользователя'})
+    @ApiOkResponse({
+        description: 'Имя пользователя изменено',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Put('editUserName')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async editUserName(@Body() options: editUserNameOpt): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(options.id);
+    public async editUserName(@Body() options: EditUserNameDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
 
         if(isUserExist) {
             const user = await this.usersService.editUserName(options);
@@ -102,12 +155,21 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Изменение email пользователя'})
+    @ApiOkResponse({
+        description: 'Email пользователя изменен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
+    @ApiBody({type: EditUserEmailAuthDto})
     @Put('editUserEmail')
     @UseGuards(LocalAuthGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async editUserEmail(@Body() options: editUserEmailOpt): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(options.id);
+    public async editUserEmail(@Body() options: EditUserEmailDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
 
         if(isUserExist) {
             const user = await this.usersService.editUserEmail(options);
@@ -118,12 +180,21 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Изменение пароля пользователя'})
+    @ApiOkResponse({
+        description: 'Пароль пользователя изменен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
+    @ApiBody({type: EditUserPasswordAuthDto})
     @Put('editUserPassword')
     @UseGuards(LocalAuthGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async editUserPassword(@Body() options: editUserPasswordOpt): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(options.id);
+    public async editUserPassword(@Body() options: EditUserPasswordDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
 
         if(isUserExist) {
             const user = await this.usersService.editUserPassword(options);
@@ -134,12 +205,20 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Изменение статуса пользователя'})
+    @ApiOkResponse({
+        description: 'Статус пользователя изменен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Put('editUserOnline')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async editUserOnline(@Body() options: editUserOnlineOpt): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(options.id);
+    public async editUserOnline(@Body() options: EditUserOnlineDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
 
         if(isUserExist) {
             const user = await this.usersService.editUserOnline(options);
@@ -150,12 +229,20 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Изменение аватара пользователя'})
+    @ApiOkResponse({
+        description: 'Аватар пользователя изменен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Put('editUserAvatar')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async editUserAvatar(@Body() options: editUserAvatarOpt): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(options.id);
+    public async editUserAvatar(@Body() options: EditUserAvatarDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
 
         if(isUserExist) {
             const user = await this.usersService.editUserAvatar(options);
@@ -166,12 +253,20 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Подтверждение email пользователя'})
+    @ApiOkResponse({
+        description: 'Email пользователя подтвержден',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Put('confirm')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
     @UseInterceptors(ClassSerializerInterceptor)
-    public async confirmUser(@Body('id') id: number): Promise<UserEntity> {
-        const isUserExist: boolean = await this.checkUserId(id);
+    public async confirmUser(@Body() {id}: UserIdDto): Promise<UserEntity> {
+        const isUserExist: boolean = await this.usersService.checkUserId(id);
 
         if(isUserExist) {
             const user = await this.usersService.confirmUser(id);
@@ -182,11 +277,18 @@ export class UsersController {
         }
     }
 
+    @ApiTags('Users')
+    @ApiOperation({summary: 'Удаление пользователя'})
+    @ApiOkResponse({
+        description: 'Пользователь удален',
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @ApiNotFoundResponse({description: 'Пользователь не найден'})
     @Delete()
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
-    public async deleteUser(@Body('id') id: number): Promise<null> {
-        const isUserExist: boolean = await this.checkUserId(id);
+    public async deleteUser(@Body() {id}: UserIdDto): Promise<null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(id);
 
         if(isUserExist) {
             await this.usersService.deleteUser(id);
