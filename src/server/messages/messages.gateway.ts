@@ -3,22 +3,30 @@ import {
     SubscribeMessage,
     WebSocketGateway,
     WebSocketServer,
+    OnGatewayConnection, 
+    OnGatewayDisconnect
 } from '@nestjs/websockets';
 import {Server} from 'socket.io';
+import {MessageCreationAttrsRaw} from './messages.types';
 
 
 @WebSocketGateway()
-export class UsersGateway {
+export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @WebSocketServer()
     private readonly server!: Server;
   
-    @SubscribeMessage()
-    public handleSetOnline(@MessageBody() {test}: test) {
-        console.log();
-        this.test();
+    @SubscribeMessage('message')
+    public handleMessage(@MessageBody() {text, toUserId}: MessageCreationAttrsRaw) {
+        console.log(text, toUserId);
     }
 
-    public test() {
-        this.server.emit('test', 'hello buddy')
+    handleConnection(client: Socket, ...args: any[]) {
+        console.log(`Client connected: ${client.id}`);
+        console.log(server.sockets);
+    }
+
+    handleDisconnect(client: Socket) {
+        console.log(`Client disconnected: ${client.id}`);
+        console.log(server.sockets);
     }
 }
