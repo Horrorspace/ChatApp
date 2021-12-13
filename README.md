@@ -72,6 +72,19 @@ This projects uses the following technologies:
 * shell
 * sql
 
+## Development
+
+Follow these instructions to get the app running locally:
+
+1. run `git clone` this repository
+2. `cd` into the project's directory
+3. run `npm install`
+4. run `npm run ts`
+5. run `npm run serve`
+6. run `npm run dev`
+
+This will get a server running locally, open `http://localhost:3000` on your browser to see the app running.
+
 ## License
 
 Creative Commons Attribution-NonCommercial License
