@@ -78,12 +78,13 @@ Follow these instructions to get the app running locally:
 
 1. run `git clone` this repository
 2. `cd` into the project's directory
-3. run `npm install`
-4. run `npm run ts`
-5. run `npm run serve`
-6. run `npm run dev`
+3. run `npm install` to install node packages
+4. run `npm run ts` to compile server app in watch mode
+5. run `npm run dev` to build frontend app in watch mode
+6. run `npm run serve` to start server app in watch mode
 
-This will get a server running locally, open `http://localhost:3000` on your browser to see the app running.
+
+This will get a server running locally, open `http://localhost:3007` on your browser to see the app running.
 
 ## License
 
