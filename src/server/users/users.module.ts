@@ -4,15 +4,15 @@ import {UsersController} from './users.controller';
 import {UsersService} from './users.service';
 import {User} from './users.model';
 import {UsersResolver} from './users.resolver';
-import {UsersGateway} from './users.gateway';
+// import {UsersGateway} from './users.gateway';
 
 
 @Module({
     controllers: [UsersController],
-    providers: [UsersService, UsersResolver, UsersGateway],
+    providers: [UsersService, UsersResolver],
     imports: [
         SequelizeModule.forFeature([User])
     ],
-    exports: [UsersService, UsersResolver, UsersGateway]
+    exports: [UsersService, UsersResolver]
 })
 export class UsersModule {}
