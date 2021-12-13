@@ -27,7 +27,8 @@ const optimization = () => {
 };
 
 module.exports = {
-    mode: 'development',
+    mode: isDev ? 'development' : 'production',
+    watch: isDev,
     context: path.resolve(__dirname),
     entry: {
         app: './src/client/index.tsx',
