@@ -30,6 +30,7 @@ This projects uses the following technologies:
 - [Express](http://expressjs.com/ "Express") - Minimal and flexible Node.js web application framework.
 - [Passport.js](http://www.passportjs.org/ "Passport.js") - Authentication middleware for Node.js.
 - [Bcrypt](https://github.com/kelektiv/node.bcrypt.js "Bcrypt") - Password-hashing library.
+- [Swagger](https://swagger.io/ "Swagger") - Library for automatically generate documentation of REST API.
 - [GraphQL](https://graphql.org/ "GraphQL") - Open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
 - [Apollo](https://www.apollographql.com/ "GraphQL") - Platform for building GraphQL API.
 
