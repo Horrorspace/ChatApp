@@ -9,8 +9,10 @@ import {
     ClassSerializerInterceptor, 
     UseGuards,
     HttpException,
-    HttpStatus
+    HttpStatus,
+    Request
 } from '@nestjs/common';
+import {Request as Req} from 'express';
 import {UsersService} from './users.service';
 import {UserIdDto} from './dto/user-id.dto';
 import {UserEmailDto} from './dto/user-email.dto';
@@ -287,10 +289,11 @@ export class UsersController {
     @Delete('byId')
     @UseGuards(LoggedInGuard)
     @UseGuards(CheckIdGuard)
-    public async deleteUser(@Body() {id}: UserIdDto): Promise<null> {
+    public async deleteUser(@Request() req: Req, @Body() {id}: UserIdDto): Promise<null> {
         const isUserExist: boolean = await this.usersService.checkUserId(id);
 
         if(isUserExist) {
+            req.logout();
             await this.usersService.deleteUser(id);
             return null;
         }
