@@ -9,10 +9,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "ts": "tsc --watch --resolveJsonModule",
+    "ts": "tsc --watch --resolveJsonModule -p tsconfig.dev.json",
     "serve": "cross-env NODE_ENV=development nodemon ./build/server/main.js",
     "production": "cross-env NODE_ENV=production node ./build/server/main.js",
-    "ts-build": "tsc --resolveJsonModule",
+    "ts-build": "tsc --resolveJsonModule -p tsconfig.prod.json",
     "dev-start": "cross-env NODE_ENV=development webpack serve --mode development --open",
     "db-create": "cd sql psql -U postgres -W -f delete.sql",
     "db-delete": "cd sql psql -U postgres -W -f delete.sql",
