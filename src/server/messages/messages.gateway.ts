@@ -1,3 +1,4 @@
+import {UseGuards} from '@nestjs/common';
 import {
     MessageBody,
     SubscribeMessage,
@@ -6,8 +7,9 @@ import {
     OnGatewayConnection, 
     OnGatewayDisconnect
 } from '@nestjs/websockets';
-import {Server} from 'socket.io';
+import {Server, Socket} from 'socket.io';
 import {MessageCreationAttrsRaw} from './messages.types';
+import {LoggedInGuard} from '../auth/guard/logged-in.guard';
 
 
 @WebSocketGateway()
@@ -15,18 +17,21 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     @WebSocketServer()
     private readonly server!: Server;
   
+    @UseGuards(LoggedInGuard)
     @SubscribeMessage('message')
     public handleMessage(@MessageBody() {text, toUserId}: MessageCreationAttrsRaw) {
         console.log(text, toUserId);
     }
 
-    handleConnection(client: Socket, ...args: any[]) {
+    public async handleConnection(client: Socket) {
         console.log(`Client connected: ${client.id}`);
-        console.log(server.sockets);
+        this.server.to(client.id).emit('test', 'testing');
     }
+    
 
-    handleDisconnect(client: Socket) {
+    public async handleDisconnect(client: Socket) {
         console.log(`Client disconnected: ${client.id}`);
-        console.log(server.sockets);
+        const sockets = await this.server.fetchSockets();
+        console.log(sockets[0]);
     }
 }
