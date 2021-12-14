@@ -66,6 +66,7 @@
     "@types/jest": "27.0.2",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/node": "^16.0.0",
+    "@types/passport-http": "^0.3.9",
     "@types/passport-local": "^1.0.34",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
