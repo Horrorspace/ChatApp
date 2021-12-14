@@ -7,6 +7,7 @@ import {
     UseInterceptors, 
     Inject,
     Body,
+    Get,
     HttpException,
     HttpStatus,
     HttpCode
@@ -28,6 +29,7 @@ import {LoginDto} from './dto/login.dto';
 import {CreateUserDto} from './dto/create-user.dto';
 import {AuthService} from './provider/auth.service';
 import {UserEntity} from '../users/user.entity';
+import {AccessToken} from './auth.types';
 import {UserAttrs} from 'server/users/users.types';
 
 
@@ -92,5 +94,19 @@ export class AuthController {
             },
             HttpStatus.CONFLICT)
         }
+    }
+    
+    @ApiTags('Auth')
+    @ApiOperation({summary: 'Получение JWT-токена'})
+    @ApiOkResponse({
+        description: 'Токен получен',
+        type: AccessToken
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен'})
+    @Get('getToken')
+    @UseGuards(LoggedInGuard)
+    public async login(@Request() req: Req): Promise<AccessToken> {
+        const userAttrs = req.user as UserAttrs;
+        return this.authService.getToken(userAttrs);
     }
 }
