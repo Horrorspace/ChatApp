@@ -5,10 +5,13 @@ import {UsersModule} from '../users/users.module';
 import {AuthController} from './auth.controller';
 import {LocalStrategy} from './strategy/local.strategy';
 import {BasicStrategy} from './strategy/basic.strategy';
+import {JwtStrategy} from './strategy/jwt.strategy';
 import {LocalAuthGuard} from './guard/local.guard';
 import {BasicAuthGuard} from './guard/basic.guard';
+import {JwtAuthGuard} from './guard/jwt.guard';
 import {LocalSerializer} from './provider/serialization.provider';
 import {JwtModule} from '@nestjs/jwt';
+import {jwtSecret} from './const/jwt.const'
 
 
 @Module({
@@ -19,7 +22,10 @@ import {JwtModule} from '@nestjs/jwt';
         LocalAuthGuard,
         LocalSerializer,
         BasicStrategy,
-        BasicAuthGuard
+        BasicAuthGuard,
+        JwtStrategy,
+        JwtAuthGuard
+
     ],
     imports: [
         UsersModule, 
@@ -28,8 +34,8 @@ import {JwtModule} from '@nestjs/jwt';
             defaultStrategy: 'local',
         }),
         JwtModule.register({
-            secret: process.env.JWT_SECRET_KEY,
-            signOptions: { expiresIn: '3600s' },
+            secret: jwtSecret,
+            signOptions: { expiresIn: 36000000 },
         })
     ],
     exports: [
@@ -38,7 +44,9 @@ import {JwtModule} from '@nestjs/jwt';
         LocalAuthGuard,
         LocalSerializer,
         BasicStrategy,
-        BasicAuthGuard
+        BasicAuthGuard,
+        JwtStrategy,
+        JwtAuthGuard
     ]
 })
 export class AuthModule {}

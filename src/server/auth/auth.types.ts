@@ -13,7 +13,7 @@ export interface UserAuthData {
 }
 
 export interface AccessToken {
-    accessToken: string;
+    access_token: string;
 }
 
 export interface JwtPayload {

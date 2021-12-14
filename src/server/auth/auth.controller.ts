@@ -24,12 +24,13 @@ import {
 import {Request as Req} from 'express';
 import {LocalAuthGuard} from './guard/local.guard';
 import {LoggedInGuard} from './guard/logged-in.guard';
+import {JwtAuthGuard} from './guard/jwt.guard';
 import {UnauthorizedGuard} from './guard/unauthorized.guard';
 import {LoginDto} from './dto/login.dto';
 import {CreateUserDto} from './dto/create-user.dto';
+import {TokenDto} from './dto/token.dto';
 import {AuthService} from './provider/auth.service';
 import {UserEntity} from '../users/user.entity';
-import {AccessToken} from './auth.types';
 import {UserAttrs} from 'server/users/users.types';
 
 
@@ -100,13 +101,20 @@ export class AuthController {
     @ApiOperation({summary: 'Получение JWT-токена'})
     @ApiOkResponse({
         description: 'Токен получен',
-        type: AccessToken
+        type: TokenDto
     })
     @ApiForbiddenResponse({description: 'Доступ запрещен'})
     @Get('getToken')
     @UseGuards(LoggedInGuard)
-    public async login(@Request() req: Req): Promise<AccessToken> {
+    public async getToken(@Request() req: Req): Promise<TokenDto | null> {
         const userAttrs = req.user as UserAttrs;
         return this.authService.getToken(userAttrs);
+    }
+
+    @Post('jwtTest')
+    @UseGuards(JwtAuthGuard)
+    public async jwtAuthTest(@Request() req: Req): Promise<string> {
+        console.log(req.user)
+        return 'test';
     }
 }

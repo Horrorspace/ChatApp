@@ -5,6 +5,8 @@ import {MessagesService} from './messages.service';
 import {Message} from './messages.model';
 import {UsersModule} from '../users/users.module';
 import {MessagesGateway} from './messages.gateway';
+import {AuthModule} from '../auth/auth.module';
+import {JwtService} from '@nestjs/jwt';
 
 
 @Module({
@@ -12,7 +14,9 @@ import {MessagesGateway} from './messages.gateway';
     providers: [MessagesService, MessagesGateway],
     imports: [
         SequelizeModule.forFeature([Message]),
-        UsersModule
+        UsersModule,
+        AuthModule,
+        JwtService
     ],
     exports: [MessagesModule, MessagesGateway]
 })

@@ -36,10 +36,10 @@ export class AuthService {
         return user;
     }
     
-    public async validateUserbyJwt({id}: JwtPayload): Promise<UserAttrs | null> {
-        if(id) {
-            const user = await this.usersService.getUserById(id);
-            return user.get();
+    public async validateUserbyJwt({sub}: JwtPayload): Promise<UserAttrs | null> {
+        if(sub) {
+            const user = await this.usersService.getUserById(sub);
+            return user ? user.get() : null;
         }
         else {
             return null;
@@ -49,7 +49,7 @@ export class AuthService {
     public async getToken(userAttrs: UserAttrs): Promise<AccessToken | null> {
         const payload: JwtPayload  = {username: userAttrs.username, sub: userAttrs.id};
         return {
-          accessToken: this.jwtService.sign(payload),
+            access_token: this.jwtService.sign(payload),
         };
     }
 }
