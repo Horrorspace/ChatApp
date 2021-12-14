@@ -4,7 +4,9 @@ import {AuthService} from './provider/auth.service';
 import {UsersModule} from '../users/users.module';
 import {AuthController} from './auth.controller';
 import {LocalStrategy} from './strategy/local.strategy';
+import {BasicStrategy} from './strategy/basic.strategy';
 import {LocalAuthGuard} from './guard/local.guard';
+import {BasicAuthGuard} from './guard/basic.guard';
 import {LocalSerializer} from './provider/serialization.provider';
 
 
@@ -14,7 +16,9 @@ import {LocalSerializer} from './provider/serialization.provider';
         AuthService, 
         LocalStrategy,
         LocalAuthGuard,
-        LocalSerializer
+        LocalSerializer,
+        BasicStrategy,
+        BasicAuthGuard
     ],
     imports: [
         UsersModule, 
@@ -27,7 +31,9 @@ import {LocalSerializer} from './provider/serialization.provider';
         AuthService, 
         LocalStrategy,
         LocalAuthGuard,
-        LocalSerializer
+        LocalSerializer,
+        BasicStrategy,
+        BasicAuthGuard
     ]
 })
 export class AuthModule {}
