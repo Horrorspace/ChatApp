@@ -11,3 +11,7 @@ export interface UserAuthData {
     username: string;
     email: string;
 }
+
+export interface AccessToken {
+    accessToken: string;
+}
