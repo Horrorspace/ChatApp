@@ -15,3 +15,8 @@ export interface UserAuthData {
 export interface AccessToken {
     accessToken: string;
 }
+
+export interface JwtPayload {
+    username: string;
+    sub: number;
+}
