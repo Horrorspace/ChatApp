@@ -8,6 +8,7 @@ import {BasicStrategy} from './strategy/basic.strategy';
 import {LocalAuthGuard} from './guard/local.guard';
 import {BasicAuthGuard} from './guard/basic.guard';
 import {LocalSerializer} from './provider/serialization.provider';
+import {JwtModule} from '@nestjs/jwt';
 
 
 @Module({
@@ -25,6 +26,10 @@ import {LocalSerializer} from './provider/serialization.provider';
         PassportModule.register({
             session: true,
             defaultStrategy: 'local',
+        }),
+        JwtModule.register({
+            secret: process.env.JWT_SECRET_KEY,
+            signOptions: { expiresIn: '3600s' },
         })
     ],
     exports: [
