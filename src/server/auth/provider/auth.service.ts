@@ -31,4 +31,13 @@ export class AuthService {
         const user = await this.usersService.createUser(creationAttrs);
         return user;
     }
+    
+    public async validateUserbyJwt({id}): Promise<UserAttrs | null> {
+        if(id) {
+            const user = await this.usersService.getUserById(id);
+        }
+        else {
+            return null;
+        }
+    }
 }
