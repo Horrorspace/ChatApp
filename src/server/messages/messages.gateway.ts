@@ -34,8 +34,9 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     @UseGuards(JwtAuthGuard)
     @SubscribeMessage('auth')
     public handleAuth(@MessageBody() {access_token}: AccessToken) {
-        const user = this.jwtService.decode(access_token) as UserAttrs;
-        this.clients.push(user);
+        console.log(session.getUpgradeRequest().getUserPrincipal())
+        //const user = this.jwtService.decode(access_token) as UserAttrs;
+        //this.clients.push(user);
     }
 
     public async handleConnection(client: Socket) {
