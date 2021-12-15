@@ -6,7 +6,8 @@ import {Message} from './messages.model';
 import {UsersModule} from '../users/users.module';
 import {MessagesGateway} from './messages.gateway';
 import {AuthModule} from '../auth/auth.module';
-import {JwtService} from '@nestjs/jwt';
+import {JwtModule} from '@nestjs/jwt';
+import {jwtSecret} from '../auth/const/jwt.const';
 
 
 @Module({
@@ -16,7 +17,9 @@ import {JwtService} from '@nestjs/jwt';
         SequelizeModule.forFeature([Message]),
         UsersModule,
         AuthModule,
-        JwtService
+        JwtModule.register({
+            secret: jwtSecret
+        })
     ],
     exports: [MessagesModule, MessagesGateway]
 })
