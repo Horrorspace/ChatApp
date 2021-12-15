@@ -1,7 +1,9 @@
 import {UseGuards, Inject} from '@nestjs/common';
 import {
     MessageBody,
+    ConnectedSocket,
     SubscribeMessage,
+    Socket,
     WebSocketGateway,
     WebSocketServer,
     OnGatewayConnection, 
@@ -33,8 +35,8 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
 
     @UseGuards(JwtAuthGuard)
     @SubscribeMessage('auth')
-    public handleAuth(@MessageBody() {access_token}: AccessToken) {
-        console.log(session.getUpgradeRequest().getUserPrincipal())
+    public handleAuth(@MessageBody() {access_token}: AccessToken, @ConnectedSocket() client: Socket) {
+        console.log(client)
         //const user = this.jwtService.decode(access_token) as UserAttrs;
         //this.clients.push(user);
     }
