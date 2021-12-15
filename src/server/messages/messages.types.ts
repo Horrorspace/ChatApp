@@ -1,6 +1,3 @@
-import {UserAttrs} from '../users/users.types';
-
-
 export interface MessageId {
     id: number;
 }
@@ -22,5 +19,5 @@ export interface MessageAttrs extends MessageCreationAttrs {
 
 export interface wsClient {
     wsId: string;
-    userAttrs: UserAttrs;
+    id: number;
 }
