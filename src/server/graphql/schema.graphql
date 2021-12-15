@@ -7,6 +7,15 @@ type User {
     confirmed: Boolean
 }
 
+type Message {
+    id: ID
+    date: Date
+    text: String!
+    readed: Boolean
+    fromUserId: Int!
+    toUserId: Int!
+}
+
 input UserInput {
     username: String!
     email: String!
@@ -41,6 +50,8 @@ input EditUserAvatar {
 type Query {
     users: [User]
     user(id: ID!): User
+
+    messages: [Message]
 }
 
 type Mutation {
