@@ -1,16 +1,18 @@
-import {Inject, UseGuards} from '@nestjs/common';
+import {Inject, UseGuards, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
 import {Resolver, Query, Args, Mutation} from '@nestjs/graphql';
 import {UsersService} from './users.service';
+import {UserIdDto} from './dto/user-id.dto';
+import {UserEmailDto} from './dto/user-email.dto';
+import {EditUserNameDto} from './dto/edit-user-name.dto';
+import {EditUserEmailDto} from './dto/edit-user-email.dto';
+import {EditUserEmailAuthDto} from './dto/edit-user-email-auth.dto';
+import {EditUserPasswordDto} from './dto/edit-user-password.dto';
+import {EditUserPasswordAuthDto} from './dto/edit-user-password-auth.dto';
+import {EditUserOnlineDto} from './dto/edit-user-online.dto';
+import {EditUserAvatarDto} from './dto/edit-user-avatar.dto';
+import {UserEntity} from './user.entity';
 import {GqlAuthGuard} from '../graphql/graphql-auth.guard';
-// import {UsersGateway} from './users.gateway';
-// import {CheckIdGuard} from './guard/check-id.guard';
-import {
-    editUserNameOpt, 
-    editUserEmailOpt, 
-    editUserPasswordOpt, 
-    editUserOnlineOpt, 
-    editUserAvatarOpt
-} from './users.types';
+
 
 
 @Resolver('User')
@@ -19,49 +21,114 @@ export class UsersResolver {
 
     @Query()
     @UseGuards(GqlAuthGuard)
-    public async users() {
-        return this.usersService.getAllUsers();
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async users(): Promise<UserEntity[]> {
+        const users = await this.usersService.getAllUsers();
+        return users.map(user => {
+            return new UserEntity(user.get());
+        })
     }
 
     @Query()
     @UseGuards(GqlAuthGuard)
-    public async user(@Args('id') id: number) {
-        return this.usersService.getUserById(id);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async user(@Args('options') {id}: UserIdDto): Promise<UserEntity | null> {
+        const user = await this.usersService.getUserById(id);
+        if(user) {
+            return new UserEntity(user.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserName(@Args('options') options: editUserNameOpt) {
-        return await this.usersService.editUserName(options);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserName(@Args('options') options: EditUserNameDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
+
+        if(isUserExist) {
+            const user = await this.usersService.editUserName(options);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserEmail(@Args('options') options: editUserEmailOpt) {
-        return await this.usersService.editUserEmail(options);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserEmail(@Args('options') options: EditUserEmailDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
+
+        if(isUserExist) {
+            const user = await this.usersService.editUserEmail(options);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserPassword(@Args('options') options: editUserPasswordOpt) {
-        return await this.usersService.editUserPassword(options);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserPassword(@Args('options') options: EditUserPasswordDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
+
+        if(isUserExist) {
+            const user = await this.usersService.editUserPassword(options);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserOnline(@Args('options') options: editUserOnlineOpt) {
-        return await this.usersService.editUserOnline(options);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserOnline(@Args('options') options: EditUserOnlineDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
+
+        if(isUserExist) {
+            const user = await this.usersService.editUserOnline(options);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserAvatar(@Args('options') options: editUserAvatarOpt) {
-        return await this.usersService.editUserAvatar(options);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserAvatar(@Args('options') options: EditUserAvatarDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(options.id);
+
+        if(isUserExist) {
+            const user = await this.usersService.editUserAvatar(options);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
     
     @Mutation()
     @UseGuards(GqlAuthGuard)
-    public async editUserConfirm(@Args('id') id: number) {
-        return await this.usersService.confirmUser(id);
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async editUserConfirm(@Args('options') {id}: UserIdDto): Promise<UserEntity | null> {
+        const isUserExist: boolean = await this.usersService.checkUserId(id);
+
+        if(isUserExist) {
+            const user = await this.usersService.confirmUser(id);
+            return new UserEntity(user!.get());
+        }
+        else {
+            return null;
+        }
     }
 }
