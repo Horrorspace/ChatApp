@@ -1,4 +1,4 @@
-import {Inject} from '@nestjs/common';
+import {Injectm } from '@nestjs/common';
 import {
     MessageBody,
     ConnectedSocket,
@@ -11,7 +11,7 @@ import {
 import {JwtService} from '@nestjs/jwt'
 import {Server, Socket} from 'socket.io';
 import {MessageCreationAttrsRaw, wsClient} from './messages.types';
-// import {JwtAuthGuard} from '../auth/guard/jwt.guard';
+import {LoggedInWsGuard } from '../auth/guard/logged-in-ws.guard';
 import {AccessToken, JwtPayload} from '../auth/auth.types';
 import {WsClientDto} from './dto/ws-client.dto';
 import {CreateMessageDto} from './dto/create-message.dto';
@@ -75,6 +75,7 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     }
 
     @SubscribeMessage('auth')
+    @UseGuards(LoggedInWsGuard)
     public handleAuth(@MessageBody() {access_token}: AccessToken, @ConnectedSocket() client: Socket) {
         const {sub} = this.jwtService.decode(access_token) as JwtPayload;
         const wsClient = new WsClientDto(client.id, sub)
