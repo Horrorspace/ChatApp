@@ -33,6 +33,7 @@ This projects uses the following technologies:
 - [Swagger](https://swagger.io/ "Swagger") - Library for automatically generate documentation of REST API.
 - [GraphQL](https://graphql.org/ "GraphQL") - Open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
 - [Apollo](https://www.apollographql.com/ "GraphQL") - Platform for building GraphQL API.
+- [Socket.IO](https://socket.io/ "Socket.IO") - Realtime application framework based on WebSocket protocol and long-polling requests.
 
 ## Folders structure
 
