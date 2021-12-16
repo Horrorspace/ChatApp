@@ -2,12 +2,12 @@ import {Inject, UseGuards, UseInterceptors, ClassSerializerInterceptor} from '@n
 import {Resolver, Query, Args, Mutation} from '@nestjs/graphql';
 import {UsersService} from './users.service';
 import {UserIdDto} from './dto/user-id.dto';
-import {UserEmailDto} from './dto/user-email.dto';
+// import {UserEmailDto} from './dto/user-email.dto';
 import {EditUserNameDto} from './dto/edit-user-name.dto';
 import {EditUserEmailDto} from './dto/edit-user-email.dto';
-import {EditUserEmailAuthDto} from './dto/edit-user-email-auth.dto';
+// import {EditUserEmailAuthDto} from './dto/edit-user-email-auth.dto';
 import {EditUserPasswordDto} from './dto/edit-user-password.dto';
-import {EditUserPasswordAuthDto} from './dto/edit-user-password-auth.dto';
+// import {EditUserPasswordAuthDto} from './dto/edit-user-password-auth.dto';
 import {EditUserOnlineDto} from './dto/edit-user-online.dto';
 import {EditUserAvatarDto} from './dto/edit-user-avatar.dto';
 import {UserEntity} from './user.entity';
