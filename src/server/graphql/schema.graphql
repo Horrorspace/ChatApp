@@ -16,6 +16,15 @@ type Message {
     toUserId: Int!
 }
 
+input IdInput {
+    id: Int!
+}
+
+input MessageInput {
+    toUserId: Int!
+    text: String!
+}
+
 input UserInput {
     username: String!
     email: String!
@@ -49,9 +58,10 @@ input EditUserAvatar {
 
 type Query {
     users: [User]
-    user(id: ID!): User
+    user(options: IdInput): User
 
     messages: [Message]
+    message(options: IdInput): Message
 }
 
 type Mutation {
@@ -61,6 +71,10 @@ type Mutation {
     editUserPassword(options: EditUserPassword): User
     editUserOnline(options: EditUserOnline): User
     editUserAvatar(options: EditUserAvatar): User
-    editUserConfirm(id: ID!): User
-    deleteUser(id: ID!): User
+    editUserConfirm(options: IdInput): User
+    deleteUser(options: IdInput): User
+    
+    createMessage(message: MessageInput): Message
+    setReadMessage(options: IdInput): Message
+    deleteMessage(options: IdInput): Message
 }
