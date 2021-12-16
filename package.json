@@ -51,6 +51,7 @@
   "homepage": "https://github.com/Horrorspace/ChatApp#readme",
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@apollo/client": "^3.5.6",
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
