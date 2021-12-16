@@ -35,7 +35,7 @@ module.exports = {
     },
     output: {
         filename: 'public/js/[name].js',
-        path: path.resolve(__dirname, './build/src/client'),
+        path: path.resolve(__dirname, './build/client'),
     },
     plugins: [
         new HtmlWebpackPlugin({
