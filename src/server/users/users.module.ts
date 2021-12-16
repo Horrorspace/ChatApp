@@ -4,6 +4,8 @@ import {UsersController} from './users.controller';
 import {UsersService} from './users.service';
 import {User} from './users.model';
 import {UsersResolver} from './users.resolver';
+import {JwtModule} from '@nestjs/jwt';
+import {jwtSecret} from '../auth/const/jwt.const';
 // import {UsersGateway} from './users.gateway';
 
 
@@ -11,7 +13,10 @@ import {UsersResolver} from './users.resolver';
     controllers: [UsersController],
     providers: [UsersService, UsersResolver],
     imports: [
-        SequelizeModule.forFeature([User])
+        SequelizeModule.forFeature([User]),
+        JwtModule.register({
+            secret: jwtSecret
+        })
     ],
     exports: [UsersService, UsersResolver]
 })
