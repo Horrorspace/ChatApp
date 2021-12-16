@@ -34,6 +34,7 @@ This projects uses the following technologies:
 - [GraphQL](https://graphql.org/ "GraphQL") - Open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
 - [Apollo](https://www.apollographql.com/ "GraphQL") - Platform for building GraphQL API.
 - [Socket.IO](https://socket.io/ "Socket.IO") - Realtime application framework based on WebSocket protocol and long-polling requests.
+- [JSON Web Token](https://jwt.io/ "JSON Web Token") - Open, industry standard RFC 7519 method for representing claims securely between two parties.
 
 ## Folders structure
 
