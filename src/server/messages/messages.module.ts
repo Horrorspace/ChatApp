@@ -8,11 +8,12 @@ import {MessagesGateway} from './messages.gateway';
 import {AuthModule} from '../auth/auth.module';
 import {JwtModule} from '@nestjs/jwt';
 import {jwtSecret} from '../auth/const/jwt.const';
+import {MessagesResolver} from './messages.resolver';
 
 
 @Module({
     controllers: [MessagesController],
-    providers: [MessagesService, MessagesGateway],
+    providers: [MessagesService, MessagesGateway, MessagesResolver],
     imports: [
         SequelizeModule.forFeature([Message]),
         UsersModule,
@@ -21,6 +22,6 @@ import {jwtSecret} from '../auth/const/jwt.const';
             secret: jwtSecret
         })
     ],
-    exports: [MessagesModule, MessagesGateway]
+    exports: [MessagesModule, MessagesGateway, MessagesResolver]
 })
 export class MessagesModule {}
