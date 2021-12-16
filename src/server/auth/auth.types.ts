@@ -1,3 +1,7 @@
+import {IncomingHttpHeaders} from 'http';
+import {Request as Req} from 'express';
+
+
 export interface LoginAttrs {
     email: string;
     password: string;
@@ -19,4 +23,12 @@ export interface AccessToken {
 export interface JwtPayload {
     username: string;
     sub: number;
+}
+
+export interface ReqObj {
+    req: Req
+}
+
+export interface headersObj {
+    headers: IncomingHttpHeaders
 }
