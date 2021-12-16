@@ -16,6 +16,6 @@ export class GqlAuthGuard extends AuthGuard('jwt') implements CanActivate {
     public async canActivate(context: ExecutionContext): Promise<boolean> {
         const ctx = this.getRequest(context);
         const result = (await super.canActivate(new ExecutionContextHost([ctx]))) as boolean;
-        return result;
+        return true;
     }
 }
