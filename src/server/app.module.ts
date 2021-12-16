@@ -8,7 +8,9 @@ import {MessagesModule} from './messages/messages.module';
 import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
+import {headersObj, ReqObj} from './auth/auth.types';
 // import {join} from 'path';
+
 
 
 @Module({
@@ -33,6 +35,7 @@ import {GraphQLModule} from '@nestjs/graphql';
             debug: true,
             playground: true,
             typePaths: ['./**/*.graphql'],
+            context: ({req}: ReqObj): headersObj  => ({headers: req.headers})
         }),
         SessionsModule,
         UsersModule,
