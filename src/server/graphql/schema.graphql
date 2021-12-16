@@ -25,12 +25,6 @@ input MessageInput {
     text: String!
 }
 
-input UserInput {
-    username: String!
-    email: String!
-    password: String!
-}
-
 input EditUserName {
     id: ID!
     username: String!
@@ -65,14 +59,12 @@ type Query {
 }
 
 type Mutation {
-    createUser(user: UserInput): User
     editUserName(options: EditUserName): User
     editUserEmail(options: EditUserEmail): User
     editUserPassword(options: EditUserPassword): User
     editUserOnline(options: EditUserOnline): User
     editUserAvatar(options: EditUserAvatar): User
     editUserConfirm(options: IdInput): User
-    deleteUser(options: IdInput): User
     
     createMessage(message: MessageInput): Message
     setReadMessage(options: IdInput): Message
