@@ -1,21 +1,34 @@
-import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common';
-import {ExecutionContextHost} from '@nestjs/core/helpers/execution-context-host;
+import {Injectable, CanActivate, ExecutionContext, Inject} from '@nestjs/common';
+// import {headersObj, ReqObj} from '../auth/auth.types';
+import {Request as Req} from 'express';
 import {GqlExecutionContext} from '@nestjs/graphql';
-import {AuthGuard} from '@nestjs/passport';
+import {IncomingHttpHeaders} from 'http';
+import {JwtService} from '@nestjs/jwt'
 
 
 @Injectable()
-export class GqlAuthGuard extends AuthGuard('jwt') implements CanActivate {
-    public getRequest(context: ExecutionContext) {
-        const ctx = GqlExecutionContext.create(context);
-        console.log("gql simple context: ", context);
-        console.log("gqlContext: ", ctx.getContext());
-        return ctx.getContext().req;
+export class GqlAuthGuard implements CanActivate {
+    constructor(@Inject(JwtService) private readonly jwtService: JwtService) {}
+    
+    private getHeaders(context: ExecutionContext): IncomingHttpHeaders {
+        const ctx = GqlExecutionContext.create(context).getContext<Req>();
+        return ctx.headers;
     }
     
     public async canActivate(context: ExecutionContext): Promise<boolean> {
-        const ctx = this.getRequest(context);
-        const result = (await super.canActivate(new ExecutionContextHost([ctx]))) as boolean;
-        return true;
+        const headers = this.getHeaders(context);
+        const authHeader: string | undefined = headers.authorization;
+
+        if(authHeader) {
+            try {
+                await this.jwtService.verify(authHeader);
+                return true;
+            }
+            catch(e) {
+                console.error(e);
+                return false
+            }
+        }
+        return false;
     }
 }
