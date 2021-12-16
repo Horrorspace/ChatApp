@@ -1,6 +1,12 @@
-export interface IMessage {
+export interface INewMessage {
     text: string;
-    fromUser: boolean;
-    time: Date;
-    read: boolean;
+    toUserId: number;
+}
+
+
+export interface IMessage extends INewMessage {
+    id: number;
+    fromUserId: number;
+    date: Date;
+    readed: boolean;
 }
