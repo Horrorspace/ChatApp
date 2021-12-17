@@ -1,10 +1,11 @@
 import {Module} from '@nestjs/common';
+import {FrontendMiddleware} from './frontend.middleware';
 
 
 @Module({
     controllers: [],
-    providers: [],
+    providers: [FrontendMiddleware],
     imports: [],
-    exports: []
+    exports: [FrontendMiddleware]
 })
 export class FrontendModule {}
