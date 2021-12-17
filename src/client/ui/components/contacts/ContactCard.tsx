@@ -8,7 +8,8 @@ import {UserAvatar} from '@ui/components/contacts/UserAvatar'
 const Component: React.FC<IContactCardProps> = ({
     username, 
     avatarSrc, 
-    lastMessagefromUser, 
+    lastMessageFromUserId,
+    userId,
     userAvatarSrc, 
     timeOfLastMessage,
     lastMessage
@@ -56,7 +57,8 @@ const Component: React.FC<IContactCardProps> = ({
                     className="contact-card-last-message__main-wrap"
                 >
                     <UserAvatar
-                        lastMessagefromUser={lastMessagefromUser}
+                        lastMessageFromUserId={lastMessageFromUserId}
+                        userId={userId}
                         userAvatarSrc={userAvatarSrc}                 
                     />
                     <Col
