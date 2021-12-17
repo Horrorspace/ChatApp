@@ -1,4 +1,4 @@
-import {Module} from '@nestjs/common';
+import {Module, NestModule, MiddlewareConsumer} from '@nestjs/common';
 import {SequelizeModule} from '@nestjs/sequelize';
 import {ConfigModule} from '@nestjs/config';
 import {ServeStaticModule} from '@nestjs/serve-static';
@@ -10,7 +10,7 @@ import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
 import {headersObj, ReqObj} from './auth/auth.types';
-// import {join} from 'path';
+import {FrontendMiddleware } from './frontend/frontend.middleware';
 
 
 
@@ -48,4 +48,15 @@ import {headersObj, ReqObj} from './auth/auth.types';
     ],
     exports: []
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply(FrontendMiddleware)
+            .forRoutes(
+                {
+                    path: '/**',
+                    method: RequestMethod.ALL,
+                }
+            );
+    }
+}
