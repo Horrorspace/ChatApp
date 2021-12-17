@@ -6,28 +6,31 @@ import {IMessagesProps} from '@interfaces/IProps';
 import {DateMessage} from '@ui/components/chat/DateMessage'
 
 
-const Component: React.FC<IMessagesProps> = ({messages}: IMessagesProps) => {  
-   const messageProd = ({text, fromUser, time, read}: IMessage): React.ReactElement => {
-       return (
+const Component: React.FC<IMessagesProps> = ({messages, userId}: IMessagesProps) => {  
+    const messageProd = ({text, fromUserId, date, readed, id}: IMessage): React.ReactElement => {
+        const fromUser: boolean = fromUserId === userId;
+        return (
            <Row
             align="middle"
             justify={fromUser ? 'end' : 'start'}
             className="message-element-row"
+            key={id}
            >
                 <Col
                     className="message-element-column"
                 >
                     <Message
                         text={text}
-                        time={time}
-                        fromUser={fromUser}
-                        read={read}
+                        date={date}
+                        fromUserId={fromUserId}
+                        userId={userId}
+                        readed={readed}
                     />
                 </Col>
            </Row>
        )
    }
-   0
+   
    const renderedMessages: React.ReactElement[] = messages.map(messageProd)
 
 
