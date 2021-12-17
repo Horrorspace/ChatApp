@@ -1,4 +1,4 @@
-import {Module, NestModule, MiddlewareConsumer} from '@nestjs/common';
+import {Module, NestModule, MiddlewareConsumer, RequestMethod} from '@nestjs/common';
 import {SequelizeModule} from '@nestjs/sequelize';
 import {ConfigModule} from '@nestjs/config';
 import {ServeStaticModule} from '@nestjs/serve-static';
@@ -12,6 +12,7 @@ import {GraphQLModule} from '@nestjs/graphql';
 import {headersObj, ReqObj} from './auth/auth.types';
 import {FrontendMiddleware} from './frontend/frontend.middleware';
 import {FrontendModule} from './frontend/frontend.module';
+import {join} from 'path';
 
 
 
