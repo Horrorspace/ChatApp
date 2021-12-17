@@ -10,7 +10,8 @@ import {AuthModule} from './auth/auth.module';
 import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
 import {headersObj, ReqObj} from './auth/auth.types';
-import {FrontendMiddleware } from './frontend/frontend.middleware';
+import {FrontendMiddleware} from './frontend/frontend.middleware';
+import {FrontendModule} from './frontend/frontend.module';
 
 
 
@@ -45,6 +46,7 @@ import {FrontendMiddleware } from './frontend/frontend.middleware';
         UsersModule,
         AuthModule,
         MessagesModule,
+        FrontendModule
     ],
     exports: []
 })
