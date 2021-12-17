@@ -8,52 +8,68 @@ import {IMessage} from '@interfaces/IMessage';
 export const ChatPage: React.FC = () => {
    const messages: IMessage[] = [
         {
+            id: 1,
             text: 'One',
-            fromUser: true,
-            time: new Date('November 14, 2021 03:20:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 03:20:00'),
+            readed: true
         },
         {
+            id: 2,
             text: 'Two',
-            fromUser: true,
-            time: new Date('November 14, 2021 09:41:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 09:41:00'),
+            readed: true
         },
         {
+            id: 3,
             text: 'Three',
-            fromUser: false,
-            time: new Date('November 14, 2021 12:18:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 12:18:00'),
+            readed: true
         },
         {
+            id: 4,
             text: 'Four',
-            fromUser: true,
-            time: new Date('November 14, 2021 16:54:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 16:54:00'),
+            readed: true
         },
         {
+            id: 5,
             text: 'Five',
-            fromUser: false,
-            time: new Date('November 14, 2021 19:28:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 19:28:00'),
+            readed: true
         },
         {
+            id: 6,
             text: 'Six',
-            fromUser: true,
-            time: new Date('November 14, 2021 19:28:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 19:28:00'),
+            readed: true
         },
         {
+            id: 7,
             text: 'Seven \n Seven',
-            fromUser: false,
-            time: new Date('November 14, 2021 19:28:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 19:28:00'),
+            readed: true
         },
         {
+            id: 8,
             text: 'Eight \n Eight Eight \n Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight Eight',
-            fromUser: true,
-            time: new Date('November 14, 2021 19:28:00'),
-            read: true
+            fromUserId: 10,
+            toUserId: 9,
+            date: new Date('November 14, 2021 19:28:00'),
+            readed: true
         },
     ]
 
@@ -69,6 +85,7 @@ export const ChatPage: React.FC = () => {
             />
             <Messages 
                 messages={messages}
+                userId={10}
             />
             <MessageEditor 
             />
