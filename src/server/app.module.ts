@@ -1,6 +1,7 @@
 import {Module} from '@nestjs/common';
 import {SequelizeModule} from '@nestjs/sequelize';
 import {ConfigModule} from '@nestjs/config';
+import {ServeStaticModule} from '@nestjs/serve-static';
 import {User} from './users/users.model';
 import {Message} from './messages/messages.model';
 import {UsersModule} from './users/users.module';
@@ -19,6 +20,9 @@ import {headersObj, ReqObj} from './auth/auth.types';
     imports: [
         ConfigModule.forRoot({
             envFilePath: `.${process.env.NODE_ENV}.env`
+        }),
+        ServeStaticModule.forRoot({
+            rootPath: join(process.cwd(), 'client', 'public'),
         }),
         SequelizeModule.forRoot({
             dialect: 'postgres',
