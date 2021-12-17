@@ -9,16 +9,20 @@ export interface IDateMessageProps {
 
 export interface IStatusProps {
     fromUser: boolean;
-    read: boolean;
+    readed: boolean;
 }
 
-export interface IMessageProps extends IStatusProps {
+export interface IMessageProps {
+    userId: number;
+    fromUserId: number;
     text: string;
-    time: Date;
+    date: Date;
+    readed: boolean;
 }
 
 export interface IMessagesProps {
-    messages: IMessage[]
+    messages: IMessage[];
+    userId: number;
 }
 
 export interface abstractUser {
@@ -32,7 +36,8 @@ export interface IContactProps extends abstractUser {
 }
 
 export interface IUserAvatarProps {
-    lastMessagefromUser: boolean;
+    userId: number;
+    lastMessageFromUserId: number;
     userAvatarSrc: string;
 }
 
