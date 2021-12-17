@@ -4,8 +4,9 @@ import {IMessageProps} from '@interfaces/IProps';
 import {Status} from '@ui/components/chat/Status'
 
 
-const Component: React.FC<IMessageProps> = ({text, time, fromUser, read}: IMessageProps) => {
-    const timeStr: string = `${time.getHours()}:${time.getMinutes()}`;
+const Component: React.FC<IMessageProps> = ({text, date, fromUserId, userId, readed}: IMessageProps) => {
+    const fromUser: boolean = fromUserId === userId;
+    const timeStr: string = `${date.getHours()}:${date.getMinutes()}`;
     const elementClassName: string = fromUser ? "message-element_from-user_dark" : "message-element_dark";
     const {Paragraph} = Typography;
 
@@ -26,7 +27,7 @@ const Component: React.FC<IMessageProps> = ({text, time, fromUser, read}: IMessa
             </Paragraph>
             <Status 
                 fromUser={fromUser}
-                read={read}
+                readed={readed}
             />
         </Card>
     )
