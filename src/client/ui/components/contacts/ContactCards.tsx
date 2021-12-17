@@ -19,8 +19,9 @@ const Component: React.FC = () => {
                     username="Just for lulz"
                     avatarSrc={avatarSrc}
                     userAvatarSrc={userAvatarSrc}
+                    lastMessageFromUserId={10}
+                    userId={8}
                     online={true}
-                    lastMessagefromUser={true}
                     lastMessage={messageTest}
                     timeOfLastMessage={new Date('November 14, 2021 19:28:00')}
                 />
@@ -28,8 +29,9 @@ const Component: React.FC = () => {
                     username="Just for lulz"
                     avatarSrc={avatarSrc}
                     userAvatarSrc={userAvatarSrc}
+                    lastMessageFromUserId={10}
+                    userId={8}
                     online={true}
-                    lastMessagefromUser={true}
                     lastMessage="Five"
                     timeOfLastMessage={new Date('November 14, 2021 19:28:00')}
                 />
@@ -37,8 +39,9 @@ const Component: React.FC = () => {
                     username="Just for lulz"
                     avatarSrc={avatarSrc}
                     userAvatarSrc={userAvatarSrc}
+                    lastMessageFromUserId={10}
+                    userId={8}
                     online={true}
-                    lastMessagefromUser={true}
                     lastMessage="Five"
                     timeOfLastMessage={new Date('November 14, 2021 19:28:00')}
                 />
