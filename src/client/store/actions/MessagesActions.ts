@@ -4,30 +4,28 @@ import {IMessage} from '@interfaces/IMessage';
 
 
 export class MessagesActions {
-    private static getAllMessagesThunk() {}
+    private static getAllMessagesThunkAction() {}
 
-    private static sendNewMessageThunk() {}
+    private static sendNewMessageThunkAction() {}
 
-    private static setReadMessageThunk() {}
+    private static setReadMessageThunkAction() {}
 
-    private static deleteMessageThunk() {}
+    private static deleteMessageThunkAction() {}
 
     
     public static setMessages = createAction<IMessage[]>(MessagesActTypes.setMessages);
 
     public static addMessage = createAction<IMessage>(MessagesActTypes.addMessage);
 
-    public static setReadMessageRepository = createAction<number>(MessagesActTypes.setReadMessageRepository);
+    public static setReadMessage = createAction<number>(MessagesActTypes.setReadMessage);
 
-    public static deleteMessageFromRepository = createAction<number>(MessagesActTypes.deleteMessageFromRepository);
+    public static deleteMessage = createAction<number>(MessagesActTypes.deleteMessage);
 
-    public static clearMessages = createAction<undefined>(MessagesActTypes.clearMessages);
-
-    public static getAllMessages = createAsyncThunk<undefined>(MessagesActTypes.getAllMessages, this.getAllMessagesThunk);
+    public static getAllMessagesThunk = createAsyncThunk<undefined>(MessagesActTypes.getAllMessagesThunk, this.getAllMessagesThunkAction);
     
-    public static sendNewMessage = createAsyncThunk<undefined>(MessagesActTypes.sendNewMessage, this.sendNewMessageThunk);
+    public static sendNewMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.sendNewMessageThunk, this.sendNewMessageThunkAction);
     
-    public static setReadMessage = createAsyncThunk<undefined>(MessagesActTypes.setReadMessage, this.setReadMessageThunk);
+    public static setReadMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.setReadMessageThunk, this.setReadMessageThunkAction);
     
-    public static deleteMessage = createAsyncThunk<undefined>(MessagesActTypes.deleteMessage, this.deleteMessageThunk);
+    public static deleteMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.deleteMessageThunk, this.deleteMessageThunkAction);
 }
