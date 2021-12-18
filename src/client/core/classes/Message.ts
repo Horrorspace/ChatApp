@@ -31,6 +31,10 @@ export class Message extends MessageDto {
             this.readed
         )
     }
+    
+    public getId(): number {
+        return this.id;
+    }
   
     public setRead(): IMessage {
         this.readed = true;
