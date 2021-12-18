@@ -10,7 +10,16 @@ export class MessageReducer {
     private static buildReducer(builder) {
         builder
             .addCase(MessagesActions.setMessages, (state, action) => {
-                state.value = action.payload;
+                state.value = new MessageRepository(action.payload);
+            })
+            .addCase(MessagesActions.addMessage, (state, action) => {
+                state.value.addMessage(action.payload);
+            })
+            .addCase(MessagesActions.setReadMessageRepository, (state, action) => {
+                state.value.setReadMessage(action.payload);
+            })
+            .addCase(MessagesActions.deleteMessageFromRepository, (state, action) => {
+                state.value.deleteMessage(action.payload);
             })
     }
   
