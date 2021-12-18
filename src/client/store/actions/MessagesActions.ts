@@ -24,6 +24,10 @@ export class MessagesActions {
     public static clearMessages = createAction<undefined>(MessagesActTypes.clearMessages);
 
     public static getAllMessages = createAsyncThunk<undefined>(MessagesActTypes.getAllMessages, this.getAllMessagesThunk);
-
-
+    
+    public static sendNewMessage = createAsyncThunk<undefined>(MessagesActTypes.sendNewMessage, this.sendNewMessageThunk);
+    
+    public static setReadMessage = createAsyncThunk<undefined>(MessagesActTypes.setReadMessage, this.setReadMessageThunk);
+    
+    public static deleteMessage = createAsyncThunk<undefined>(MessagesActTypes.deleteMessage, this.deleteMessageThunk);
 }
