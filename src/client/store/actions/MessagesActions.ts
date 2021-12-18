@@ -17,7 +17,7 @@ export class MessagesActions {
 
     public static addMessage = createAction<IMessage>(MessagesActTypes.addMessage);
 
-    public static setReadMessageRepository  = createAction<number>(MessagesActTypes.setReadMessageRepository);
+    public static setReadMessageRepository = createAction<number>(MessagesActTypes.setReadMessageRepository);
 
     public static deleteMessageFromRepository = createAction<number>(MessagesActTypes.deleteMessageFromRepository);
 
