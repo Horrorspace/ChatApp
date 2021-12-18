@@ -1,4 +1,4 @@
-export enum MessagesActTypes {
+export enum ContactsActTypes {
     setContacts = 'setContacts',
     addContact = 'addContact',
     setOnline = 'setOnline',
