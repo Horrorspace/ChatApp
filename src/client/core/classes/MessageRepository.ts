@@ -1,35 +1,39 @@
 import {IMessage} from '@interfaces/IMessage';
+import {Message} from '@core/classes/Message';
 
 
 export class MessageRepository {
-    private messages: IMessage[] = [];
+    private messages: Message[] = [];
     
     
     constructor(messages: IMessage[]) {
-        this.messages = messages;
+        this.messages = messages.map(message => new Message(message));
     }
 
-    public getAllMessages() {
+    public getAllMessages(): Message[] {
         return this.messages
     }
 
-    public addMessage(message: IMessage) {
-        this.messages.push(message);
+    public addMessage(message: IMessage): Message[] {
+        const newMessage = new Message(message); 
+        this.messages.push(newMessage);
+        return this.getAllMessages();
     }
     
     public setReadMessage(id: number) {
         this.messages = this.messages.map(message => {
-            if(message.id === id) {
-                return message;
+            if(message.getId() === id) {
+                return message.setRead();
             }
             else {
                 return message;
             }
         })
-        this.messages.push(message);
+        return this.getAllMessages();
     }
 
     public deleteMessage(id: number) {
-        this.messages = this.messages.filter(message => message.id === id)
+        this.messages = this.messages.filter(message => message.getId() === id);
+        this.getAllMessages();
     }
 }
