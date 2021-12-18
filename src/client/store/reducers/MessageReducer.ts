@@ -15,10 +15,10 @@ export class MessageReducer {
             .addCase(MessagesActions.addMessage, (state, action) => {
                 state.value.addMessage(action.payload);
             })
-            .addCase(MessagesActions.setReadMessageRepository, (state, action) => {
+            .addCase(MessagesActions.setReadMessage, (state, action) => {
                 state.value.setReadMessage(action.payload);
             })
-            .addCase(MessagesActions.deleteMessageFromRepository, (state, action) => {
+            .addCase(MessagesActions.deleteMessage, (state, action) => {
                 state.value.deleteMessage(action.payload);
             })
     }
