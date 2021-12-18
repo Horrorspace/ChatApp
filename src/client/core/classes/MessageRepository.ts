@@ -16,6 +16,18 @@ export class MessageRepository {
     public addMessage(message: IMessage) {
         this.messages.push(message);
     }
+    
+    public setReadMessage(id: number) {
+        this.messages = this.messages.map(message => {
+            if(message.id === id) {
+                return message;
+            }
+            else {
+                return message;
+            }
+        })
+        this.messages.push(message);
+    }
 
     public deleteMessage(id: number) {
         this.messages = this.messages.filter(message => message.id === id)
