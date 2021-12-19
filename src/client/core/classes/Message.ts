@@ -1,16 +1,16 @@
-import {MessageDto} from '@core/classes/message.dto';
+import {MessageDto} from '@core/dto/message.dto';
 import {IMessage} from '@interfaces/IMessage';
 
 
 export class Message extends MessageDto {
-    constructor(
-        id: number,
-        text: string,
-        fromUserId: number,
-        toUserId: number,
-        date: Date,
-        readed: boolean
-    ) {
+    constructor({
+        id,
+        text,
+        fromUserId,
+        toUserId,
+        date,
+        readed
+    }: IMessage) {
         super(
             id,
             text,
