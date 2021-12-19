@@ -13,19 +13,19 @@ export class MessagesActions {
     private static deleteMessageThunkAction() {}
 
     
-    public static setMessages = createAction<IMessage[]>(MessagesActTypes.setMessages);
+    public static setMessages = createAction<IMessage[], MessagesActTypes>(MessagesActTypes.setMessages);
 
-    public static addMessage = createAction<IMessage>(MessagesActTypes.addMessage);
+    public static addMessage = createAction<IMessage, MessagesActTypes>(MessagesActTypes.addMessage);
 
-    public static setReadMessage = createAction<number>(MessagesActTypes.setReadMessage);
+    public static setReadMessage = createAction<number, MessagesActTypes>(MessagesActTypes.setReadMessage);
 
-    public static deleteMessage = createAction<number>(MessagesActTypes.deleteMessage);
+    public static deleteMessage = createAction<number, MessagesActTypes>(MessagesActTypes.deleteMessage);
 
-    public static getAllMessagesThunk = createAsyncThunk<undefined>(MessagesActTypes.getAllMessagesThunk, this.getAllMessagesThunkAction);
+    public static getAllMessagesThunk = createAsyncThunk<void>(MessagesActTypes.getAllMessagesThunk, MessagesActions.getAllMessagesThunkAction);
     
-    public static sendNewMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.sendNewMessageThunk, this.sendNewMessageThunkAction);
+    public static sendNewMessageThunk = createAsyncThunk<void>(MessagesActTypes.sendNewMessageThunk, MessagesActions.sendNewMessageThunkAction);
     
-    public static setReadMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.setReadMessageThunk, this.setReadMessageThunkAction);
+    public static setReadMessageThunk = createAsyncThunk<void>(MessagesActTypes.setReadMessageThunk, MessagesActions.setReadMessageThunkAction);
     
-    public static deleteMessageThunk = createAsyncThunk<undefined>(MessagesActTypes.deleteMessageThunk, this.deleteMessageThunkAction);
+    public static deleteMessageThunk = createAsyncThunk<void>(MessagesActTypes.deleteMessageThunk, MessagesActions.deleteMessageThunkAction);
 }
