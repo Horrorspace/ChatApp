@@ -52,4 +52,9 @@ export class AuthService {
             access_token: this.jwtService.sign(payload),
         };
     }
+
+    public async getUser(id: number): Promise<User | null> {
+        const user = await this.usersService.getUserById(id);
+        return user;
+    }
 }
