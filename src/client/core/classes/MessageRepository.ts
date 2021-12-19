@@ -23,7 +23,8 @@ export class MessageRepository {
     public setReadMessage(id: number) {
         this.messages = this.messages.map(message => {
             if(message.getId() === id) {
-                return message.setRead();
+                message.setRead();
+                return message;
             }
             else {
                 return message;
