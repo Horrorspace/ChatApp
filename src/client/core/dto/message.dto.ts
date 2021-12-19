@@ -6,7 +6,7 @@ export class MessageDto extends NewMessageDto implements IMessage {
     public readonly id: number;
     public readonly fromUserId: number;
     public readonly date: Date;
-    public readonly readed: boolean;
+    public readed: boolean;
 
     constructor(
         id: number,
