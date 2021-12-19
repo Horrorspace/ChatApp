@@ -111,6 +111,29 @@ export class AuthController {
         return this.authService.getToken(userAttrs);
     }
 
+    @ApiTags('Auth')
+    @ApiOperation({summary: 'Получение текущего пользователя'})
+    @ApiOkResponse({
+        description: 'Пользователь получен',
+        type: UserEntity
+    })
+    @ApiForbiddenResponse({description: 'Доступ запрещен по причине отсутствующей авторизации'})
+    @Get('getUser')
+    @UseGuards(LoggedInGuard)
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async getUser(@Request() req: Req): Promise<UserEntity | null> {
+        const userAttrs = req.user as UserAttrs;
+        const id: number | null = userAttrs.id;
+
+        if(id) {
+            const user = await this.authService.getUser(id);
+            return user ? new UserEntity(user.get()) : null;
+        }
+        else {
+            return null;
+        }
+    }
+
     @Post('jwtTest')
     @UseGuards(JwtAuthGuard)
     public async jwtAuthTest(@Request() req: Req): Promise<string> {
