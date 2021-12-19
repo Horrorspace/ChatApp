@@ -20,7 +20,7 @@ export class UsersResolver {
     constructor(@Inject(UsersService) private readonly usersService: UsersService) {}
 
     @Query()
-    @UseGuards(GqlAuthGuard)
+    // @UseGuards(GqlAuthGuard)
     @UseInterceptors(ClassSerializerInterceptor)
     public async users(): Promise<UserEntity[]> {
         const users = await this.usersService.getAllUsers();
