@@ -6,7 +6,7 @@ export interface UserId {
 }
 
 export interface UserIds {
-    id: number[];
+    ids: number[];
 }
 
 export interface UserEmail {
