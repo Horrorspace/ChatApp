@@ -5,6 +5,10 @@ export interface UserId {
     id: number;
 }
 
+export interface UserIds {
+    id: number[];
+}
+
 export interface UserEmail {
     email: string;
 }
