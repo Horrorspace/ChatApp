@@ -22,6 +22,10 @@ input IdInput {
     id: Int!
 }
 
+input IdsInput {
+    ids: [Int!]
+}
+
 input MessageInput {
     toUserId: Int!
     text: String!
@@ -54,6 +58,7 @@ input EditUserAvatar {
 
 type Query {
     users: [User]
+    usersById(options: IdsInput): [User]
     user(options: IdInput): User
 
     messages: [Message]
