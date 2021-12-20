@@ -1,4 +1,4 @@
-import {UserId} from '../users.types';
+import {UserIds} from '../users.types';
 import {ApiProperty} from '@nestjs/swagger';
 
 
