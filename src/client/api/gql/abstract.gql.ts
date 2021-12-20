@@ -3,7 +3,7 @@ import {setContext} from '@apollo/client/link/context';
 import {config} from '@config/config';
 
 
-export abstract class abstractGql {
+export abstract class AbstractGql {
     protected static readonly protocol: string = config.encryption ? 'https' : 'http';
     protected static readonly baseUrl: string = `${AbstractREST.protocol}//${config.host}:${config.port}/graphql`;
   
