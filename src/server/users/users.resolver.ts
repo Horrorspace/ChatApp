@@ -28,6 +28,18 @@ export class UsersResolver {
             return new UserEntity(user.get());
         })
     }
+    
+    @Query()
+    // @UseGuards(GqlAuthGuard)
+    @UseInterceptors(ClassSerializerInterceptor)
+    public async usersById(@Args('options') {ids}: UserIdsDto): Promise<UserEntity[]> {
+        const users = await this.usersService.getAllUsers();
+        return users
+            .filter(user => ids.some(id => user.id === id))
+            .map(user => {
+                return new UserEntity(user.get());
+            });
+    }
 
     @Query()
     @UseGuards(GqlAuthGuard)
