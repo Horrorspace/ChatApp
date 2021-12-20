@@ -1,9 +1,10 @@
+import {gql, ApolloQueryResult} from '@apollo/client';
 import {AbstractGql} from '@api/gql/abstract.gql';
 import {IUser} from '@interfaces/IUser';
 
 
 export class UsersGql extends AbstractGql {
-    public static async getAllUsers(): Promise<IUser> {
+    public static async getAllUsersQuery(): Promise<ApolloQueryResult<IUser>> {
         return await UsersGql.client.query({
             query: gql`
             query get {
@@ -19,11 +20,15 @@ export class UsersGql extends AbstractGql {
         })
     }
   
-    public static async getUsers(): Promise<IUser[]> {
+    public static async getUsersQuery(ids: number[]): Promise<ApolloQueryResult<IUser[]>>{
+        const ids_test = {
+            ids: [10, 12]
+        };
         return await UsersGql.client.query({
+            variables: {ids_test: ids_test},
             query: gql`
             query get {
-                usersById({ids: [10, 11, 12]}) {
+                usersById(options: $ids_test) {
                     id
                     online
                     avatarSrc
@@ -33,5 +38,13 @@ export class UsersGql extends AbstractGql {
                 }
             }`
         })
+    }
+
+    public static async getAllUsers(): Promise<IUser> {
+        return await UsersGql.makeRequest<void, IUser>(UsersGql.getAllUsersQuery, undefined);
+    }
+
+    public static async getUsers(ids: number[]): Promise<IUser[]> {
+        return await UsersGql.makeRequest<number[], IUser[]>(UsersGql.getUsersQuery, ids);
     }
 }
