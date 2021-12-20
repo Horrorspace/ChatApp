@@ -34,7 +34,4 @@ export class UsersGql extends AbstractGql {
             }`
         })
     }
-  
-  
-  
 }
