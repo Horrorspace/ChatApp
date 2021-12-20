@@ -5,6 +5,7 @@ import {UserIdDto} from './dto/user-id.dto';
 // import {UserEmailDto} from './dto/user-email.dto';
 import {EditUserNameDto} from './dto/edit-user-name.dto';
 import {EditUserEmailDto} from './dto/edit-user-email.dto';
+import {UserIdsDto} from './dto/user-ids.dto';
 // import {EditUserEmailAuthDto} from './dto/edit-user-email-auth.dto';
 import {EditUserPasswordDto} from './dto/edit-user-password.dto';
 // import {EditUserPasswordAuthDto} from './dto/edit-user-password-auth.dto';
