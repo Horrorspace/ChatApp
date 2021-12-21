@@ -4,7 +4,7 @@ import {IUser} from '@interfaces/IUser';
 
 
 export class UsersGql extends AbstractGql {
-    public static async getAllUsersQuery(): Promise<ApolloQueryResult<IUser>> {
+    private static async getAllUsersQuery(): Promise<ApolloQueryResult<IUser>> {
         return await UsersGql.client.query({
             query: gql`
             query get {
@@ -20,7 +20,7 @@ export class UsersGql extends AbstractGql {
         })
     }
   
-    public static async getUsersQuery(ids: number[]): Promise<ApolloQueryResult<IUser[]>>{
+    private static async getUsersQuery(ids: number[]): Promise<ApolloQueryResult<IUser[]>>{
         const ids_test = {
             ids: [10, 12]
         };
