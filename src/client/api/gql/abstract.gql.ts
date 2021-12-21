@@ -31,11 +31,7 @@ export abstract class AbstractGql {
         cache: new InMemoryCache()
     });
 
-    protected static isSuccessful<T>(apolloRes: ApolloQueryResult<T>): boolean {
-        console.log(apolloRes.errors);
-        console.log(apolloRes.error);
-        console.log(apolloRes.networkStatus);
-        
+    protected static isSuccessful<T>(apolloRes: ApolloQueryResult<T>): boolean {       
         return !(apolloRes.errors || apolloRes.error);
     }
 
