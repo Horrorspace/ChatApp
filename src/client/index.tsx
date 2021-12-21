@@ -44,8 +44,8 @@ UsersGql.getUsers([10, 11]).then(res => {
 
 
 const testMessage: INewMessage = {
-    text: 'Hello hello';
-    toUserId: 12;
+    text: 'Hello hello',
+    toUserId: 12
 };
 
 MessagesSocket.start();
