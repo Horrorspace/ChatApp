@@ -27,7 +27,7 @@ export class UsersGql extends AbstractGql {
         return await UsersGql.client.query({
             variables: {ids_test: ids_test},
             query: gql`
-            query get {
+            query get($ids_test: IdsInput) {
                 usersById(options: $ids_test) {
                     id
                     online
