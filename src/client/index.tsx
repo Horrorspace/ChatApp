@@ -4,6 +4,9 @@ import {render} from 'react-dom';
 import {App} from '@ui/App';
 import {UsersGql} from '@api/gql/users.gql';
 import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
+import {MessagesSocket} from '@api/socket/messages.socket';
+import {INewMessage} from '@interfaces/IMessage';
+
 
 const gqlClient = new ApolloClient({
     uri: 'http://localhost:3007/graphql',
@@ -38,6 +41,15 @@ UsersGql.getAllUsers().then(res => {
 UsersGql.getUsers([10, 11]).then(res => {
     console.log(res);
 });
+
+
+const testMessage: INewMessage = {
+    text: 'Hello hello';
+    toUserId: 12;
+};
+
+MessagesSocket.start();
+MessagesSocket.sendMessage(testMessage);
 
 
 render(<App />, document.getElementById('root'));
