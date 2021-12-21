@@ -3,7 +3,7 @@ import {Injectable, CanActivate, ExecutionContext, Inject} from '@nestjs/common'
 import {Request as Req} from 'express';
 import {GqlExecutionContext} from '@nestjs/graphql';
 import {IncomingHttpHeaders} from 'http';
-import {JwtService} from '@nestjs/jwt'
+import {JwtService} from '@nestjs/jwt';
 
 
 @Injectable()
