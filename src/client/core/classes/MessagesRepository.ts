@@ -39,6 +39,6 @@ export class MessagesRepository {
     }
     
     public getMessages(): IMessage[] {
-        return this.messages.map(message => messages.getMessage());
+        return this.messages.map(message => message.getMessage());
     }
 }
