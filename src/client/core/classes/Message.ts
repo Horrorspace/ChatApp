@@ -22,14 +22,14 @@ export class Message extends MessageDto {
     }
   
     public getMessage(): IMessage {
-        return new MessageDto(
-            this.id,
-            this.text,
-            this.fromUserId,
-            this.toUserId,
-            this.date,
-            this.readed
-        )
+        return {
+            id: this.id,
+            text: this.text,
+            fromUserId: this.fromUserId,
+            toUserId: this.toUserId,
+            date: this.date,
+            readed: this.readed
+        }
     }
     
     public getId(): number {
