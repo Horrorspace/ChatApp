@@ -1,6 +1,6 @@
 import {AbstractSocket} from '@api/socket/abstract.socket';
 import {INewMessage, IMessage} from '@interfaces/IMessage';
-import {messageEventType} from '@api/socket/message-event-type.enum'
+import {messageEventType} from '@api/socket/message-event-type.enum';
 
 
 export class MessagesSocket extends AbstractSocket {
