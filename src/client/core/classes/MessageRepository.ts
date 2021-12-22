@@ -37,4 +37,8 @@ export class MessageRepository {
         this.messages = this.messages.filter(message => message.getId() === id);
         this.getAllMessages();
     }
+    
+    public getMessages(): IMessage[] {
+        return this.messages.map(message => messages.getMessage());
+    }
 }
