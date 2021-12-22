@@ -1,5 +1,5 @@
 import {createReducer, ActionReducerMapBuilder} from '@reduxjs/toolkit';
-import {MessageRepository} from '@core/classes/MessageRepository';
+import {MessagesRepository} from '@core/classes/MessagesRepository';
 import {MessagesActions} from '@store/actions/MessagesActions';
 import {IMessage} from '@interfaces/IMessage';
 
