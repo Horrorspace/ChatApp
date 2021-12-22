@@ -36,13 +36,13 @@ export class User extends UserDto {
         return this.id;
     }
   
-    public setOnline(status: boolean): IMessage {
+    public setOnline(status: boolean): IUser {
         this.online = status;
         return this.getUser();
     }
   
-    public confirm(): IMessage {
-        this.confirm = true;
+    public confirm(): IUser {
+        this.confirmed = true;
         return this.getUser();
     }
 }
