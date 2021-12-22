@@ -2,7 +2,7 @@ import {IMessage} from '@interfaces/IMessage';
 import {Message} from '@core/classes/Message';
 
 
-export class MessageRepository {
+export class MessagesRepository {
     private messages: Message[] = [];
     
     
