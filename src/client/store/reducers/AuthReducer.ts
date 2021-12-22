@@ -31,7 +31,6 @@ export class AuthReducer {
             .addCase(AuthActions.setToken, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setToken(action.payload);
-                localStorage.setItem('token', action.payload);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.clearToken, state => {
