@@ -4,7 +4,7 @@ import {IMessage} from '@interfaces/IMessage';
 
 
 export class MessagesGql extends AbstractGql {
-    private static async getAllMessagesQuery(): Promise<ApolloQueryResult<IMessage>> {
+    private static async getAllMessagesQuery(): Promise<ApolloQueryResult<IMessage[]>> {
         return await MessagesGql.client.query({
             query: gql`
             query getMessages {
@@ -20,7 +20,7 @@ export class MessagesGql extends AbstractGql {
         })
     }
   
-    public static async getAllMessages(): Promise<IMessage> {
-        return await MessagesGql.makeRequest<void, IMessage>(MessagesGql.getAllMessagesQuery, undefined);
+    public static async getAllMessages(): Promise<IMessage[]> {
+        return await MessagesGql.makeRequest<void, IMessage[]>(MessagesGql.getAllMessagesQuery, undefined);
     }
 }
