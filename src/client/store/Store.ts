@@ -1,21 +1,25 @@
-import {configureStore} from '@reduxjs/toolkit';
-// import {createStore} from 'redux';
+import {configureStore, Reducer, combineReducers} from '@reduxjs/toolkit';
+import {IRootState} from '@interfaces/IStore';
 import {AuthReducer} from '@store/reducers/AuthReducer';
-// import thunk from 'redux-thunk'
+import {ContactsReducer} from '@store/reducers/ContactsReducer';
+import {MessagesReducer} from '@store/reducers/MessagesReducer';
+import {Middleware} from '@store/middleware/Middleware';
 
-export const store = configureStore({
-    reducer: AuthReducer.reducer
-});
+
 
 export class Store {
-    public static readonly value = configureStore({
-        reducer: AuthReducer.reducer
+    private static readonly reducer: Reducer<IRootState> = combineReducers({
+        Auth: AuthReducer.reducer,
+        Contacts: ContactsReducer.reducer,
+        Messages: MessagesReducer.reducer
     });
+    
+    public static readonly value = configureStore({
+        reducer: Store.reducer,
+        middleware: Middleware.middleware
+    });
+
+    public static start() {
+        Middleware.start();
+    }
 }
-
-// const middleware = [thunk];
-// const Middleware = applyMiddleware(...middleware);
-
-// export const store = configureStore({
-//     reducer: AuthReducer.reducer
-// });
