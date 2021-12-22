@@ -5,7 +5,7 @@ import {IMessage} from '@interfaces/IMessage';
 
 
 
-export class MessageReducer {
+export class MessagesReducer {
     private static readonly initialState: IMessage[] = new MessageRepository([]).getMessages();
   
     private static buildReducer(builder: ActionReducerMapBuilder<MessageRepository>): void {
