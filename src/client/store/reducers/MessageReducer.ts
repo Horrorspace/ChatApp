@@ -1,25 +1,40 @@
 import {createReducer, ActionReducerMapBuilder} from '@reduxjs/toolkit';
 import {MessageRepository} from '@core/classes/MessageRepository';
 import {MessagesActions} from '@store/actions/MessagesActions';
+import {IMessage} from '@interfaces/IMessage';
 
 
 
 export class MessageReducer {
-    private static readonly initialState: MessageRepository = new MessageRepository([]);
+    private static readonly initialState: IMessage[] = new MessageRepository([]).getMessages();
   
     private static buildReducer(builder: ActionReducerMapBuilder<MessageRepository>): void {
         builder
             .addCase(MessagesActions.setMessages, (state, action) => {
-                state = new MessageRepository(action.payload);
+                return action.payload;
             })
             .addCase(MessagesActions.addMessage, (state, action) => {
-                state.addMessage(action.payload);
+                const messages = new MessageRepository(state);
+                messages.addMessage(action.payload);
+                return messages.getMessages();
             })
             .addCase(MessagesActions.setReadMessage, (state, action) => {
-                state.setReadMessage(action.payload);
+                const messages = new MessageRepository(state);
+                messages.setReadMessage(action.payload);
+                return messages.getMessages();
             })
             .addCase(MessagesActions.deleteMessage, (state, action) => {
-                state.deleteMessage(action.payload);
+                const messages = new MessageRepository(state);
+                messages.deleteMessage(action.payload);
+                return messages.getMessages();
+            })
+            .addCase(MessagesActions.getAllMessagesThunk.fulfilled, (state, action) => {
+                return action.payload;
+            })
+            .addCase(MessagesActions.sendNewMessageThunk.fulfilled, (state, action) => {
+                const messages = new MessageRepository(state);
+                messages.addMessage(action.payload);
+                return messages.getMessages();
             });
     }
   
