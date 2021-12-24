@@ -17,6 +17,10 @@ export class ContactsActions {
     public static setOnline = createAction<IOnline, ContactsActTypes>(ContactsActTypes.setOnline);
   
     public static deleteContact = createAction<number, ContactsActTypes>(ContactsActTypes.deleteContact);
+    
+    public static setCurrentContact = createAction<IUser, ContactsActTypes>(ContactsActTypes.setCurrentContact);
+    
+    public static clearCurrentContact = createAction<void, ContactsActTypes>(ContactsActTypes.clearCurrentContact);
 
     public static getContactsThunk = createAsyncThunk<IUser[], number[]>(ContactsActTypes.getContactsThunk, ContactsActions.getContactsThunkAction);
 }
