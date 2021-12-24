@@ -3,5 +3,7 @@ export enum ContactsActTypes {
     addContact = 'addContact',
     setOnline = 'setOnline',
     deleteContact = 'deleteContact',
-    getContactsThunk = 'getContactsThunk'
+    getContactsThunk = 'getContactsThunk',
+    setCurrentContact = 'setCurrentContact',
+    clearCurrentContact = 'clearCurrentContact'
 }
