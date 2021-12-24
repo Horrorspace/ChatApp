@@ -13,4 +13,11 @@ export class ContactsStateDto implements IContactsState {
         this.contacts = contacts;
         this.currentContact = currentContact;
     }
+    
+    public getState(): IContactsState {
+        return {
+            contacts: this.contacts,
+            currentContact: this.currentContact
+        }
+    }
 }
