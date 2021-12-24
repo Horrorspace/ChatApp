@@ -1,4 +1,5 @@
 import {IContactsState} from '@interfaces/IStore';
+import {UsersRepository} from '@core/classes/UsersRepository';
 
 
 export class ContactsRepository {
@@ -27,6 +28,13 @@ export class ContactsRepository {
   
     public setContacts(contacts: IUser[]): IUser[] {
         this.contacts = contacts;
+        return this.getContacts();
+    }
+    
+    public addContact(contact: IUser): IUser[] {
+        const users = new UsersRepository(this.getContacts());
+        users.addUser(contact);
+        this.setContacts(users);
         return this.getContacts();
     }
   
