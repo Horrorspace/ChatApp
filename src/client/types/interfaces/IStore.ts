@@ -1,7 +1,6 @@
 import {IToken} from '@interfaces/IAuth';
 import {IUser} from '@interfaces/IUser';
 import {IMessage} from '@interfaces/IMessage';
-import {IUser} from '@interfaces/IUser';
 
 
 
@@ -17,6 +16,7 @@ export interface IContactsState {
 
 export interface IRootState {
     Auth: IAuthState;
-    Contacts: IUser[];
+    Contacts: IContactsState;
     Messages: IMessage[];
+    Users: IUser[];
 }
