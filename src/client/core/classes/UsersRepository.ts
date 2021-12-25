@@ -20,7 +20,7 @@ export class UsersRepository {
         return this.getUsers();
     }
     
-    public setOnline({id, online}: IOnline) {
+    public setOnline({id, online}: IOnline): IUser[] {
         this.users = this.users.map(user => {
             if(user.getId() === id) {
                 user.setOnline(online);
