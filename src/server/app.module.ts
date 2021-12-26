@@ -11,7 +11,7 @@ import {SessionsModule} from './sessions/sessions.module';
 import {GraphQLModule} from '@nestjs/graphql';
 import {headersObj, ReqObj} from './auth/auth.types';
 // import {FrontendMiddleware} from './frontend/frontend.middleware';
-import {FrontendModule} from './frontend/frontend.module';
+// import {FrontendModule} from './frontend/frontend.module';
 import {join} from 'path';
 
 
@@ -24,9 +24,12 @@ import {join} from 'path';
             envFilePath: `.${process.env.NODE_ENV}.env`
         }),
         ServeStaticModule.forRoot({
-            rootPath: join(process.cwd(), 'build', 'client'),
-            renderPath: '/test',
-            serveRoot: '/'
+            rootPath: join(__dirname, 'client'),
+            exclude: ['/api/*', '/public/*']
+            // rootPath: join(process.cwd(), 'build', 'client'),
+            // renderPath: '/test',
+            // serveRoot: '/',
+            // serveStaticOptions: {}
         }),
         SequelizeModule.forRoot({
             dialect: 'postgres',
@@ -48,13 +51,14 @@ import {join} from 'path';
         SessionsModule,
         UsersModule,
         AuthModule,
-        MessagesModule,
-        FrontendModule
+        MessagesModule
     ],
     exports: []
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
+        console.log(join(process.cwd(), 'build', 'client'));
+
         consumer
             .apply()
             .forRoutes(
