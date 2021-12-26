@@ -1,4 +1,4 @@
-import {Module} from '@nestjs/common';
+import {Module, NestModule, MiddlewareConsumer} from '@nestjs/common';
 import {FrontendMiddleware} from './frontend.middleware';
 
 
@@ -8,4 +8,10 @@ import {FrontendMiddleware} from './frontend.middleware';
     imports: [],
     exports: [FrontendMiddleware]
 })
-export class FrontendModule {}
+export class FrontendModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply()
+            .forRoutes('*');
+    }
+}
