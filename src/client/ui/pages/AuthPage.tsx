@@ -7,7 +7,9 @@ import {AMember} from '@ui/components/auth/AMember';
 export const AuthPage: React.FC = () => {
 
     return (
-        <>
+        <div
+            className="auth"
+        >
             <GoogleAuth 
                 aMember={true}
             />
@@ -15,6 +17,6 @@ export const AuthPage: React.FC = () => {
             <AMember 
                 aMember={true}
             />
-        </>
+        </div>
     )
 }
