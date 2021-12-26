@@ -4,7 +4,7 @@ import {IPassFieldProps} from '@interfaces/IProps'
 
 
 const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTitle}: IPassFieldProps) => {
-    const {Title, Paragraph} = Typography;
+    const {Title, Link} = Typography;
     const forgotPass: React.ReactElement = forgotPassTitle ? <Col>{forgotPassTitle}</Col> : <></>
 
     return (
@@ -12,21 +12,41 @@ const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTit
             <Row
                 align="middle"
                 justify="center"
+                className="password-field-title__main-wrap"
             >
-                <Col>
-                    <Title level={4}>{title}</Title>
+                <Col
+                    className="password-field-title__wrap"
+                >
+                    <Title 
+                        level={4}
+                        className="password-field-title"
+                    >
+                        {title}
+                    </Title>
                 </Col>
-                <Col>
-                    <Paragraph>{forgotPass}</Paragraph>
+                <Col
+                    className="forgot-password__wrap"
+                >
+                    <Link
+                        className="forgot-password"
+                    >
+                        {forgotPass}
+                    </Link>
                 </Col>
             </Row>
             <Row
                 align="middle"
-                justify="center"    
+                justify="center"
+                className="password-field-input__main-wrap"    
             >
-                <Input.Password
-                    placeholder={placeholder}
-                />
+                <Col
+                    className="password-field-input__wrap"
+                >
+                    <Input.Password
+                        placeholder={placeholder}
+                        className="password-field-input"
+                    />
+                </Col>
             </Row>
         </>
     )
