@@ -11,18 +11,32 @@ const Component: React.FC<IInputFieldProps> = ({title, placeholder}: IInputField
             <Row
                 align="middle"
                 justify="center"
+                className="input-field-title__main-wrap"
             >
-                <Col>
-                    <Title level={4}>{title}</Title>
+                <Col
+                    className="input-field-title__wrap"
+                >
+                    <Title 
+                        level={4}
+                        className="input-field-title"
+                    >
+                        {title}
+                    </Title>
                 </Col>
             </Row>
             <Row
                 align="middle"
-                justify="center"    
+                justify="center"
+                className="input-field-input__main-wrap"    
             >
-                <Input 
-                    placeholder={placeholder}
-                />
+                <Col
+                    className="input-field-input__wrap"
+                >
+                    <Input 
+                        placeholder={placeholder}
+                        className="input-field-input"
+                    />
+                </Col>
             </Row>
         </>
     )
