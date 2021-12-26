@@ -14,29 +14,35 @@ const Component: React.FC = () => {
     const forgotPassTitle: string = `${Chat.forgot} ${Chat.password.trim()}?`;
 
     return (
-        <>
-            <Divider />
-            <InputField 
-                title={userNameTitle}
-                placeholder={userNamePlaceholder}
-            />
-            <PassField 
-                title={passTitle}
-                placeholder={passPlaceholder}
-                forgotPassTitle={forgotPassTitle}
-            />
-            <Row
-                align="middle"
-                justify="center"    
+        <section
+            className="sign-in__wrap"
+        >
+            <div
+                className="sign-in"
             >
-                <Col>
-                    <Button>
-                        {Chat.signIn}
-                    </Button>
-                </Col>
-            </Row>
-            <Divider />
-        </>
+                <Divider />
+                <InputField 
+                    title={userNameTitle}
+                    placeholder={userNamePlaceholder}
+                />
+                <PassField 
+                    title={passTitle}
+                    placeholder={passPlaceholder}
+                    forgotPassTitle={forgotPassTitle}
+                />
+                <Row
+                    align="middle"
+                    justify="center"    
+                >
+                    <Col>
+                        <Button>
+                            {Chat.signIn}
+                        </Button>
+                    </Col>
+                </Row>
+                <Divider />
+            </div>
+        </section>
     )
 }
 
