@@ -16,26 +16,41 @@ const Component: React.FC<IAMemberProps> = ({aMember}: IAMemberProps) => {
     const buttonText: string = aMember ? signInButton : signUpButton;
 
     return (
-        <>
-            <Row
-                align="middle"
-                justify="center" 
+        <section
+            className="member__wrap"
+        >
+            <div
+                className="member"
             >
-                <Col>
-                    <Title level={4}>{title}</Title>
-                </Col>
-            </Row>
-            <Row
-                align="middle"
-                justify="center" 
-            >
-                <Col>
-                    <Button>
-                        {buttonText}
-                    </Button>
-                </Col>
-            </Row>
-        </>
+                <Row
+                    align="middle"
+                    justify="center"
+                    className="member-title__wrap" 
+                >
+                    <Col>
+                        <Title 
+                            level={4}
+                            className="member-title"
+                        >
+                            {title}
+                        </Title>
+                    </Col>
+                </Row>
+                <Row
+                    align="middle"
+                    justify="center"
+                    className="member-btn__wrap" 
+                >
+                    <Col>
+                        <Button
+                            className="member-btn"
+                        >
+                            {buttonText}
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+        </section>
     )
 }
 
