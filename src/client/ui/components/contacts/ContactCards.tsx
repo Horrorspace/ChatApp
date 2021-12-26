@@ -13,7 +13,7 @@ const Component: React.FC = () => {
             className="contact-cards__wrap"
         >
             <div
-                className="contact-cards_dark"
+                className="contact-cards"
             >
                 <ContactCard 
                     username="Just for lulz"
