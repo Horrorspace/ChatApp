@@ -11,7 +11,7 @@ const Component: React.FC = () => {
 
     const closeIco: React.ReactElement = (
         <CloseOutlined 
-            className="add-modal__close-ico_dark"
+            className="add-modal__close-ico"
         />
     );
 
@@ -25,7 +25,7 @@ const Component: React.FC = () => {
             >
                 <Button
                     type="primary"
-                    className="add-modal-btn_ok-dark"
+                    className="add-modal-btn_ok"
                 >
                     {Chat.ok}
                 </Button>
@@ -49,7 +49,7 @@ const Component: React.FC = () => {
             className="add-modal-title__wrap"
         >
             <Title
-                className="add-modal-title_dark"
+                className="add-modal-title"
             >
                 {Chat.addUserTitle}
             </Title>
@@ -63,44 +63,44 @@ const Component: React.FC = () => {
             onCancel={() => {setAdd(false)}}
             closeIcon={closeIco}
             footer={modalFooter}
-            className="add-modal_dark"
+            className="add-modal"
             wrapClassName="add-modal__wrap"
             getContainer={".add-modal__main-wrap"}
         >
             <Input 
                 placeholder={Chat.addUserPlaceholder}
-                className="add-modal-input_dark"
+                className="add-modal-input"
             />
         </Modal>
     )
     
     const menu: React.ReactElement = (
         <Menu
-            className="settings-menu-list_dark"
+            className="settings-menu-list"
         >
             <Menu.Item
-               className="settings-menu-item__wrap_dark" 
+               className="settings-menu-item__wrap" 
             >
                 <Paragraph
-                    className="settings-menu-item_dark"
+                    className="settings-menu-item"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="settings-menu-item__wrap_dark" 
+               className="settings-menu-item__wrap" 
             >
                 <Paragraph
-                    className="settings-menu-item_dark"
+                    className="settings-menu-item"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="settings-menu-item__wrap_dark" 
+               className="settings-menu-item__wrap" 
             >
                 <Paragraph
-                    className="settings-menu-item_dark"
+                    className="settings-menu-item"
                 >
                     {"test"}
                 </Paragraph>
@@ -111,7 +111,7 @@ const Component: React.FC = () => {
     return (
         <>
             <section
-                className="search-field__wrap_dark"
+                className="search-field__wrap"
             >
                 <Row
                     align="middle"
@@ -122,7 +122,7 @@ const Component: React.FC = () => {
                         className="setting-ico__wrap"
                     >
                         <Button
-                            className="setting-btn_dark"
+                            className="setting-btn"
                             onClick={() => {setSettings(p => !p)}}
                         >
                             <Dropdown
@@ -131,7 +131,7 @@ const Component: React.FC = () => {
                                 visible={settings}
                             >
                                 <SettingOutlined 
-                                    className="setting-ico_dark"
+                                    className="setting-ico"
                                 />
                             </Dropdown>
                         </Button>
@@ -140,7 +140,7 @@ const Component: React.FC = () => {
                         className="search-ico__wrap"
                     >
                         <SearchOutlined 
-                            className="search-ico_dark"
+                            className="search-ico"
                         />
                     </Col>
                     <Col
@@ -148,18 +148,18 @@ const Component: React.FC = () => {
                     >
                         <Input 
                             placeholder={Chat.searchPlaceholder}
-                            className="search_dark"
+                            className="search"
                         />
                     </Col>
                     <Col
                         className="add-ico__wrap"
                     >
                         <Button
-                            className="add-btn_dark"
+                            className="add-btn"
                             onClick={() => {setAdd(p => !p)}}
                         >
                             <UserAddOutlined 
-                                className="add-ico_dark"
+                                className="add-ico"
                             />
                         </Button>
                     </Col>
