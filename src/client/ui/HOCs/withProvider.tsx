@@ -7,7 +7,7 @@ export function withProvider(Component: React.FC): React.FC {
 
     return () => (
         <Provider store={Store.value}>
-                <Component />
+            <Component />
         </Provider>
     )
 }
