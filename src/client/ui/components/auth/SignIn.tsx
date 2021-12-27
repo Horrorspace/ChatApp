@@ -6,7 +6,13 @@ import {PassField} from '@ui/components/auth/PassField';
 import {ISignInProps} from '@interfaces/IProps'
 
 
-const Component: React.FC<ISignInProps> = ({onLoginChange, onPasswordChange, onSignInClick}: ISignInProps) => {
+const Component: React.FC<ISignInProps> = ({
+    login,
+    password,
+    onLoginChange, 
+    onPasswordChange, 
+    onSignInClick
+}: ISignInProps) => {
     const userNameTitle: string = `${Chat.username} or ${Chat.email}:`;
     const userNamePlaceholder: string = 'user@site.com';
 
@@ -25,11 +31,13 @@ const Component: React.FC<ISignInProps> = ({onLoginChange, onPasswordChange, onS
                 <InputField 
                     title={userNameTitle}
                     placeholder={userNamePlaceholder}
+                    value={login}
                     onChange={onLoginChange}
                 />
                 <PassField 
                     title={passTitle}
                     placeholder={passPlaceholder}
+                    value={password}
                     forgotPassTitle={forgotPassTitle}
                     onChange={onPasswordChange}
                 />
