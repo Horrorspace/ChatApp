@@ -4,6 +4,11 @@ import {GoogleAuth} from '@ui/components/auth/GoogleAuth';
 import {SignIn} from '@ui/components/auth/SignIn';
 import {AMember} from '@ui/components/auth/AMember';
 import {inputChangeHandler, btnClickHandler} from '@aliases/ui';
+import {ILogin} from '@interfaces/IAuth';
+import {LoginDto} from '@core/dto/login.dto';
+import {IRootState} from '@interfaces/IStore';
+import {AuthActions} from '@store/actions/AuthActions';
+
 
 
 interface AuthState {
@@ -14,11 +19,13 @@ interface AuthState {
 
 export const AuthPage: React.FC = () => {
     const initialState: AuthState = {
-        login: '';
-        password: '';
+        login: '',
+        password: ''
     };
     const [state, setState] = useState<AuthState>(initialState);
     const dispatch = useDispatch();
+    const user = useSelector<IRootState>(state => state.Auth.user);
+    console.log(user);
     
     const loginHandler: inputChangeHandler = (e) => {
         const target = e.target as HTMLInputElement;
@@ -39,6 +46,9 @@ export const AuthPage: React.FC = () => {
     }
     
     const signInHandler: btnClickHandler = (e) => {
+        const {login, password} = state;
+        const data: ILogin = new LoginDto(login, password);
+        dispatch(AuthActions.loginThunk(data));
         setState(initialState);
     }
     
@@ -53,9 +63,9 @@ export const AuthPage: React.FC = () => {
             <SignIn
                 login={state.login}
                 password={state.password}
-                onLoginChange={}
-                onPasswordChange={}
-                onSignInClick={}                
+                onLoginChange={loginHandler}
+                onPasswordChange={passwordHandler}
+                onSignInClick={signInHandler}                
             />
             <AMember 
                 aMember={true}
