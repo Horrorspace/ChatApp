@@ -3,7 +3,7 @@ import {Row, Col, Input, Typography} from 'antd';
 import {IPassFieldProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTitle, onChange}: IPassFieldProps) => {
+const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTitle, value, onChange}: IPassFieldProps) => {
     const {Title, Link} = Typography;
     const forgotPass: React.ReactElement = forgotPassTitle ? <Col>{forgotPassTitle}</Col> : <></>
 
@@ -45,6 +45,7 @@ const Component: React.FC<IPassFieldProps> = ({title, placeholder, forgotPassTit
                     <Input.Password
                         placeholder={placeholder}
                         className="password-field-input"
+                        value={value}
                         onChange={onChange}
                     />
                 </Col>
