@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Input, Typography} from 'antd';
-import {IInputFieldProps} from '@interfaces/IProps'
+import {IInputFieldProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<IInputFieldProps> = ({title, placeholder}: IInputFieldProps) => {
