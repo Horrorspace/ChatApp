@@ -1,6 +1,7 @@
 import {lastOnline} from '@aliases/Message';
 import {IMessage} from '@interfaces/IMessage';
-import {InfoFields} from '@aliases/Profile'
+import {InfoFields} from '@aliases/Profile';
+import {inputChangeHandler, btnClickHandler} from '@aliases/ui';
 
 
 export interface IDateMessageProps {
@@ -58,10 +59,24 @@ export interface IInfoListProps {
 export interface IInputFieldProps {
     title: string;
     placeholder: string;
+    onChange: inputChangeHandler;
 }
 
 export interface IPassFieldProps extends IInputFieldProps {
     forgotPassTitle?: string;
+}
+
+export interface ISignInProps {
+    onLoginChange: inputChangeHandler;
+    onPasswordChange: inputChangeHandler;
+    onSignInClick: btnClickHandler;
+}
+
+export interface ISignUpProps {
+    onUsernameChange: inputChangeHandler;
+    onEmailChange: inputChangeHandler;
+    onPasswordChange: inputChangeHandler;
+    onSignUpClick: btnClickHandler;
 }
 
 export interface IAvatarProps {
