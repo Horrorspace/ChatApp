@@ -76,6 +76,9 @@ export interface ISignInProps {
 }
 
 export interface ISignUpProps {
+    username: string;
+    email: string;
+    password: string;
     onUsernameChange: inputChangeHandler;
     onEmailChange: inputChangeHandler;
     onPasswordChange: inputChangeHandler;
