@@ -3,7 +3,7 @@ import {Row, Col, Button, Divider} from 'antd';
 import {Chat} from '@lang/en/Chat';
 import {InputField} from '@ui/components/auth/InputField';
 import {PassField} from '@ui/components/auth/PassField';
-import {ISignInProps} from '@interfaces/IProps'
+import {ISignInProps} from '@interfaces/IProps';
 
 
 const Component: React.FC<ISignInProps> = ({
