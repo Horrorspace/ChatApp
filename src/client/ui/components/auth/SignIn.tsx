@@ -3,9 +3,10 @@ import {Row, Col, Button, Divider} from 'antd';
 import {Chat} from '@lang/en/Chat';
 import {InputField} from '@ui/components/auth/InputField';
 import {PassField} from '@ui/components/auth/PassField';
+import {ISignInProps} from '@interfaces/IProps'
 
 
-const Component: React.FC = () => {
+const Component: React.FC<ISignInProps> = ({onLoginChange, onPasswordChange, onSignInClick}: ISignInProps) => {
     const userNameTitle: string = `${Chat.username} or ${Chat.email}:`;
     const userNamePlaceholder: string = 'user@site.com';
 
@@ -24,18 +25,22 @@ const Component: React.FC = () => {
                 <InputField 
                     title={userNameTitle}
                     placeholder={userNamePlaceholder}
+                    onChange={onLoginChange}
                 />
                 <PassField 
                     title={passTitle}
                     placeholder={passPlaceholder}
                     forgotPassTitle={forgotPassTitle}
+                    onChange={onPasswordChange}
                 />
                 <Row
                     align="middle"
                     justify="center"    
                 >
                     <Col>
-                        <Button>
+                        <Button
+                            onClick={onSignInClick}    
+                        >
                             {Chat.signIn}
                         </Button>
                     </Col>
