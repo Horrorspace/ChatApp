@@ -60,6 +60,7 @@ export interface IInputFieldProps {
     title: string;
     placeholder: string;
     onChange: inputChangeHandler;
+    value: string;
 }
 
 export interface IPassFieldProps extends IInputFieldProps {
@@ -67,6 +68,8 @@ export interface IPassFieldProps extends IInputFieldProps {
 }
 
 export interface ISignInProps {
+    login: string;
+    password: string;
     onLoginChange: inputChangeHandler;
     onPasswordChange: inputChangeHandler;
     onSignInClick: btnClickHandler;
