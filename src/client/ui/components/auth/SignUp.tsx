@@ -16,32 +16,38 @@ const Component: React.FC = () => {
     const passPlaceholder: string = 'password';
 
     return (
-        <>
-            <Divider />
-            <InputField 
-                title={userNameTitle}
-                placeholder={userNamePlaceholder}
-            />
-            <InputField 
-                title={EmailTitle}
-                placeholder={EmailPlaceholder}
-            />
-            <PassField 
-                title={passTitle}
-                placeholder={passPlaceholder}
-            />
-            <Row
-                align="middle"
-                justify="center"    
+        <section
+            className="sign-up__wrap"    
+        >
+            <div
+                className="sign-up"    
             >
-                <Col>
-                    <Button>
-                        {Chat.createAccount}
-                    </Button>
-                </Col>
-            </Row>
-            <Divider />
-        </>
+                <Divider />
+                <InputField 
+                    title={userNameTitle}
+                    placeholder={userNamePlaceholder}
+                />
+                <InputField 
+                    title={EmailTitle}
+                    placeholder={EmailPlaceholder}
+                />
+                <PassField 
+                    title={passTitle}
+                    placeholder={passPlaceholder}
+                />
+                <Row
+                    align="middle"
+                    justify="center"
+                >
+                    <Col>
+                        <Button>
+                            {Chat.createAccount}
+                        </Button>
+                    </Col>
+                </Row>
+                <Divider />
+            </div>
+        </section>
     )
 }
 
