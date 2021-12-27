@@ -3,7 +3,7 @@ import {Row, Col, Input, Typography} from 'antd';
 import {IInputFieldProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<IInputFieldProps> = ({title, placeholder, onChange}: IInputFieldProps) => {
+const Component: React.FC<IInputFieldProps> = ({title, placeholder, value, onChange}: IInputFieldProps) => {
     const {Title} = Typography;
 
     return (
@@ -35,6 +35,7 @@ const Component: React.FC<IInputFieldProps> = ({title, placeholder, onChange}: I
                     <Input 
                         placeholder={placeholder}
                         className="input-field-input"
+                        value={value}
                         onChange={onChange}
                     />
                 </Col>
