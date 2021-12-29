@@ -3,6 +3,7 @@ import {Messages} from '@ui/components/chat/Messages';
 import {Contact} from '@ui/components/chat/Contact';
 import {MessageEditor} from '@ui/components/chat/MessageEditor';
 import {IMessage} from '@interfaces/IMessage';
+import {inputChangeHandler, btnClickHandler} from '@aliases/ui';
 
 
 export const ChatPage: React.FC = () => {
@@ -71,7 +72,15 @@ export const ChatPage: React.FC = () => {
             date: new Date('November 14, 2021 19:28:00'),
             readed: true
         },
-    ]
+    ];
+   
+    const handleSend: btnClickHandler = () => {
+    
+    }
+    
+    const handleInput: inputChangeHandler = () => {
+    
+    }
 
     const avatarSrc = "https://sun9-76.userapi.com/impg/iIWIxmXrMksl12Z47tqfYqZl_0XLIGFyf4Shng/5anoVOOFRkY.jpg?size=1192x871&quality=96&sign=9437dcf14a264d0f1eb4efa06544eb8e&type=album"
    
@@ -87,7 +96,9 @@ export const ChatPage: React.FC = () => {
                 messages={messages}
                 userId={10}
             />
-            <MessageEditor 
+            <MessageEditor
+                onSendClicK={handleSend}
+                onTextChange={handleInput}
             />
         </>
     )
