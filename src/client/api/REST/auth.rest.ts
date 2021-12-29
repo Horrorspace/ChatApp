@@ -10,6 +10,11 @@ export class AuthREST extends AbstractREST {
     private static getUrl(path: string): string {
         return `${AuthREST.baseUrl}${AuthREST.basePath}${path}`;
     }
+    
+    private static async makeRequest<R, T>(type: reqType, url: string, body: T): Promise<R> {
+        return await super.makeRequest<R, T>(type, url, body);
+    }
+    
 
     public static async login(login: ILogin): Promise<IUser> {
         const type = reqType.post;
