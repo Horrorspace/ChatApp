@@ -26,6 +26,11 @@ export interface IMessagesProps {
     userId: number;
 }
 
+export interface IMessageEditorProps {
+    onSendClicK: btnClickHandler;
+    onTextChange: inputChangeHandler; 
+}
+
 export interface abstractUser {
     username: string;
     avatarSrc: string;
