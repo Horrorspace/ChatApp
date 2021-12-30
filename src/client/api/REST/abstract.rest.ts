@@ -11,7 +11,7 @@ export abstract class AbstractREST {
     }
 
     protected static readonly protocol: string = config.encryption ? 'https' : 'http';
-    protected static readonly baseUrl: string = `${AbstractREST.protocol}//${config.host}:${config.port}`;
+    protected static readonly baseUrl: string = ``;
 
     protected static readonly successfulStatuses: number[] = [200, 201];
 
@@ -27,6 +27,7 @@ export abstract class AbstractREST {
             data: body,
             headers: AbstractREST.headers
         };
+        console.log(options);
         const res = await axios(options);
         console.log(res);
         return res;
