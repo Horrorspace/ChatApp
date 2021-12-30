@@ -8,6 +8,7 @@ export class AuthREST extends AbstractREST {
     private static readonly basePath: string = '/auth';
 
     private static getUrl(path: string): string {
+        console.log(`${AuthREST.baseUrl}${AuthREST.basePath}${path}`);
         return `${AuthREST.baseUrl}${AuthREST.basePath}${path}`;
     }
 
