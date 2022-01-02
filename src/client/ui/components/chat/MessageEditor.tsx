@@ -2,10 +2,10 @@ import React from 'react';
 import {Row, Col, Button, Input} from 'antd';
 import {SendOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
-import {ISignInProps} from '@interfaces/IProps';
+import {IMessageEditorProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<ISignInProps> = ({onSendClicK, onTextChange}: ISignInProps) => { 
+const Component: React.FC<IMessageEditorProps> = ({onSendClicK, onTextChange}: IMessageEditorProps) => { 
     return (
         <section
             className="message-editor__wrap_dark"
