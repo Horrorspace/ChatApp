@@ -7,6 +7,7 @@ import {IMessage} from '@interfaces/IMessage';
 export interface IAuthState {
     user: IUser | null;
     token: IToken | null;
+    loading: boolean;
 }
 
 export interface IContactsState {
