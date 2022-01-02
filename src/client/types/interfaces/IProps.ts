@@ -1,7 +1,7 @@
 import {lastOnline} from '@aliases/Message';
 import {IMessage} from '@interfaces/IMessage';
 import {InfoFields} from '@aliases/Profile';
-import {inputChangeHandler, btnClickHandler} from '@aliases/ui';
+import {inputChangeHandler, btnClickHandler, clickHandler, clickHandlerVoid} from '@aliases/ui';
 
 
 export interface IDateMessageProps {
@@ -52,6 +52,10 @@ export interface IContactCardProps extends IUserAvatarProps, abstractUser {
     timeOfLastMessage: Date;
 }
 
+export interface IContactCardsProps {
+    cards: IContactCardProps[];
+}
+
 export interface IInfoFieldProps {
     title: string;
     value: string;
@@ -88,6 +92,16 @@ export interface ISignUpProps {
     onEmailChange: inputChangeHandler;
     onPasswordChange: inputChangeHandler;
     onSignUpClick: btnClickHandler;
+}
+
+export interface ISearchFieldProps {
+    addModalShow: boolean;
+    settingsModalShow: boolean;
+    onSettingsBtnClick: btnClickHandler;
+    onLogOutClick: clickHandlerVoid;
+    onAddUserBtnClick: btnClickHandler;
+    onAddUserCancel: clickHandler;
+    onAddUserOk: btnClickHandler;
 }
 
 export interface IAvatarProps {
