@@ -2,10 +2,10 @@ import '@styles/index.less';
 import React from 'react';
 import {render} from 'react-dom';
 import {App} from '@ui/App';
-// import {Store} from '@store/Store';
+import {Store} from '@store/Store';
 // import {ILogin} from '@interfaces/IAuth';
 // import {LoginDto} from '@core/dto/login.dto';
-// import {AuthActions} from '@store/actions/AuthActions';
+import {AuthActions} from '@store/actions/AuthActions';
 // import {UsersGql} from '@api/gql/users.gql';
 // import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
 // import {MessagesSocket} from '@api/socket/messages.socket';
@@ -61,5 +61,7 @@ import {App} from '@ui/App';
 // Store.value.dispatch(AuthActions.loginThunk(user));
 // console.log(Store.value.getState());
 
+Store.start();
+Store.value.dispatch(AuthActions.getUserThunk());
 
 render(<App />, document.getElementById('root'));
