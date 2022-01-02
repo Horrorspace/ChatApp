@@ -8,17 +8,20 @@ import {TokenDto} from '@core/dto/token.dto';
 export class AuthRepository {
     private user: IUser | null = null;
     private token: IToken | null = null;
+    private loading: boolean = false;
 
 
-    constructor({user, token}: IAuthState) {
+    constructor({user, token, loading}: IAuthState) {
         this.user = user;
         this.token = token;
+        this.loading = loading;
     }
 
     public getAuth(): IAuthState {
         return {
             user: this.user,
-            token: this.token
+            token: this.token,
+            loading: this.loading
         }
     }
 
@@ -31,6 +34,10 @@ export class AuthRepository {
         return this.token;
     }
 
+    public getLoading(): boolean {
+        return this.loading;
+    }
+
     public setUser(user: IUser): IUser | null {
         this.user = user;
         return this.getUser();
@@ -40,6 +47,12 @@ export class AuthRepository {
         const token = new TokenDto(tokenStr).getValue();
         this.token = token;
         return this.getToken();
+    }
+
+    public setLoading(loading: boolean): boolean {
+        this.loading = loading;
+        console.log(loading);
+        return this.getLoading();
     }
 
     public clearUser(): void {
