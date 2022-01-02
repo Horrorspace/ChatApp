@@ -21,26 +21,32 @@ export abstract class AbstractREST {
 
 
     protected static async request<T, R>(type: reqType, url: string, body: T): Promise<AxiosResponse<R>> {
-        const options: AxiosRequestConfig<T> = {
-            url,
-            method: type,
-            data: body,
-            headers: AbstractREST.headers
-        };
-        console.log(options);
-        const res = await axios(options);
-        console.log(res);
-        return res;
+        try {
+            const options: AxiosRequestConfig<T> = {
+                url,
+                method: type,
+                data: body,
+                headers: AbstractREST.headers
+            };
+            const res = await axios(options);
+            return res;
+        }
+        catch(error) {
+            console.error(error);
+            throw error;
+        }
     }
 
     protected static observableRequest<T, R>(type: reqType, url: string, body: T): Observable<AxiosResponse<R>> {
         return new Observable(subscriber => {
             AbstractREST.request<T, R>(type, url, body)
                 .then(res => {
+                    console.log('res', res);
                     subscriber.next(res);
                     subscriber.complete();
                 })
                 .catch(err => {
+                    console.log('err');
                     subscriber.error(err);
                 });
         })
@@ -66,7 +72,8 @@ export abstract class AbstractREST {
                     resolve(data);
                 },
                 error: err => {
-                    reject(err)
+                    console.error(err);
+                    reject(err);
                 }
             });
         })
