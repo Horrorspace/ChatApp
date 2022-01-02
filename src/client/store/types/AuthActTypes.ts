@@ -1,4 +1,5 @@
 export enum AuthActTypes {
+    setLoading = 'setLoading',
     setAuth = 'setAuth',
     clearAuth = 'clearAuth',
     setToken = 'setToken',
