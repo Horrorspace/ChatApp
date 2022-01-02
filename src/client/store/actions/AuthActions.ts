@@ -29,6 +29,8 @@ export class AuthActions {
 
     
     public static setAuth = createAction<IUser>(AuthActTypes.setAuth);
+    
+    public static setLoading = createAction<boolean>(AuthActTypes.setLoading);
 
     public static clearAuth = createAction<void>(AuthActTypes.clearAuth);
 
