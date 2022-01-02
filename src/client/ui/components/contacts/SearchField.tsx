@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Row, Col, Input, Button, Dropdown, Menu, Typography, Modal} from 'antd';
 import {SearchOutlined, SettingOutlined, UserAddOutlined, CloseOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
+import {ISearchFieldProps} from '@interfaces/IProps';
 
 
-const Component: React.FC = () => { 
+const Component: React.FC<ISearchFieldProps> = ({
+    addModalShow,
+    settingsModalShow,
+    onSettingsBtnClick,
+    onLogOutClick,
+    onAddUserBtnClick,
+    onAddUserCancel,
+    onAddUserOk
+}: ISearchFieldProps) => { 
     const {Title, Paragraph} = Typography;
-    const [settings, setSettings] = useState(false);
-    const [add, setAdd] = useState(false);
 
     const closeIco: React.ReactElement = (
         <CloseOutlined 
@@ -26,6 +33,7 @@ const Component: React.FC = () => {
                 <Button
                     type="primary"
                     className="add-modal-btn_ok"
+                    onClick={onAddUserOk}
                 >
                     {Chat.ok}
                 </Button>
@@ -36,7 +44,7 @@ const Component: React.FC = () => {
                 <Button
                     type="default"
                     className="add-modal-btn_cancel"
-                    onClick={() => {setAdd(false)}}
+                    onClick={onAddUserCancel}
                 >
                     {Chat.cancel}
                 </Button>
@@ -59,8 +67,8 @@ const Component: React.FC = () => {
     const addModal: React.ReactElement = (
         <Modal
             title={modalTitle}
-            visible={add}
-            onCancel={() => {setAdd(false)}}
+            visible={addModalShow}
+            onCancel={onAddUserCancel}
             closeIcon={closeIco}
             footer={modalFooter}
             className="add-modal"
@@ -79,30 +87,13 @@ const Component: React.FC = () => {
             className="settings-menu-list"
         >
             <Menu.Item
-               className="settings-menu-item__wrap" 
+               className="settings-menu-item__wrap"
+               onClick={onLogOutClick}
             >
-                <Paragraph
+                <Paragraph 
                     className="settings-menu-item"
                 >
-                    {"test"}
-                </Paragraph>
-            </Menu.Item>
-            <Menu.Item
-               className="settings-menu-item__wrap" 
-            >
-                <Paragraph
-                    className="settings-menu-item"
-                >
-                    {"test"}
-                </Paragraph>
-            </Menu.Item>
-            <Menu.Item
-               className="settings-menu-item__wrap" 
-            >
-                <Paragraph
-                    className="settings-menu-item"
-                >
-                    {"test"}
+                    {Chat.logout}
                 </Paragraph>
             </Menu.Item>
         </Menu>
@@ -123,12 +114,12 @@ const Component: React.FC = () => {
                     >
                         <Button
                             className="setting-btn"
-                            onClick={() => {setSettings(p => !p)}}
+                            onClick={onSettingsBtnClick}
                         >
                             <Dropdown
                                 overlay={menu}
                                 className=""
-                                visible={settings}
+                                visible={settingsModalShow}
                             >
                                 <SettingOutlined 
                                     className="setting-ico"
@@ -156,7 +147,7 @@ const Component: React.FC = () => {
                     >
                         <Button
                             className="add-btn"
-                            onClick={() => {setAdd(p => !p)}}
+                            onClick={onAddUserBtnClick}
                         >
                             <UserAddOutlined 
                                 className="add-ico"
