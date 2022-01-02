@@ -9,6 +9,7 @@ export enum Chat {
     forgot = "Forgot",
     googleAuth = "Google Auth",
     lastSeen = "Last seen",
+    logout = "Log out",
     messagePlaceholder = "Message",
     notAMember = "Not a member",
     now = "Now",
