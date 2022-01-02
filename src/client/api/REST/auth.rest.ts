@@ -8,12 +8,18 @@ export class AuthREST extends AbstractREST {
     private static readonly basePath: string = '/auth';
 
     private static getUrl(path: string): string {
-        console.log(`${AuthREST.baseUrl}${AuthREST.basePath}${path}`);
         return `${AuthREST.baseUrl}${AuthREST.basePath}${path}`;
     }
     
-    private static async makeRequest<R, T>(type: reqType, url: string, body: T): Promise<R> {
-        return await super.makeRequest<R, T>(type, url, body);
+    protected static async makeRequest<R, T>(type: reqType, url: string, body: T): Promise<R> {
+        try {
+            const res = await super.makeRequest<R, T>(type, url, body);
+            return res;
+        }
+        catch(error) {
+            console.error(error);
+            throw error;
+        }
     }
     
 
@@ -39,7 +45,7 @@ export class AuthREST extends AbstractREST {
     }
     
     public static async getToken(): Promise<string> {
-        const type = reqType.post;
+        const type = reqType.get;
         const path: string = '/getToken'
         const url = AuthREST.getUrl(path);
         const res = await AuthREST.makeRequest<IToken, void>(type, url, undefined);
@@ -47,9 +53,10 @@ export class AuthREST extends AbstractREST {
     }
 
     public static async getUser(): Promise<IUser> {
-        const type = reqType.post;
+        const type = reqType.get;
         const path: string = '/getUser'
         const url = AuthREST.getUrl(path);
-        return await AuthREST.makeRequest<IUser, void>(type, url, undefined);
+        const res = await AuthREST.makeRequest<IUser, void>(type, url, undefined);
+        return res;
     }
 }
