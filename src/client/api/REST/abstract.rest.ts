@@ -41,12 +41,10 @@ export abstract class AbstractREST {
         return new Observable(subscriber => {
             AbstractREST.request<T, R>(type, url, body)
                 .then(res => {
-                    console.log('res', res);
                     subscriber.next(res);
                     subscriber.complete();
                 })
                 .catch(err => {
-                    console.log('err');
                     subscriber.error(err);
                 });
         })
@@ -72,7 +70,6 @@ export abstract class AbstractREST {
                     resolve(data);
                 },
                 error: err => {
-                    console.error(err);
                     reject(err);
                 }
             });
