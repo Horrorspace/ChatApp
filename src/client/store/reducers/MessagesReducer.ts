@@ -20,7 +20,7 @@ export class MessagesReducer {
                 return messages.getMessages();
             })
             .addCase(MessagesActions.sendNewMessage, (state, action) => {
-                MessagesSocket.sendMessage(action.payload)
+                MessagesSocket.sendMessage(action.payload);
                 return state;
             })
             .addCase(MessagesActions.setReadMessage, (state, action) => {
@@ -32,9 +32,6 @@ export class MessagesReducer {
                 const messages = new MessagesRepository(state);
                 messages.deleteMessage(action.payload);
                 return messages.getMessages();
-            })
-            .addCase(MessagesActions.getAllMessagesThunk.fulfilled, (state, action) => {
-                return action.payload;
             });
     }
   
