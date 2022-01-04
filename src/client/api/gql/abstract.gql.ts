@@ -28,7 +28,9 @@ export abstract class AbstractGql {
   
     protected static readonly client = new ApolloClient({
         link: AbstractGql.authLink.concat(AbstractGql.httpLink),
-        cache: new InMemoryCache()
+        cache: new InMemoryCache({
+            resultCaching: false
+        })
     });
 
     protected static isSuccessful<T>(apolloRes: ApolloQueryResult<T>): boolean {       
