@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {GoogleAuth} from '@ui/components/auth/GoogleAuth';
 import {SignUp} from '@ui/components/auth/SignUp';
@@ -18,13 +19,14 @@ interface RegisterState {
 
 
 export const RegisterPage: React.FC = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const initialState: RegisterState = {
         username: '',
         email: '',
         password: ''
     };
     const [state, setState] = useState<RegisterState>(initialState);
-    const dispatch = useDispatch();
     const user = useSelector<IRootState>(state => state.Auth.user);
     console.log(user);
     
@@ -63,6 +65,13 @@ export const RegisterPage: React.FC = () => {
     }
 
 
+    const handleMemberClick: btnClickHandler = () => {
+        const path = '/login';
+        history.push(path);
+        history.goForward();
+    }
+
+
     return (
         <div
             className="auth"
@@ -81,6 +90,7 @@ export const RegisterPage: React.FC = () => {
             />
             <AMember 
                 aMember={false}
+                onBtnClick={handleMemberClick}
             />
         </div>
     )
