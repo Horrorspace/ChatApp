@@ -27,6 +27,7 @@ export interface IMessagesProps {
 }
 
 export interface IMessageEditorProps {
+    text: string;
     onSendClicK: btnClickHandler;
     onTextChange: inputChangeHandler; 
 }
@@ -50,6 +51,7 @@ export interface IUserAvatarProps {
 export interface IContactCardProps extends IUserAvatarProps, abstractUser {
     lastMessage: string;
     timeOfLastMessage: Date;
+    onClick: clickHandler;
 }
 
 export interface IContactCardsProps {
