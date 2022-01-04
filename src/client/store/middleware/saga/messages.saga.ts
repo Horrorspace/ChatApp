@@ -9,7 +9,6 @@ export class MessagesSaga {
     private static *contactsSaga() {
         const state: IRootState = Store.value.getState();
         const user = state.Auth.user;
-        console.log(state.Messages);
         if(user) {
             const ids: number[] = state.Messages.map(message => {
                 if(message.fromUserId !== user.id) {
@@ -23,13 +22,7 @@ export class MessagesSaga {
         }
     }
 
-    private static *addSaga() {
-        const state: IRootState = Store.value.getState();
-        console.log(state.Messages);
-    }
-
     public static *sagaWatcher() {
         yield takeEvery(MessagesActTypes.setMessages, MessagesSaga.contactsSaga);
-        yield takeEvery(MessagesActTypes.addMessage, MessagesSaga.addSaga);
     }
 }
