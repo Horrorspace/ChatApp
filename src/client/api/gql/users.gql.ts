@@ -3,8 +3,17 @@ import {AbstractGql} from '@api/gql/abstract.gql';
 import {IUser} from '@interfaces/IUser';
 
 
+interface IUsersRes {
+    users: IUser[]
+}
+
+interface IUsersByIdRes {
+    usersById: IUser[]
+}
+
+
 export class UsersGql extends AbstractGql {
-    private static async getAllUsersQuery(): Promise<ApolloQueryResult<IUser[]>> {
+    private static async getAllUsersQuery(): Promise<ApolloQueryResult<IUsersRes>> {
         return await UsersGql.client.query({
             query: gql`
             query getAllUsers {
@@ -20,9 +29,9 @@ export class UsersGql extends AbstractGql {
         })
     }
   
-    private static async getUsersQuery(ids: number[]): Promise<ApolloQueryResult<IUser[]>>{
+    private static async getUsersQuery(ids: number[]): Promise<ApolloQueryResult<IUsersByIdRes>>{
         const ids_test = {
-            ids: [10, 12]
+            ids
         };
         return await UsersGql.client.query({
             variables: {ids_test: ids_test},
@@ -40,11 +49,12 @@ export class UsersGql extends AbstractGql {
         })
     }
 
-    public static async getAllUsers(): Promise<IUser[]> {
-        return await UsersGql.makeRequest<void, IUser[]>(UsersGql.getAllUsersQuery, undefined);
+    public static async getAllUsers(): Promise<IUsersRes> {
+        return await UsersGql.makeRequest<void, IUsersRes>(UsersGql.getAllUsersQuery, undefined);
     }
 
-    public static async getUsers(ids: number[]): Promise<IUser[]> {
-        return await UsersGql.makeRequest<number[], IUser[]>(UsersGql.getUsersQuery, ids);
+    public static async getUsers(ids: number[]): Promise<IUsersByIdRes> {
+        const req = await UsersGql.makeRequest<number[], IUsersByIdRes>(UsersGql.getUsersQuery, ids);
+        return req;
     }
 }
