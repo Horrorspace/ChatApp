@@ -34,7 +34,7 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     private getIdBySocket(client: Socket): number | null {
         const filteredArr = this.clients.filter(wsClient => wsClient.wsId === client.id);
 
-        if(filteredArr.length === 1) {
+        if(filteredArr.length > 0) {
             return filteredArr[0].id;
         }
         else {
@@ -55,7 +55,7 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
   
 
     @SubscribeMessage('message')
-    public handleMessage(
+    public async handleMessage(
         @MessageBody() {text, toUserId}: MessageCreationAttrsRaw,
         @ConnectedSocket() client: Socket
     ) {
@@ -63,8 +63,13 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
         console.log(id);
 
         if(id) {
-            const message = new CreateMessageDto(id, toUserId, text);
-            this.messagesService.createMessage(message);
+            const newMessage = new CreateMessageDto(id, toUserId, text);
+            await this.messagesService.createMessage(newMessage);
+            const messages = await this.messagesService.getUserMessages(toUserId);
+            const index = messages.length - 1;
+            const message = messages
+                .sort((a, b) => a.date!.getTime() - b.date!.getTime())
+                [index];
             const fromSocket = this.getSocketId(id);
             const toSocket = this.getSocketId(toUserId);
             fromSocket ? this.server.to(fromSocket).emit('message', message) : null;
@@ -79,9 +84,11 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     public handleAuth(@MessageBody() {access_token}: AccessToken, @ConnectedSocket() client: Socket) {
         const {sub} = this.jwtService.decode(access_token) as JwtPayload;
         const wsClient = new WsClientDto(client.id, sub)
-        this.clients.push(wsClient);
-        console.log(wsClient);
-        console.log(this.clients);
+        if(this.clients.filter(client => client.wsId === wsClient.wsId).length === 0) {
+            this.clients.push(wsClient);
+            console.log(wsClient);
+            console.log(this.clients);
+        }
     }
 
     public async handleConnection(client: Socket) {
