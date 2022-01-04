@@ -12,4 +12,11 @@ export class NewMessageDto implements INewMessage {
         this.text = text;
         this.toUserId = toUserId;
     }
+
+    public getMessage() {
+        return {
+            text: this.text,
+            toUserId: this.toUserId
+        }
+    }
 }
