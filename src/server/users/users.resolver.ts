@@ -35,11 +35,12 @@ export class UsersResolver {
     @UseInterceptors(ClassSerializerInterceptor)
     public async usersById(@Args('options') {ids}: UserIdsDto): Promise<UserEntity[]> {
         const users = await this.usersService.getAllUsers();
-        return users
-            .filter(user => ids.some(id => user.id === id))
-            .map(user => {
-                return new UserEntity(user.get());
-            });
+        const result = users
+        .filter(user => ids.some(id => user.id === id))
+        .map(user => {
+            return new UserEntity(user.get());
+        });
+        return result;
     }
 
     @Query()
