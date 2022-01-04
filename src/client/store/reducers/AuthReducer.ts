@@ -14,7 +14,7 @@ import {AuthActions} from '@store/actions/AuthActions';
 
 
 export class AuthReducer {
-    private static readonly initialState: IAuthState = new AuthRepository(new AuthDto(null, null, true)).getAuth();
+    private static readonly initialState: IAuthState = new AuthRepository(new AuthDto(null, null, false, false)).getAuth();
 
     private static buildReducer(builder: ActionReducerMapBuilder<IAuthState>): void {
         builder
@@ -23,9 +23,14 @@ export class AuthReducer {
                 Auth.setUser(action.payload);
                 return Auth.getAuth();
             })
-            .addCase(AuthActions.setLoading, (state, action) => {
+            .addCase(AuthActions.setUserLoading, (state, action) => {
                 const Auth = new AuthRepository(state);
-                Auth.setLoading(action.payload);
+                Auth.setUserLoading(action.payload);
+                return Auth.getAuth();
+            })
+            .addCase(AuthActions.setTokenLoading, (state, action) => {
+                const Auth = new AuthRepository(state);
+                Auth.setTokenLoading(action.payload);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.clearAuth, state => {
@@ -46,30 +51,33 @@ export class AuthReducer {
             .addCase(AuthActions.loginThunk.fulfilled, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setUser(action.payload);
-                Auth.setLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.logoutThunk.fulfilled, state => {
                 const Auth = new AuthRepository(state);
                 Auth.clearAuth();
-                Auth.setLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.getTokenThunk.fulfilled, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setToken(action.payload);
-                Auth.setLoading(false);
+                Auth.setTokenLoading(false);
+                return Auth.getAuth();
+            })
+            .addCase(AuthActions.getTokenThunk.rejected, (state, action) => {
+                const Auth = new AuthRepository(state);
+                Auth.setTokenLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.getUserThunk.fulfilled, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setUser(action.payload);
-                Auth.setLoading(false);
+                Auth.setUserLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.getUserThunk.rejected, (state, action) => {
                 const Auth = new AuthRepository(state);
-                Auth.setLoading(false);
+                Auth.setUserLoading(false);
                 return Auth.getAuth();
             });
     }
