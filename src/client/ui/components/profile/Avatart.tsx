@@ -2,15 +2,12 @@ import React from 'react';
 import {Row, Col, Image} from 'antd';
 import {Chat} from '@lang/en/Chat';
 import {IAvatarProps} from '@interfaces/IProps';
-import {useSelector, useDispatch} from 'react-redux';
-import {AuthActions} from '@store/actions/AuthActions';
+import {defAvatar} from '@config/defAvatar';
 
 
-const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {
-    const dispatch = useDispatch();
-    const store = useSelector(state => state);
-    console.log(store);
-    
+
+const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {    
+    const avatar = src.length !== 0 ? src : defAvatar;
     return (
         <Row
             align="middle"
@@ -21,14 +18,10 @@ const Component: React.FC<IAvatarProps> = ({src}: IAvatarProps) => {
                 className="profile-avatar__wrap"    
             >
                 <Image 
-                    src={src}
+                    src={avatar}
                     alt={Chat.avatarAlt}
                     preview={false}
                     className="profile-avatar"
-                    onClick={() => {
-                        console.log(store);
-                        dispatch(AuthActions.setToken('124215151'));
-                    }}
                 />
             </Col>
         </Row>
