@@ -24,7 +24,7 @@ export class MessagesResolver {
         const authHeader: string | undefined = context.headers.authorization;
         
         if(authHeader) {
-            const {sub} = this.jwtService.decode(authHeader) as JwtPayload;
+            const {sub} = this.jwtService.decode(authHeader.replace('Bearer ', '')) as JwtPayload;
             const messages = await this.messagesService.getUserMessages(sub);
             return messages.map(message => {
                 return new MessageEntity(message.get())
