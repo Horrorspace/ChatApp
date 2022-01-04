@@ -5,9 +5,13 @@ import {Status} from '@ui/components/chat/Status'
 
 
 const Component: React.FC<IMessageProps> = ({text, date, fromUserId, userId, readed}: IMessageProps) => {
-    const fromUser: boolean = fromUserId === userId;
-    const timeStr: string = `${date.getHours()}:${date.getMinutes()}`;
-    const elementClassName: string = fromUser ? "message-element_from-user_dark" : "message-element_dark";
+    const fromUser: boolean = fromUserId !== userId;
+    const hoursVal = date.getHours();
+    const minutesVal = date.getMinutes();
+    const minutes = minutesVal > 9 ? `${minutesVal}` : `0${minutesVal}`;
+    const hours = hoursVal > 9 ? `${hoursVal}` : `0${hoursVal}`;
+    const timeStr: string = `${hours}:${minutes}`;
+    const elementClassName: string = fromUser ? "message-element_from-user" : "message-element";
     const {Paragraph} = Typography;
 
     return (
@@ -16,12 +20,12 @@ const Component: React.FC<IMessageProps> = ({text, date, fromUserId, userId, rea
             hoverable={true}
         >
             <Paragraph
-                className="message_dark"
+                className="message"
             >
                 {text}
             </Paragraph>
             <Paragraph
-                className="message-time_dark"
+                className="message-time"
             >
                 {timeStr}
             </Paragraph>
