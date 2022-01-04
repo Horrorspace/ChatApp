@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router'
 import {ContactCards} from '@ui/components/contacts/ContactCards';
 import {SearchField} from '@ui/components/contacts/SearchField';
-import {btnClickHandler, clickHandler, clickHandlerVoid} from '@aliases/ui';
+import {btnClickHandler, clickHandler, clickHandlerVoid, inputChangeHandler} from '@aliases/ui';
 import {useDispatch, useSelector} from 'react-redux';
 import {AuthActions} from '@store/actions/AuthActions';
 // import {MessagesActions} from '@store/actions/MessagesActions';
@@ -10,19 +11,20 @@ import {IRootState} from '@interfaces/IStore';
 import {IContactCardProps} from '@interfaces/IProps';
 import {IUser} from '@interfaces/IUser';
 import {IMessage} from '@interfaces/IMessage';
+import { UsersRepository } from '@core/classes/UsersRepository';
 
 
 interface IContactsPageState {
     settingsModalShow: boolean;
     addModalShow: boolean;
+    userInput: string;
 }
 
 export const ContactsPage: React.FC = () => {
     const dispatch = useDispatch();
-
-    // useEffect(() => {dispatch(MessagesActions.getAllMessagesThunk());}, []);
-
+    const history = useHistory();
     const user = useSelector<IRootState, IUser | null>(state => state.Auth.user);
+    const users = useSelector<IRootState, IUser[]>(state => state.Users);
     const contacts = useSelector<IRootState, IUser[]>(state => state.Contacts.contacts);
     const messages = useSelector<IRootState, IMessage[]>(state => state.Messages);
     const getLastMessage = (userId: number): IMessage => {
@@ -54,6 +56,7 @@ export const ContactsPage: React.FC = () => {
     const initialState: IContactsPageState = {
         settingsModalShow: false,
         addModalShow: false,
+        userInput: '',
     };
     const [state, setState] = useState(initialState);
 
@@ -82,20 +85,47 @@ export const ContactsPage: React.FC = () => {
         dispatch(AuthActions.logoutThunk())
     }
 
+    const handleUserInputChange: inputChangeHandler = (e) => {
+        if(e) {
+            const target = e.target as HTMLInputElement;
+            const value = target.value;
+            setState(state => ({
+                ...state,
+                userInput: value
+            }));
+        }
+    } 
+
     const handleAddUserOk: btnClickHandler = (e) => {
-        
+        const email = state.userInput;
+        if(email.length > 0) {
+            const usersRepository = new UsersRepository(users);
+            const user = usersRepository.getUserByEmail(email);
+            if(user) {
+                dispatch(ContactsActions.setCurrentContact(user))
+                setState(state => ({
+                    ...state,
+                    userInput: '',
+                    addModalShow: false
+                }));
+                history.push('/chat');
+                history.goForward();
+            }
+        }
     }
 
     return (
         <>
             <SearchField
                 addModalShow={state.addModalShow}
-                settingsModalShow={state.settingsModalShow} 
+                settingsModalShow={state.settingsModalShow}
+                userInput={state.userInput}
                 onSettingsBtnClick={handleSettingsBtnClick}
                 onAddUserCancel={handleAddUserCancel}
                 onAddUserBtnClick={handleAddUserBtnClick}
                 onLogOutClick={handleLogOut}
                 onAddUserOk={handleAddUserOk}
+                onUserInputChange={handleUserInputChange}
             />
             <ContactCards 
                 cards={cards}
