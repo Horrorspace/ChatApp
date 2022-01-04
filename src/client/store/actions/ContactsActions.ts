@@ -6,7 +6,8 @@ import {UsersGql} from '@api/gql/users.gql';
 
 export class ContactsActions {
     private static async  getContactsThunkAction(ids: number[]): Promise<IUser[]> {
-        return await UsersGql.getUsers(ids);
+        const res = await UsersGql.getUsers(ids);
+        return res.usersById;
     }
     
 
