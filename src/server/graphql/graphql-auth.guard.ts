@@ -21,7 +21,7 @@ export class GqlAuthGuard implements CanActivate {
 
         if(authHeader) {
             try {
-                await this.jwtService.verify(authHeader);
+                await this.jwtService.verify(authHeader.replace('Bearer ', ''));
                 return true;
             }
             catch(e) {
