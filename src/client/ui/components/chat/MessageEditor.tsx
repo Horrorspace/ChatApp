@@ -5,10 +5,14 @@ import {Chat} from '@lang/en/Chat';
 import {IMessageEditorProps} from '@interfaces/IProps';
 
 
-const Component: React.FC<IMessageEditorProps> = ({onSendClicK, onTextChange}: IMessageEditorProps) => { 
+const Component: React.FC<IMessageEditorProps> = ({
+    text,
+    onSendClicK, 
+    onTextChange
+}: IMessageEditorProps) => { 
     return (
         <section
-            className="message-editor__wrap_dark"
+            className="message-editor__wrap"
         >
             <Row
             align="middle"
@@ -20,8 +24,9 @@ const Component: React.FC<IMessageEditorProps> = ({onSendClicK, onTextChange}: I
                 >
                     <Input 
                         placeholder={Chat.messagePlaceholder}
-                        className="message-input_dark"
+                        className="message-input"
                         onChange={onTextChange}
+                        value={text}
                     />
                 </Col>
                 <Col
@@ -29,7 +34,7 @@ const Component: React.FC<IMessageEditorProps> = ({onSendClicK, onTextChange}: I
                 >
                     <Button 
                         type="primary"
-                        className="message-send-btn_dark"
+                        className="message-send-btn"
                         onClick={onSendClicK}
                     >
                         <SendOutlined />
