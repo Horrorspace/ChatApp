@@ -99,11 +99,13 @@ export interface ISignUpProps {
 export interface ISearchFieldProps {
     addModalShow: boolean;
     settingsModalShow: boolean;
+    userInput: string;
     onSettingsBtnClick: btnClickHandler;
     onLogOutClick: clickHandlerVoid;
     onAddUserBtnClick: btnClickHandler;
     onAddUserCancel: clickHandler;
     onAddUserOk: btnClickHandler;
+    onUserInputChange: inputChangeHandler;
 }
 
 export interface IAvatarProps {
@@ -118,5 +120,6 @@ export interface IGoogleAuthProps {
 
 export interface IAMemberProps {
     aMember: boolean;
+    onBtnClick: btnClickHandler;
 }
 
