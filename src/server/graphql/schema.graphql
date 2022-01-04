@@ -1,7 +1,7 @@
 scalar Date
 
 type User {
-    id: ID!
+    id: Int!
     username: String!
     email: String!
     online: Boolean
@@ -10,7 +10,7 @@ type User {
 }
 
 type Message {
-    id: ID
+    id: Int
     date: Date
     text: String!
     readed: Boolean
@@ -32,27 +32,27 @@ input MessageInput {
 }
 
 input EditUserName {
-    id: ID!
+    id: Int!
     username: String!
 }
 
 input EditUserEmail {
-    id: ID!
+    id: Int!
     email: String!
 }
 
 input EditUserPassword {
-    id: ID!
+    id: Int!
     password: String!
 }
 
 input EditUserOnline {
-    id: ID!
+    id: Int!
     online: Boolean
 }
 
 input EditUserAvatar {
-    id: ID!
+    id: Int!
     avatarSrc: String
 }
 
