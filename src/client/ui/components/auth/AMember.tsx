@@ -4,7 +4,7 @@ import {Chat} from '@lang/en/Chat';
 import {IAMemberProps} from '@interfaces/IProps'
 
 
-const Component: React.FC<IAMemberProps> = ({aMember}: IAMemberProps) => {
+const Component: React.FC<IAMemberProps> = ({aMember, onBtnClick}: IAMemberProps) => {
     const {Title} = Typography;
 
     const signInTitle: string = `${Chat.notAMember}? ${Chat.signUp} ${Chat.now}:`;
@@ -44,6 +44,7 @@ const Component: React.FC<IAMemberProps> = ({aMember}: IAMemberProps) => {
                     <Col>
                         <Button
                             className="member-btn"
+                            onClick={onBtnClick}
                         >
                             {buttonText}
                         </Button>
