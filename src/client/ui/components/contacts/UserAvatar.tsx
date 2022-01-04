@@ -5,7 +5,7 @@ import {IUserAvatarProps} from '@interfaces/IProps';
 
 
 export const Component: React.FC<IUserAvatarProps> = ({lastMessageFromUserId, userId, userAvatarSrc}: IUserAvatarProps) => {
-    const lastMessagefromUser: boolean = lastMessageFromUserId === userId;
+    const lastMessagefromUser: boolean = lastMessageFromUserId !== userId;
     
     if(lastMessagefromUser) {
         return (
