@@ -12,7 +12,7 @@ export class UsersReducer {
             .addCase(UsersActions.setUsers, (state, action) => {
                 return action.payload;
             })
-            .addCase(UsersActions.getContactsThunk.fulfilled, (state, action) => {
+            .addCase(UsersActions.getUsersThunk.fulfilled, (state, action) => {
                 return action.payload;
             });
     }
