@@ -8,14 +8,14 @@ import {DateMessage} from '@ui/components/chat/DateMessage'
 
 const Component: React.FC<IMessagesProps> = ({messages, userId}: IMessagesProps) => {  
     const messageProd = ({text, fromUserId, date, readed, id}: IMessage): React.ReactElement => {
-        const fromUser: boolean = fromUserId === userId;
+        const fromUser: boolean = fromUserId !== userId;
         return (
-           <Row
-            align="middle"
-            justify={fromUser ? 'end' : 'start'}
-            className="message-element-row"
-            key={id}
-           >
+            <Row
+                align="middle"
+                justify={fromUser ? 'end' : 'start'}
+                className="message-element-row"
+                key={id}
+            >
                 <Col
                     className="message-element-column"
                 >
@@ -27,11 +27,31 @@ const Component: React.FC<IMessagesProps> = ({messages, userId}: IMessagesProps)
                         readed={readed}
                     />
                 </Col>
-           </Row>
-       )
-   }
+            </Row>
+        )
+    }
+
+    const dateList = messages
+        .map(message => message.date.toDateString())
+        .filter((date, index, self) => self.indexOf(date) === index);
+    const messagesByDate = dateList.map(date => {
+        const messagesList = messages
+            .filter(message => message.date.toDateString() === date)
+            .sort((a, b) => a.date.getTime() - b.date.getTime())
+            .map(messageProd);
+        return (
+            <>
+                <DateMessage 
+                    date={new Date(date)}
+                />
+                {messagesList}
+            </>
+        )
+    });
    
-   const renderedMessages: React.ReactElement[] = messages.map(messageProd)
+    // const renderedMessages: React.ReactElement[] = messages
+    //     .sort((a, b) => b.date.getTime() - a.date.getTime())
+    //     .map(messageProd);
 
 
     return (
@@ -42,10 +62,7 @@ const Component: React.FC<IMessagesProps> = ({messages, userId}: IMessagesProps)
                 <div
                     className="message-list"
                 >
-                    <DateMessage 
-                        date={new Date('November 14, 2021 19:28:00')}
-                    />
-                    {renderedMessages}
+                    {messagesByDate}
                 </div>
             </section>
         </>
