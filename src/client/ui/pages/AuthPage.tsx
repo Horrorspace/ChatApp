@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {GoogleAuth} from '@ui/components/auth/GoogleAuth';
 import {SignIn} from '@ui/components/auth/SignIn';
@@ -18,12 +19,13 @@ interface AuthState {
 
 
 export const AuthPage: React.FC = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const initialState: AuthState = {
         login: '',
         password: ''
     };
     const [state, setState] = useState<AuthState>(initialState);
-    const dispatch = useDispatch();
     const user = useSelector<IRootState>(state => state.Auth.user);
     console.log(user);
     
@@ -51,6 +53,12 @@ export const AuthPage: React.FC = () => {
         dispatch(AuthActions.loginThunk(data));
         setState(initialState);
     }
+
+    const handleMemberClick: btnClickHandler = () => {
+        const path = '/register';
+        history.push(path);
+        history.goForward();
+    }
     
     
     return (
@@ -69,6 +77,7 @@ export const AuthPage: React.FC = () => {
             />
             <AMember 
                 aMember={true}
+                onBtnClick={handleMemberClick}
             />
         </div>
     )
