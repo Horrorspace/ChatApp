@@ -14,6 +14,12 @@ export class UsersRepository {
         return this.users.map(user => user.getUser());
     }
 
+    public getUserByEmail(email: string): IUser | null {
+        const filtered = this.users.filter(user => user.email === email);
+        const user = filtered.length > 0 ? filtered[0] : null;
+        return user;
+    }
+
     public addUser(user: IUser): IUser[] {
         const newUser = new User(user); 
         this.users.push(newUser);
