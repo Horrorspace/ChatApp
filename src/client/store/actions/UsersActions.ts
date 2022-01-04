@@ -13,5 +13,5 @@ export class UsersActions {
 
     public static setUsers = createAction<IUser[], UsersActTypes>(UsersActTypes.setUsers);
 
-    public static getContactsThunk = createAsyncThunk<IUser[], void>(UsersActTypes.getUsersThunk, UsersActions.getUsersThunkAction);
+    public static getUsersThunk = createAsyncThunk<IUser[], void>(UsersActTypes.getUsersThunk, UsersActions.getUsersThunkAction);
 }
