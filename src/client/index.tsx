@@ -6,9 +6,11 @@ import {Store} from '@store/Store';
 // import {ILogin} from '@interfaces/IAuth';
 // import {LoginDto} from '@core/dto/login.dto';
 import {AuthActions} from '@store/actions/AuthActions';
+import {MessagesActions} from '@store/actions/MessagesActions';
+import {AuthREST} from '@api/REST/auth.rest';
 // import {UsersGql} from '@api/gql/users.gql';
 // import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
-// import {MessagesSocket} from '@api/socket/messages.socket';
+import {MessagesSocket} from '@api/socket/messages.socket';
 // import {INewMessage} from '@interfaces/IMessage';
 
 
@@ -61,7 +63,21 @@ import {AuthActions} from '@store/actions/AuthActions';
 // Store.value.dispatch(AuthActions.loginThunk(user));
 // console.log(Store.value.getState());
 
-Store.start();
-Store.value.dispatch(AuthActions.getUserThunk());
+async function start() {
+    try {
+        const user = await AuthREST.getUser();
+        const token = await AuthREST.getToken();
+        Store.start();
+        Store.value.dispatch(AuthActions.setAuth(user));
+        Store.value.dispatch(AuthActions.setToken(token));
+        Store.value.dispatch(MessagesActions.getAllMessagesThunk());
+        MessagesSocket.start();
+        render(<App />, document.getElementById('root'));
+    }
+    catch(error) {
+        console.error(error);
+        render(<App />, document.getElementById('root'));
+    }
+}
 
-render(<App />, document.getElementById('root'));
+start();
