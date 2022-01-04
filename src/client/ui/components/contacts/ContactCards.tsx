@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import {ContactCard} from '@ui/components/contacts/ContactCard';
 import {IContactCardsProps} from '@interfaces/IProps';
 
@@ -7,9 +8,13 @@ const Component: React.FC<IContactCardsProps> = ({
     cards
 }: IContactCardsProps) => {
     const contactCards: React.ReactElement[] = cards.map(card => 
-        <ContactCard 
-            {...card}
-        />
+        <NavLink
+            to="/chat"
+        >
+            <ContactCard 
+                {...card}
+            />
+        </NavLink>
     )
 
     return (
