@@ -8,11 +8,13 @@ import {ISearchFieldProps} from '@interfaces/IProps';
 const Component: React.FC<ISearchFieldProps> = ({
     addModalShow,
     settingsModalShow,
+    userInput,
     onSettingsBtnClick,
     onLogOutClick,
     onAddUserBtnClick,
     onAddUserCancel,
-    onAddUserOk
+    onAddUserOk,
+    onUserInputChange
 }: ISearchFieldProps) => { 
     const {Title, Paragraph} = Typography;
 
@@ -30,13 +32,13 @@ const Component: React.FC<ISearchFieldProps> = ({
             <Col
                 className="add-modal-btn__wrap"
             >
-                <Button
-                    type="primary"
-                    className="add-modal-btn_ok"
-                    onClick={onAddUserOk}
-                >
-                    {Chat.ok}
-                </Button>
+                    <Button
+                        type="primary"
+                        className="add-modal-btn_ok"
+                        onClick={onAddUserOk}
+                    >
+                        {Chat.ok}
+                    </Button>
             </Col>
             <Col
                 className="add-modal-btn__wrap"
@@ -78,6 +80,8 @@ const Component: React.FC<ISearchFieldProps> = ({
             <Input 
                 placeholder={Chat.addUserPlaceholder}
                 className="add-modal-input"
+                value={userInput}
+                onChange={onUserInputChange}
             />
         </Modal>
     )
