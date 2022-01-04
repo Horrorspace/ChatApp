@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import {Row, Col, Image, Typography, Button, Dropdown, Menu} from 'antd';
 import {MoreOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
@@ -31,31 +32,31 @@ const Component: React.FC<IContactProps> = ({
     
     const menu: React.ReactElement = (
         <Menu
-            className="contact-menu-list_dark"
+            className="contact-menu-list"
         >
             <Menu.Item
-               className="contact-menu-item__wrap_dark" 
+               className="contact-menu-item__wrap" 
             >
                 <Paragraph
-                    className="contact-menu-item_dark"
+                    className="contact-menu-item"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="contact-menu-item__wrap_dark" 
+               className="contact-menu-item__wrap" 
             >
                 <Paragraph
-                    className="contact-menu-item_dark"
+                    className="contact-menu-item"
                 >
                     {"test"}
                 </Paragraph>
             </Menu.Item>
             <Menu.Item
-               className="contact-menu-item__wrap_dark" 
+               className="contact-menu-item__wrap" 
             >
                 <Paragraph
-                    className="contact-menu-item_dark"
+                    className="contact-menu-item"
                 >
                     {"test"}
                 </Paragraph>
@@ -65,7 +66,7 @@ const Component: React.FC<IContactProps> = ({
 
     return (
         <section
-            className="contact__wrap_dark"
+            className="contact__wrap"
         >
             <Row
                 align="middle"
@@ -75,13 +76,17 @@ const Component: React.FC<IContactProps> = ({
                 <Col
                     className="contact-back__wrap"
                 >
-                    <Button
-                        className="contact-setting__btn"
+                    <NavLink
+                        to="/"
                     >
-                        <ArrowLeftOutlined 
-                            className="contact-setting__ico_dark"
-                        />
-                    </Button>
+                        <Button
+                            className="contact-setting__btn"
+                        >
+                            <ArrowLeftOutlined 
+                                className="contact-setting__ico"
+                            />
+                        </Button>
+                    </NavLink>
                 </Col>
                 <Col
                     className="contact-avatar__wrap"
@@ -97,37 +102,41 @@ const Component: React.FC<IContactProps> = ({
                 <Col
                     className="contact-data"
                 >
-                    <Row
-                        align="middle"
-                        justify="start"
-                        className="contact-username__main-wrap"    
+                    <NavLink
+                        to="/profile"
                     >
-                        <Col
-                            className="contact-username__wrap"
+                        <Row
+                            align="middle"
+                            justify="start"
+                            className="contact-username__main-wrap"    
                         >
-                            <Title 
-                                level={4}
-                                className="contact-username_dark"
+                            <Col
+                                className="contact-username__wrap"
                             >
-                                {username}
-                            </Title>
-                        </Col>
-                    </Row>
-                    <Row
-                        align="middle"
-                        justify="start"
-                        className="contact-online__main-wrap"
-                    >
-                        <Col
-                            className="contact-online__wrap"
+                                <Title 
+                                    level={4}
+                                    className="contact-username"
+                                >
+                                    {username}
+                                </Title>
+                            </Col>
+                        </Row>
+                        <Row
+                            align="middle"
+                            justify="start"
+                            className="contact-online__main-wrap"
                         >
-                            <Paragraph
-                                className="contact-online_dark"
+                            <Col
+                                className="contact-online__wrap"
                             >
-                                {onlineStr}
-                            </Paragraph>
-                        </Col>
-                    </Row>
+                                <Paragraph
+                                    className="contact-online"
+                                >
+                                    {onlineStr}
+                                </Paragraph>
+                            </Col>
+                        </Row>
+                    </NavLink>
                 </Col>
                 <Col
                     className="contact-settings__wrap"
@@ -142,7 +151,7 @@ const Component: React.FC<IContactProps> = ({
                             visible={state}
                         >
                             <MoreOutlined 
-                                className="contact-setting__ico_dark"
+                                className="contact-setting__ico"
                             />
                         </Dropdown>
                     </Button>
