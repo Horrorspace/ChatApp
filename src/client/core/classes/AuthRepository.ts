@@ -8,20 +8,23 @@ import {TokenDto} from '@core/dto/token.dto';
 export class AuthRepository {
     private user: IUser | null = null;
     private token: IToken | null = null;
-    private loading: boolean = false;
+    private userLoading: boolean = false;
+    private tokenLoading: boolean = false;
 
 
-    constructor({user, token, loading}: IAuthState) {
+    constructor({user, token, userLoading, tokenLoading}: IAuthState) {
         this.user = user;
         this.token = token;
-        this.loading = loading;
+        this.userLoading = userLoading;
+        this.tokenLoading = tokenLoading;
     }
 
     public getAuth(): IAuthState {
         return {
             user: this.user,
             token: this.token,
-            loading: this.loading
+            userLoading: this.userLoading,
+            tokenLoading: this.tokenLoading
         }
     }
 
@@ -34,8 +37,12 @@ export class AuthRepository {
         return this.token;
     }
 
-    public getLoading(): boolean {
-        return this.loading;
+    public getUserLoading(): boolean {
+        return this.userLoading;
+    }
+
+    public getTokenLoading(): boolean {
+        return this.tokenLoading;
     }
 
     public setUser(user: IUser): IUser | null {
@@ -49,10 +56,14 @@ export class AuthRepository {
         return this.getToken();
     }
 
-    public setLoading(loading: boolean): boolean {
-        this.loading = loading;
-        console.log(loading);
-        return this.getLoading();
+    public setUserLoading(userLoading: boolean): boolean {
+        this.userLoading = userLoading;
+        return this.getUserLoading();
+    }
+
+    public setTokenLoading(tokenLoading: boolean): boolean {
+        this.tokenLoading = tokenLoading;
+        return this.getTokenLoading();
     }
 
     public clearUser(): void {
