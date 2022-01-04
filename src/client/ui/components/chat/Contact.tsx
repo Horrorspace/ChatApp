@@ -5,7 +5,7 @@ import {MoreOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import {Chat} from '@lang/en/Chat';
 import {lastOnline} from '@aliases/Message';
 import {IContactProps} from '@interfaces/IProps';
-
+import {defAvatar} from '@config/defAvatar';
 
 
 const Component: React.FC<IContactProps> = ({
@@ -14,6 +14,7 @@ const Component: React.FC<IContactProps> = ({
     online,
     lastOnline
 }: IContactProps) => {
+    const avatar = avatarSrc.length !== 0 ? avatarSrc : defAvatar;
     const getOnlineStr = (online: boolean, lastOnline: lastOnline): string => {
         if(online){
             return Chat.online
@@ -92,7 +93,7 @@ const Component: React.FC<IContactProps> = ({
                     className="contact-avatar__wrap"
                 >
                     <Image 
-                        src={avatarSrc}
+                        src={avatar}
                         alt={Chat.avatarAlt}
 
                         preview={false}
