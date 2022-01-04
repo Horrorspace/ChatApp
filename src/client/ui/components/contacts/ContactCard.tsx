@@ -12,7 +12,8 @@ const Component: React.FC<IContactCardProps> = ({
     userId,
     userAvatarSrc, 
     timeOfLastMessage,
-    lastMessage
+    lastMessage,
+    onClick
 }: IContactCardProps) => {
     const {Title, Paragraph} = Typography;
     
@@ -21,6 +22,7 @@ const Component: React.FC<IContactCardProps> = ({
             align="middle"
             justify="center"
             className="contact-card"
+            onClick={onClick}
         >
             <Col
                 className="contact-card-avatar__wrap"
