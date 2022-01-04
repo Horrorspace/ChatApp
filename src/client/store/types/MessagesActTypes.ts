@@ -4,7 +4,7 @@ export enum MessagesActTypes {
     setReadMessage = 'setReadMessage',
     deleteMessage = 'deleteMessage',
     getAllMessagesThunk = 'getAllMessagesThunk',
-    sendNewMessageThunk = 'sendNewMessageThunk',
+    sendNewMessage = 'sendNewMessage',
     setReadMessageThunk = 'setReadMessageThunk',
     deleteMessageThunk = 'deleteMessageThunk'
 }
