@@ -5,26 +5,20 @@ import {Profile} from '@ui/components/profile/Profile';
 import {ProfileMenu} from '@ui/components/profile/ProfileMenu';
 import {IInfoFieldProps} from '@interfaces/IProps';
 import {IRootState} from '@interfaces/IStore';
+import {IUser} from '@interfaces/IUser';
 import {InfoFields} from '@aliases/Profile';
-// import {ILogin} from '@interfaces/IAuth';
 
 
 
 export const ProfilePage: React.FC = () => {
-    const store = useSelector((state: IRootState): IRootState => state);
-    console.log(store.Contacts.contacts);
-
-    
-    const avatarSrc: string = "https://sun9-76.userapi.com/impg/iIWIxmXrMksl12Z47tqfYqZl_0XLIGFyf4Shng/5anoVOOFRkY.jpg?size=1192x871&quality=96&sign=9437dcf14a264d0f1eb4efa06544eb8e&type=album"
-    const username: string ="Just for lulz";
-    const email: string = "justforlulz@google.com";
+    const contact = useSelector<IRootState, IUser>(state => state.Contacts.currentContact!);
     const usernameField: IInfoFieldProps = {
         title: `${Chat.username}:`,
-        value: username
+        value: contact.username
     }
     const emailField: IInfoFieldProps = {
         title: `${Chat.email}:`,
-        value: email
+        value: contact.email
     }
     const infoFields: InfoFields = [usernameField, emailField];
 
@@ -33,7 +27,7 @@ export const ProfilePage: React.FC = () => {
         <>
             <ProfileMenu />
             <Profile 
-                src={avatarSrc}
+                src={contact.avatarSrc}
                 infoFields={infoFields}
             />
         </>
