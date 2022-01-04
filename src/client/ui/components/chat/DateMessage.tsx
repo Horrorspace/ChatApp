@@ -5,6 +5,11 @@ import {IDateMessageProps} from '@interfaces/IProps';
 
 const Component: React.FC<IDateMessageProps> = ({date}: IDateMessageProps) => {
     const {Title} = Typography
+    const dayValue = date.getDate();
+    const monthValue = date.getMonth() + 1;
+    const yearValue = date.getFullYear();
+    const day = dayValue > 9 ? `${dayValue}` : `0${dayValue}`;
+    const month = monthValue > 9 ? `${monthValue}` : `0${monthValue}`;
 
     return (
         <div
@@ -17,7 +22,7 @@ const Component: React.FC<IDateMessageProps> = ({date}: IDateMessageProps) => {
                     level={5}
                     className="message-date"
                 >
-                    {`${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`}
+                    {`${day}.${month}.${yearValue}`}
                 </Title>
             </div>
         </div>
