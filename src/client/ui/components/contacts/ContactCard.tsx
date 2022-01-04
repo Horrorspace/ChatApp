@@ -2,7 +2,8 @@ import React from 'react';
 import {Row, Col, Image, Typography} from 'antd';
 import {Chat} from '@lang/en/Chat';
 import {IContactCardProps} from '@interfaces/IProps';
-import {UserAvatar} from '@ui/components/contacts/UserAvatar'
+import {UserAvatar} from '@ui/components/contacts/UserAvatar';
+import {defAvatar} from '@config/defAvatar';
 
 
 const Component: React.FC<IContactCardProps> = ({
@@ -16,6 +17,7 @@ const Component: React.FC<IContactCardProps> = ({
     onClick
 }: IContactCardProps) => {
     const {Title, Paragraph} = Typography;
+    const avatar = avatarSrc.length !== 0 ? avatarSrc : defAvatar;
     
     return (
         <Row
@@ -28,7 +30,7 @@ const Component: React.FC<IContactCardProps> = ({
                 className="contact-card-avatar__wrap"
             >
                 <Image 
-                    src={avatarSrc}
+                    src={avatar}
                     alt={Chat.avatarAlt}
                     preview={false}
                     className="contact-card-avatar"
