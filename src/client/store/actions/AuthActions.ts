@@ -3,6 +3,7 @@ import {AuthActTypes} from '@store/types/AuthActTypes';
 import {ILogin, IRegister} from '@interfaces/IAuth';
 import {IUser} from '@interfaces/IUser';
 import {AuthREST} from '@api/REST/auth.rest';
+import {Store} from '@store/Store';
 
 // export const setAuth = createAction<IUser>(AuthActTypes.setAuth);
 
@@ -20,7 +21,9 @@ export class AuthActions {
     }
 
     private static async getTokenThunkAction(): Promise<string> {
-        return await AuthREST.getToken();
+        const res = await AuthREST.getToken();
+        Store.value.dispatch(AuthActions.setToken(res));
+        return res;
     }
 
     private static async getUserThunkAction(): Promise<IUser> {
@@ -30,7 +33,9 @@ export class AuthActions {
     
     public static setAuth = createAction<IUser>(AuthActTypes.setAuth);
     
-    public static setLoading = createAction<boolean>(AuthActTypes.setLoading);
+    public static setUserLoading = createAction<boolean>(AuthActTypes.setUserLoading);
+
+    public static setTokenLoading = createAction<boolean>(AuthActTypes.setTokenLoading);
 
     public static clearAuth = createAction<void>(AuthActTypes.clearAuth);
 
