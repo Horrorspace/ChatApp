@@ -12,7 +12,8 @@ export abstract class AbstractSocket {
         return token ? token : '';
     }
     
-    protected static socket = io(AbstractSocket.baseUrl, {
+    protected static socket = io('', {
+        autoConnect: false,
         auth: {
             token: AbstractSocket.token
         }
