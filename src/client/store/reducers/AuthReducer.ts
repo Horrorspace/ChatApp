@@ -21,6 +21,7 @@ export class AuthReducer {
             .addCase(AuthActions.setAuth, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setUser(action.payload);
+                Auth.setUserLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.setUserLoading, (state, action) => {
@@ -48,16 +49,6 @@ export class AuthReducer {
                 Auth.clearToken();
                 return Auth.getAuth();
             })
-            .addCase(AuthActions.loginThunk.fulfilled, (state, action) => {
-                const Auth = new AuthRepository(state);
-                Auth.setUser(action.payload);
-                return Auth.getAuth();
-            })
-            .addCase(AuthActions.logoutThunk.fulfilled, state => {
-                const Auth = new AuthRepository(state);
-                Auth.clearAuth();
-                return Auth.getAuth();
-            })
             .addCase(AuthActions.getTokenThunk.fulfilled, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setToken(action.payload);
@@ -67,12 +58,6 @@ export class AuthReducer {
             .addCase(AuthActions.getTokenThunk.rejected, (state, action) => {
                 const Auth = new AuthRepository(state);
                 Auth.setTokenLoading(false);
-                return Auth.getAuth();
-            })
-            .addCase(AuthActions.getUserThunk.fulfilled, (state, action) => {
-                const Auth = new AuthRepository(state);
-                Auth.setUser(action.payload);
-                Auth.setUserLoading(false);
                 return Auth.getAuth();
             })
             .addCase(AuthActions.getUserThunk.rejected, (state, action) => {
