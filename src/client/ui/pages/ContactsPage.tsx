@@ -27,6 +27,7 @@ export const ContactsPage: React.FC = () => {
     const users = useSelector<IRootState, IUser[]>(state => state.Users);
     const contacts = useSelector<IRootState, IUser[]>(state => state.Contacts.contacts);
     const messages = useSelector<IRootState, IMessage[]>(state => state.Messages);
+
     const getLastMessage = (userId: number): IMessage => {
         const messageList = messages.filter(message => {
             const fromUser: boolean = message.fromUserId === userId;
@@ -37,7 +38,7 @@ export const ContactsPage: React.FC = () => {
         return messageList[lastIndex];
     };
 
-    const cards: IContactCardProps[] = contacts
+    const cards: IContactCardProps[] = messages.length > 0 ? contacts
         .map(contact => ({
             username: contact.username,
             avatarSrc: contact.avatarSrc,
@@ -51,7 +52,8 @@ export const ContactsPage: React.FC = () => {
                 dispatch(ContactsActions.setCurrentContact(contact));
             }
         }))
-        .sort((a, b) => b.timeOfLastMessage.getTime() - a.timeOfLastMessage.getTime());
+        .sort((a, b) => b.timeOfLastMessage.getTime() - a.timeOfLastMessage.getTime())
+        : [];
     
     const initialState: IContactsPageState = {
         settingsModalShow: false,
