@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {GoogleAuth} from '@ui/components/auth/GoogleAuth';
 import {SignIn} from '@ui/components/auth/SignIn';
 import {AMember} from '@ui/components/auth/AMember';
 import {inputChangeHandler, btnClickHandler} from '@aliases/ui';
 import {ILogin} from '@interfaces/IAuth';
 import {LoginDto} from '@core/dto/login.dto';
-import {IRootState} from '@interfaces/IStore';
 import {AuthActions} from '@store/actions/AuthActions';
 
 
@@ -26,8 +25,6 @@ export const AuthPage: React.FC = () => {
         password: ''
     };
     const [state, setState] = useState<AuthState>(initialState);
-    const user = useSelector<IRootState>(state => state.Auth.user);
-    console.log(user);
     
     const loginHandler: inputChangeHandler = (e) => {
         const target = e.target as HTMLInputElement;
