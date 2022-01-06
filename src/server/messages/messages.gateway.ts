@@ -60,7 +60,6 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
         @ConnectedSocket() client: Socket
     ) {
         const id = this.getIdBySocket(client);
-        console.log(id);
 
         if(id) {
             const newMessage = new CreateMessageDto(id, toUserId, text);
@@ -88,6 +87,10 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
             this.clients.push(wsClient);
             console.log(wsClient);
             console.log(this.clients);
+        }
+        else {
+            this.clients = this.clients.filter(client => client.wsId === wsClient.wsId);
+            this.clients.push(wsClient);
         }
     }
 
