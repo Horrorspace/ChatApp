@@ -1,4 +1,10 @@
-import {ApolloClient, createHttpLink, InMemoryCache, ApolloQueryResult} from '@apollo/client';
+import {
+    ApolloClient, 
+    createHttpLink,
+    DefaultOptions,
+    InMemoryCache, 
+    ApolloQueryResult
+} from '@apollo/client';
 import {setContext} from '@apollo/client/link/context';
 import {config} from '@config/config';
 import {Observable} from 'rxjs';
@@ -25,12 +31,22 @@ export abstract class AbstractGql {
             }
         }
     });
+
+    protected static readonly defaultOptions: DefaultOptions = {
+        watchQuery: {
+            fetchPolicy: 'no-cache'
+        },
+        query: {
+            fetchPolicy: 'no-cache'
+        }
+    } 
   
     protected static readonly client = new ApolloClient({
         link: AbstractGql.authLink.concat(AbstractGql.httpLink),
         cache: new InMemoryCache({
             resultCaching: false
-        })
+        }),
+        defaultOptions: AbstractGql.defaultOptions
     });
 
     protected static isSuccessful<T>(apolloRes: ApolloQueryResult<T>): boolean {       
