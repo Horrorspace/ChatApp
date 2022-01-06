@@ -13,7 +13,7 @@ export class MessagesSocket extends AbstractSocket {
     private static sendAuth(): void {
         MessagesSocket.socket.emit(messageEventType.auth, {
             access_token: MessagesSocket.token
-        })
+        });
     }
   
     public static sendMessage(message: INewMessage): void {
@@ -21,15 +21,28 @@ export class MessagesSocket extends AbstractSocket {
     }
 
     public static refreshToken(): void {
+        const token = MessagesSocket.updateToken();
         MessagesSocket.socket.auth = {
-            token: MessagesSocket.updateToken()
+            token
         };
+        MessagesSocket.token = token;
         MessagesSocket.sendAuth();
+    }
+
+    public static clearToken(): void {
+        MessagesSocket.socket.auth = {
+            token: ''
+        };
+        MessagesSocket.token = '';
     }
     
     public static start(): void {
         MessagesSocket.socket.on(messageEventType.message, MessagesSocket.onMessage);
         MessagesSocket.socket.connect();
-        MessagesSocket.sendAuth();
+    }
+
+    public static stop(): void {
+        MessagesSocket.socket.disconnect();
+        MessagesSocket.clearToken();
     }
 }
