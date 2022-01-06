@@ -8,8 +8,9 @@ import {Store} from '@store/Store';
 // export const setAuth = createAction<IUser>(AuthActTypes.setAuth);
 
 export class AuthActions {
-    private static async loginThunkAction(login: ILogin): Promise<IUser> {
-        return await AuthREST.login(login);
+    private static async loginThunkAction(login: ILogin): Promise<void> {
+        const res = await AuthREST.login(login);
+        Store.value.dispatch(AuthActions.setAuth(res));
     }
 
     private static async registerThunkAction(registerData: IRegister): Promise<IUser> {
@@ -18,6 +19,8 @@ export class AuthActions {
 
     private static async logoutThunkAction(): Promise<void> {
         await AuthREST.logout();
+        Store.value.dispatch(AuthActions.clearAuth());
+        Store.value.dispatch(AuthActions.clearToken());
     }
 
     private static async getTokenThunkAction(): Promise<string> {
@@ -26,8 +29,9 @@ export class AuthActions {
         return res;
     }
 
-    private static async getUserThunkAction(): Promise<IUser> {
-        return await AuthREST.getUser();
+    private static async getUserThunkAction(): Promise<void> {
+        const res = await AuthREST.getUser();
+        Store.value.dispatch(AuthActions.setAuth(res));
     }
 
     
@@ -43,7 +47,7 @@ export class AuthActions {
 
     public static clearToken = createAction<void>(AuthActTypes.clearToken);
 
-    public static loginThunk = createAsyncThunk<IUser, ILogin>(AuthActTypes.loginThunk, AuthActions.loginThunkAction);
+    public static loginThunk = createAsyncThunk<void, ILogin>(AuthActTypes.loginThunk, AuthActions.loginThunkAction);
 
     public static registerThunk = createAsyncThunk<IUser, IRegister>(AuthActTypes.registerThunk, AuthActions.registerThunkAction);
 
@@ -51,5 +55,5 @@ export class AuthActions {
 
     public static getTokenThunk = createAsyncThunk<string, void>(AuthActTypes.getTokenThunk, AuthActions.getTokenThunkAction);
 
-    public static getUserThunk = createAsyncThunk<IUser, void>(AuthActTypes.getUserThunk, AuthActions.getUserThunkAction);
+    public static getUserThunk = createAsyncThunk<void, void>(AuthActTypes.getUserThunk, AuthActions.getUserThunkAction);
 }
