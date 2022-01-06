@@ -108,7 +108,8 @@ export class AuthController {
     @UseGuards(LoggedInGuard)
     public async getToken(@Request() req: Req): Promise<TokenDto | null> {
         const userAttrs = req.user as UserAttrs;
-        return this.authService.getToken(userAttrs);
+        const res = await this.authService.getToken(userAttrs);
+        return res;
     }
 
     @ApiTags('Auth')
