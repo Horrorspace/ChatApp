@@ -21,7 +21,7 @@ jobs:
         run: npm run ts-build
       - name: Showing dir
         run: ls
-      - uses: actions/checkout@v2
+      - name: actions/checkout@v2
       - run: |
           git config user.name "Utkin Eugeniy"
           git config user.email "utkineugeniy@gmail.com"
