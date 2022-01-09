@@ -32,8 +32,6 @@ jobs:
       - name: Run git add
         run: |
           git add --force build
-          git add --force .production.env
-          git add --force package.json
       - name: Run git commit
         run: git commit -m "generated"
       - name: Run git push
