@@ -20,7 +20,7 @@ jobs:
       - name: Run npm ts-build
         run: npm run ts-build
       - name: Deploy to GH Page
-      - uses: actions/upload-artifact@main
+      - uses: actions/upload-artifact@v2
         with:
           name: ts artifacts
           path: build/
