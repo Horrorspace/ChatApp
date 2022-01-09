@@ -24,5 +24,8 @@ export class MessagesSaga {
 
     public static *sagaWatcher() {
         yield takeEvery(MessagesActTypes.setMessages, MessagesSaga.contactsSaga);
+        yield takeEvery(MessagesActTypes.addMessage, MessagesSaga.contactsSaga);
+        yield takeEvery(MessagesActTypes.deleteMessage, MessagesSaga.contactsSaga);
+        yield takeEvery(MessagesActTypes.setReadMessage, MessagesSaga.contactsSaga);
     }
 }
