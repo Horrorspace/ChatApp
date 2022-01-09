@@ -17,18 +17,16 @@ jobs:
           node-version: '14'
       - name: Run npm install
         run: npm install
-      - name: Run server app building
+      - name: Run npm ts-build
         run: npm run ts-build
-      - name: Run client app building
-        run: npm run dev
       - name: Run git config
         run: |
-          git config user.name "Horrorspace"
+          git config user.name "Utkin Eugeniy"
           git config user.email "utkineugeniy@gmail.com"
-      - name: Run git remote
-        run: git remote add buildRepo https://.:${{ secrets.TOKEN }}@github.com/Horrorspace/ChatApp-deploy
       - name: Run git fetch
-        run: git fetch buildRepo
+        run: git fetch --all
+      - name: Run git checkout
+        run: git checkout -b gji3htjkewhtij3ktse origin/gji3htjkewhtij3ktse
       - name: Run git add
         run: |
           git add --force build
@@ -37,4 +35,4 @@ jobs:
       - name: Run git commit
         run: git commit -m "generated"
       - name: Run git push
-        run: git push "https://Horrorspace:${{ secrets.TOKEN }}@github.com/Horrorspace/ChatApp-deploy" main
+        run: git push origin HEAD:gji3htjkewhtij3ktse
