@@ -19,13 +19,18 @@ jobs:
         run: npm install
       - name: Run npm ts-build
         run: npm run ts-build
-      - name: actions/checkout@v2
+      - name: Run git config
         run: |
           git config user.name "Utkin Eugeniy"
           git config user.email "utkineugeniy@gmail.com"
-          git checkout build --
+      - name: Run git checkout
+        run: git checkout build --
+      - name: Run git add
+        run: |
           git add --force build
           git add --force .production.env
           git add --force package.json
-          git commit -m "generated"
-          git push origin HEAD:build
+      - name: Run git commit
+        run: git commit -m "generated"
+      - name: Run git push
+        run: git push origin HEAD:build
