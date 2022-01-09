@@ -1,10 +1,10 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {IProfileMenuProps} from '@interfaces/IProps';
 import {Row, Col, Button} from 'antd';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 
 
-const Component: React.FC = () => {
+const Component: React.FC<IProfileMenuProps> = ({onBackClick}: IProfileMenuProps) => {
     return (
         <section
             className="profile-menu__wrap"
@@ -17,17 +17,14 @@ const Component: React.FC = () => {
                 <Col
                     className="profile-menu-btn_back__wrap"
                 >
-                    <NavLink
-                        to="/chat"
+                    <Button
+                        className="profile-menu-btn_back"
+                        onClick={onBackClick}
                     >
-                        <Button
-                            className="profile-menu-btn_back"
-                        >
-                            <ArrowLeftOutlined 
-                                className="profile-menu-back-ico"
-                            />
-                        </Button>
-                    </NavLink>
+                        <ArrowLeftOutlined 
+                            className="profile-menu-back-ico"
+                        />
+                    </Button>
                 </Col>
             </Row>
         </section>
