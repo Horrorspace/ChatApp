@@ -20,7 +20,7 @@ jobs:
       - name: Run npm ts-build
         run: npm run ts-build
       - name: Deploy to GH Page
-        uses: GH/github-pages-deploy-action@4.1.1
+        uses: Horrorspace/ChatApp@1.0.0
         with:
           branch: build
           folder: build
