@@ -83,8 +83,15 @@ export const ContactsPage: React.FC = () => {
         }));
     }
 
+    const handleMyProfileClick: clickHandlerVoid =() => {
+        dispatch(ContactsActions.setCurrentContact(user!));
+        history.push('/profile');
+        history.goForward();
+
+    }
+
     const handleLogOut: clickHandlerVoid = () => {
-        dispatch(AuthActions.logoutThunk())
+        dispatch(AuthActions.logoutThunk());
     }
 
     const handleUserInputChange: inputChangeHandler = (e) => {
@@ -125,6 +132,7 @@ export const ContactsPage: React.FC = () => {
                 onSettingsBtnClick={handleSettingsBtnClick}
                 onAddUserCancel={handleAddUserCancel}
                 onAddUserBtnClick={handleAddUserBtnClick}
+                onMyProfileClick={handleMyProfileClick}
                 onLogOutClick={handleLogOut}
                 onAddUserOk={handleAddUserOk}
                 onUserInputChange={handleUserInputChange}
