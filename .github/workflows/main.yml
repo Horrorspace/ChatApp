@@ -21,8 +21,8 @@ jobs:
         run: npm run ts-build
       - uses: actions/checkout@v2
       - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ secrets.GH_USER }}
+          git config user.email "${{ secrets.GH_MAIL }}"
           git add .
           git commit -m "generated"
           git push origin build
