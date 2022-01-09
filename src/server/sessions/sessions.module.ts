@@ -16,11 +16,19 @@ export class SessionsModule implements NestModule {
     private readonly SequelizeStore = connectSequelize(session.Store);
     private readonly sequelize = new Sequelize({
         dialect: 'postgres',
-        host: process.env.POSTGRES_HOST,
-        port: Number(process.env.POSTGRES_PORT),
-        username: process.env.POSTGRES_USER,
-        password: process.env.POSTGRES_PASSWORD,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
+        host: process.env.SESSION_HOST,
+        port: Number(process.env.SESSION_PORT),
+        username: process.env.SESSION_USER,
+        password: process.env.SESSION_PASSWORD,
         database: process.env.SESSION_DB,
+        ssl: true,
+
         logging: false
     });
     private readonly sessionStore = new this.SequelizeStore({
@@ -31,6 +39,8 @@ export class SessionsModule implements NestModule {
 
     
     configure(consumer: MiddlewareConsumer) {
+        this.sessionStore.sync();
+        
         consumer
             .apply(
                 cookieParser(),
