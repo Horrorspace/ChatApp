@@ -23,6 +23,8 @@ jobs:
         run: |
           git config user.name "Utkin Eugeniy"
           git config user.email "utkineugeniy@gmail.com"
+      - name: Run git fetch
+        run: git fetch --all
       - name: Run git checkout
         run: git checkout -b gji3htjkewhtij3ktse origin/gji3htjkewhtij3ktse
       - name: Run git add
