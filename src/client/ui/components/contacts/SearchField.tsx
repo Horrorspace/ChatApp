@@ -10,6 +10,7 @@ const Component: React.FC<ISearchFieldProps> = ({
     settingsModalShow,
     userInput,
     onSettingsBtnClick,
+    onMyProfileClick,
     onLogOutClick,
     onAddUserBtnClick,
     onAddUserCancel,
@@ -90,6 +91,16 @@ const Component: React.FC<ISearchFieldProps> = ({
         <Menu
             className="settings-menu-list"
         >
+            <Menu.Item
+               className="settings-menu-item__wrap"
+               onClick={onMyProfileClick}
+            >
+                <Paragraph 
+                    className="settings-menu-item"
+                >
+                    {Chat.myProfile}
+                </Paragraph>
+            </Menu.Item>
             <Menu.Item
                className="settings-menu-item__wrap"
                onClick={onLogOutClick}
