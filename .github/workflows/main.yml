@@ -27,4 +27,4 @@ jobs:
           git add --force .production.env
           git add --force package.json
           git commit -m "generated"
-          git push origin build
+          git push origin HEAD:build
