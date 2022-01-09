@@ -45,7 +45,7 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     private getSocketId(id: number): string | null {
         const filteredArr = this.clients.filter(wsClient => wsClient.id === id);
 
-        if(filteredArr.length === 1) {
+        if(filteredArr.length > 0) {
             return filteredArr[0].wsId;
         }
         else {
