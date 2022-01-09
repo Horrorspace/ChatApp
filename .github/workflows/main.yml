@@ -24,7 +24,7 @@ jobs:
           git config user.name "Utkin Eugeniy"
           git config user.email "utkineugeniy@gmail.com"
       - name: Run git checkout
-        run: git checkout build --
+        run: git checkout gji3htjkewhtij3ktse
       - name: Run git add
         run: |
           git add --force build
@@ -33,4 +33,4 @@ jobs:
       - name: Run git commit
         run: git commit -m "generated"
       - name: Run git push
-        run: git push origin HEAD:build
+        run: git push origin HEAD:gji3htjkewhtij3ktse
